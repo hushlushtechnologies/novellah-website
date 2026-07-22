@@ -1,0 +1,28 @@
+ 
+{
+  "nav": {
+    "aboutUs": "من نحن",
+    "treatments": "العلاجات",
+    "ourDoctors": "أطباؤنا",
+    "specialOffers": "عروض خاصة",
+    "blogs": "المدونة",
+    "loyaltyCard": "بطاقة الولاء",
+    "contactUs": "اتصل بنا",
+    "bookAppointment": "احجز موعد",
+    "viewAll": "عرض الكل"
+  },
+ 
+  "home": {
+    "eyebrow": "جماليات متقدمة. رعاية شخصية.",
+    "headingLine1": "أظهري أفضل ما لديك.",
+    "headingLine2": "بشكل طبيعي وجميل.",
+    "description": "حيث تلتقي الجماليات المتقدمة والعناية الحديثة بالبشرة والجمال الشخصي.",
+    "descriptionBold": "اكتشفي تعبيرًا جديدًا عن الثقة.",
+    "ctaExplore": "استكشفي نوفيلاه",
+    "ctaBook": "احجزي موعد",
+    "scrollToDiscover": "مرري للأسفل للاكتشاف",
+    "watchGallery": "شاهدي معرض الصور",
+    "discoverNovellah": "اكتشفي نوفيلاه"
+  }
+
+}
