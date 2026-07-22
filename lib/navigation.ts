@@ -5,7 +5,13 @@ interface Localized {
   ar: string;
 }
 
-export const navLinks = [
+interface NavLink {
+  key: string;
+  href: string;
+  hasMegaMenu?: boolean;
+}
+
+export const navLinks : NavLink[] = [
   { key: "aboutUs", href: "/about-us" },
   { key: "treatments", href: "/treatments", hasMegaMenu: true },
   { key: "ourDoctors", href: "/our-doctors" },
@@ -13,7 +19,7 @@ export const navLinks = [
   { key: "blogs", href: "/blog" },
   { key: "loyaltyCard", href: "/loyality-cards" },
   { key: "contactUs", href: "/contact-us" },
-] as const;
+]  ;
 
  
 
