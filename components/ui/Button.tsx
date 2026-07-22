@@ -12,6 +12,7 @@ interface BaseProps {
   className?: string;
 }
 
+<<<<<<< HEAD
 interface ButtonAsLink
   extends BaseProps,
     LinkProps,
@@ -20,14 +21,24 @@ interface ButtonAsLink
 interface ButtonAsButton
   extends BaseProps,
     ButtonHTMLAttributes<HTMLButtonElement> {
+=======
+interface ButtonAsLink extends BaseProps {
+  href: string;
+  onClick?: () => void;
+}
+
+interface ButtonAsButton
+  extends BaseProps,
+    Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children"> {
+>>>>>>> 5187fbf (ts error fixed)
   href?: undefined;
 }
 
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const variants = {
-  primary: "bg-primary text-white",
   solid: "bg-gradient-primary text-white",
+  primary: "bg-primary text-white",
   secondary: "bg-gradient-secondary text-foreground",
   outline: "border border-border text-foreground bg-transparent",
 };
@@ -63,11 +74,15 @@ export function Button(props: ButtonProps) {
     } = props;
 
     return (
+<<<<<<< HEAD
       <Link
         href={href}
         className={classes}
         {...linkProps}
       >
+=======
+      <Link href={href} className={classes} {...(props as { onClick?: () => void })}>
+>>>>>>> 5187fbf (ts error fixed)
         {children}
         {icon}
       </Link>
