@@ -1,4 +1,4 @@
-import Link from "next/link";
+ import Link from "next/link";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface BaseProps {
@@ -22,10 +22,10 @@ interface ButtonAsButton
 type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const variants = {
-  primary: "bg-gradient-primary text-white",
-  solid: "bg-primary text-white",
-  secondary: "bg-gradient-secondary text-foreground",
-  outline: "border border-border text-foreground bg-transparent",
+  solid: "bg-gradient-primary text-white border-none",
+  primary: "bg-primary text-white border-none",
+  secondary: "bg-gradient-secondary text-foreground border-none",
+  outline: "bg-white text-secondary border border-secondary",
 };
 
 export function Button({ children, variant = "primary", icon, className = "", href, ...props }: ButtonProps) {

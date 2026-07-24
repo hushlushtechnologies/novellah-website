@@ -10,6 +10,9 @@
   --color-border: #D8C8C2;
   --color-foreground: #3A2A26;
   --color-muted-foreground: #8B7C70;
+  --color-drbg : #1B0702;
+  --color-drbglight : #240902;
+  --color-drmsg : #4E0C0C;
 
   /* Gradients */
   /* Gradients — renamed to the correct Tailwind v4 namespace */
@@ -46,4 +49,25 @@ body {
   background-color: #fff;
   color: var(--color-foreground);
   font-family: var(--font-body);
+}
+
+/* app/globals.css — add alongside your @theme block */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
 }

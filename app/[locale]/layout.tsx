@@ -6,6 +6,7 @@ import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
+import { Footer } from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -38,6 +39,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
            <Navbar />
           {children}
+          <Footer/>
         </NextIntlClientProvider>
       </body>
     </html>

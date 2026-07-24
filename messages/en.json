@@ -23,7 +23,336 @@
     "scrollToDiscover": "Scroll to Discover",
     "watchGallery": "Watch Our Gallery",
     "discoverNovellah": "Discover Novellah"
+  },
+  
+  "welcome": {
+    "eyebrow": "Welcome to Novellah",
+    "headingLine1": "Modern Beauty.",
+    "headingLine2": "Personalized Care.",
+    "description1": "Novellah Restyle is a modern international beauty and skincare brand launched under the UAE-based Agroturf Group.",
+    "description2": "Created with a vision to redefine the beauty experience, Novellah brings together advanced technology, professional expertise and personalised care in an elegant and welcoming environment.",
+    "feature1Title": "Modern Beauty",
+    "feature1Desc": "Certified & International Standard care",
+    "feature2Title": "Personalized Care",
+    "feature2Desc": "Treatments Designed for you",
+    "feature3Title": "Exceptional Experience",
+    "feature3Desc": "Worldclass & Experienced Professionals",
+    "ctaLearnMore": "Learn More About Us",
+    "ctaExplore": "Explore Our Service",
+    "stat1Value": "Innovation",
+    "stat1Label": "Modern Technology",
+    "stat2Value": "Quality",
+    "stat2Label": "Premium Standards",
+    "stat3Value": "30+",
+    "stat3Label": "Advanced Treatments",
+    "stat4Value": "World-Class",
+    "stat4Label": "Aesthetic Experience"
+  },
+   
+ 
+ 
+  "whyChoose": {
+    "eyebrow": "Why Choose Novellah",
+    "headingLine1": "Why Choose",
+    "headingLine2": "Novellah Restyle?",
+    "subheading": "At Novellah Restyle, we blend advanced science with personalized care to deliver exceptional, natural-looking results you can trust",
+    "feature1Title": "Expert & Certified Professionals",
+    "feature1Desc": "Our experienced doctors and specialists are highly trained and continuously updated with the latest global techniques",
+    "feature2Title": "Advanced Technology",
+    "feature2Desc": "We use of the art technology and internationally approved equipment for safe, effective and precise treatments",
+    "feature3Title": "Personalized Care",
+    "feature3Desc": "Every treatment is customized to your unique skin, body and beauty goals for natural and lasting results",
+    "feature4Title": "Safe & Hygienic",
+    "feature4Desc": "Your safety is our priority. We follow strict hygiene protocols and international safety standards at every step",
+    "feature5Title": "Luxury Experience",
+    "feature5Desc": "From consultation to aftercare we ensure a premium comfortable and discreet experience in relaxing environment",
+    "feature6Title": "Proven Results",
+    "feature6Desc": "Thousands of happy client trust us for visible, long lasting and confidence boosting transformation",
+    "awardLabel": "Best of Best award by Dubai, UAE / Srilanka"
   }
+ ,
+ 
+ 
+ 
+  "categoryTreatments": {
+    "eyebrow": "Category Treatments",
+    "headingLine1": "Advanced Treatments,",
+    "headingLine2": "Personalized for you",
+    "subheading": "from advanced skincare to transform beauty solutions, explore our range of treatments designed to enhance your natural beauty",
+    "ctaViewAll": "View All Treatments",
+    "ctaExplore": "Explore Treatments"
+  }
+ ,
+ 
+ "signatureTreatments": {
+    "eyebrow": "Signature Treatments",
+    "headingLine1": "Our Most",
+    "headingLine2": "Loved Treatments",
+    "subheading": "Expertly curated results driven treatments designed to enhance your natural beauty and boost your confidence",
+    "ctaViewAll": "View All Treatments",
+    "ctaExplore": "Explore Treatments",
+    "durationUnit": "min",
+    "trust1Title": "Visible Results",
+    "trust1Desc": "Real Transformation you can see",
+    "trust2Title": "Safe & Proven",
+    "trust2Desc": "Clinic Tested & Dermatologist approved",
+    "trust3Title": "Personalized Care",
+    "trust3Desc": "Tailored Treatments for unique you",
+    "trust4Title": "Premium Experience",
+    "trust4Desc": "Luxury Care in a relaxing environment"
+  },
+
+ 
+  "technologyMeetsBeauty": {
+    "eyebrow": "Technology Meets Beauty",
+    "headingLine1": "Advanced Care.",
+    "headingLine2": "Modern Solutions.",
+    "description1": "At Novellah Restyle, modern technology and personalised care come together to create a new generation of beauty and skincare experiences.",
+    "description2": "Every treatment is carefully selected and professionally delivered with a commitment to quality, comfort and client satisfaction.",
+    "ctaLearnMore": "Learn More About Us",
+    "ctaConnect": "Let's Connect",
+    "point1Title": "Safe & Approved",
+    "point1Desc": "FDA Approved devices ensuring the highest standards of safety",
+    "point2Title": "Precise & Effective",
+    "point2Desc": "Advanced technology for precise results with maximum effectiveness",
+    "point3Title": "Minimal Downtime",
+    "point3Desc": "Our Treatments are designed to deliver visible results with minimal recovery time",
+    "point4Title": "Experts Hands",
+    "point4Desc": "Technology is powerful, but our experts make the difference"
+  },
+ 
+ 
+  "brandStory": {
+    "eyebrow": "Our Philosophy & Vision",
+    "philosophyLabel": "Our Philosophy",
+    "philosophyHeadingLine1": "Your Beauty.",
+    "philosophyHeadingLine2": "Your Confidence.",
+    "philosophyHeadingHighlight": "Your Novellah",
+    "philosophyTagline": "We believe beauty is personal.",
+    "philosophyBody": "Our philosophy is to enhance individuality, inspire confidence and create meaningful experiences through professional care and modern beauty solutions.",
+    "visionLabel": "Our Vision",
+    "visionBodyPart1": "To build Novellah Restyle into a recognized international beauty and skincare brand known for ",
+    "visionBodyHighlight1": "innovation, professional",
+    "visionBodyPart2": " excellence and ",
+    "visionBodyHighlight2": "exceptional client experiences.",
+    "ceoLabel": "CEO Speaks",
+    "ceoHeadingLine1": "A Message",
+    "ceoHeadingLine2From": "from",
+    "ceoHeadingHighlight": "Our CEO",
+    "ceoQuote1": "At Novellah Restyle, we are creating more than a beauty destination. We are building a modern international brand founded on innovation, professional care and the confidence of every client who chooses us.",
+    "ceoQuote2": "Our vision is to bring advanced beauty and skincare experiences closer to people while maintaining the highest standards of quality, trust and personalised service.",
+    "ceoQuote3": "Every Novellah location will represent our commitment to modern technology, continuous improvement and exceptional client care.",
+    "ceoName": "Ahamed Razeen",
+    "ceoTitle": "Founder & CEO",
+    "bannerHeading": "Welcome to Novellah Restyle.",
+    "bannerSubtext": "Your journey to renewed beauty and confidence begins here."
+  },
+ 
+ 
+  "doctors": {
+    "eyebrow": "Meet Our Doctors",
+    "headingLine1": "Expert Care.",
+    "headingLine2": "Beautiful Results.",
+    "subheading": "Our team of highly qualified doctors and specialists are dedicated to delivering personalized treatments with precision, care and the latest technology",
+    "ctaViewAll": "View All Doctors",
+    "experienceLabel": "Experience",
+    "ctaProfile": "View Profile"
+  
+}
+ ,
+ 
+  "beforeAfter": {
+    "eyebrow": "Before & After Results",
+    "headingLine1": "Real Results. Real",
+    "headingLine2": "Confidence",
+    "subheading": "Discover the visible transformation our clients love advanced treatments, Natural looking results",
+    "beforeLabel": "BEFORE",
+    "afterLabel": "AFTER"
+  },
+
+ 
+  "loyaltyPromo": {
+    "eyebrow": "Loyalty & Membership",
+    "headingLine1": "More Than Beauty.",
+    "headingLine2Prefix": "A",
+    "headingLine2Highlight": "Relationship That",
+    "headingLine3": "Rewards",
+    "subheading": "our loyalty program is designed to thank you for trusting Novellah Restyle with your beauty journey",
+    "step1Title": "1. Join",
+    "step1Desc": "Become a member of Novellah Rewards by contacting our team. It's easy and quick",
+    "step2Title": "2. Enjoy Treatments",
+    "step2Desc": "Indulge in our premium treatments. Every eligible spend brings you closer to greater rewards",
+    "step3Title": "3. Upgrade Your Tier",
+    "step3Desc": "As your annual spending increases you'll unlock higher membership tiers and more benefits",
+    "step4Title": "4. Enjoy Exclusive Rewards",
+    "step4Desc": "Enjoy exciting discounts complimentary services priority experiences and VIP Privileges",
+    "bannerHeading": "Have questions or want to know which tier is right for you",
+    "bannerSubtext": "Contact our team to start your membership journey",
+    "ctaContact": "Contact Us"
+  }
+ ,
+ 
+  "specialOffers": {
+    "eyebrow": "Special Offers",
+    "headingLine1": "Exclusive Offers.",
+    "headingLine2": "Exceptional You",
+    "subheading": "Indulge in our handpicked offers designed to help you look and feel your absolute best, For a limited time only",
+    "ctaViewAll": "View All Offers",
+    "ctaBookNow": "Book Now"
+  },
+
+ 
+  "blogFeatured": {
+    "eyebrow": "Featured Article",
+    "headingLine1": "Editor's Pick: Beauty",
+    "headingLine2": "Knowledge Worth Reading.",
+    "subheading": "Explore our featured expert article, carefully selected to help you understand advanced skincare treatments, modern beauty solutions, and professional tips for healthier, more radiant skin.",
+    "ctaViewAll": "View All Blogs",
+    "ctaReadMore": "Read More",
+    "readTimeUnit": "MIN READ"
+  },
+ 
+  
+  "testimonials": {
+    "eyebrow": "Testimonial",
+    "heading": "Few Words from our Client",
+    "ctaBookNow": "Book Now",
+    "partnersLabel": "Our Partners of our Business"
+  }
+ ,
+ 
+  "finalCta": {
+    "eyebrow": "Ready to Begin?",
+    "headingLine1Prefix": "Discover",
+    "headingLine1Highlight": "Beauty.",
+    "headingLine2Prefix": "Experience",
+    "headingLine2Highlight": "Confidence.",
+    "subheading": "Experienced expert care, advanced treatments and a personalized approach designed for you",
+    "ctaBook": "Book Your Consultation",
+    "ctaContact": "Contact Novellah",
+    "newsletterHeadingPrefix": "Beauty Insights,",
+    "newsletterHeadingHighlight": "Delivered",
+    "newsletterHeadingSuffix": "to You.",
+    "newsletterBody": "Subscribe to receive expert skincare advice, beauty tips, treatment updates, exclusive offers, and the latest news from Novellah Restyle—all thoughtfully delivered to your inbox.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your Email ID",
+    "ctaSubscribe": "Subscribe",
+    "newsletterDisclaimer": "By subscribing, you agree to receive occasional emails from Novellah Restyle. You can unsubscribe at any time.",
+    "callLabel": "Call Us",
+    "phone": "+971 50 123 4567",
+    "visitLabel": "Visit Us",
+    "address": "Novellah, Al Wasl Road, Jumeirah, Dubai, UAE",
+    "hoursLabel": "Opening Hours",
+    "hours": "MON - SUN: 09:00 AM - 09:00 PM",
+    "hoursSubtext": "EVERY WEEK",
+    "welcomeNote": "We can't wait to welcome you"
+  },
+ 
+
+ 
+  "footer": {
+    "homeLabel": "Home",
+    "tagline": "Enhancing individuality. Inspiring Confidence. Creating meaningful beauty experiences through professional care and modern beauty solutions",
+    "phone": "+971 50 123 4567",
+    "email": "info@novellahrestyle.com",
+    "address": "Novellah Restyle, Al Wasl Road, Jumeirah 1, Dubai, UAE",
+    "quickLinksHeading": "Quick Links",
+    "treatmentsHeading": "Our Treatments",
+    "customerCareHeading": "Customer Care",
+    "careBookAppointment": "Book a Appointment",
+    "careFaqs": "FAQs",
+    "careContactUs": "Contact Us",
+    "carePrivacyPolicy": "Privacy Policy",
+    "hereForYouHeading": "We Are Here For You",
+    "questionPrompt": "Have Question?",
+    "questionSubtext": "Our Team is ready to help you",
+    "ctaWhatsapp": "WhatsApp Us",
+    "hoursLabel": "Opening Hours",
+    "hours": "MON - SUN: 09:00 AM - 09:00 PM",
+    "hoursSubtext": "EVERY WEEK",
+    "copyright": "© 2026 Novellah Restyle. All rights reserved."
+  },
+ 
+
+   
+  "aboutHero": {
+    "eyebrow": "About Novellah",
+    "line1Word": "Redefining",
+    "line1Highlight": "Beauty.",
+    "line2Word": "Restoring",
+    "line2Highlight": "Confidence",
+    "subheading": "At Novellah Restyle, we blend advanced medical expertise with a personalized approach to reveal the best version of you Because every detail matters and so do you",
+    "ctaBook": "Book Appointment",
+    "ctaWhatsapp": "WhatsApp Us"
+  }
+,
+ 
+  "ourStory": {
+    "eyebrow": "Our Story",
+    "headingLine1": "Where Science",
+    "headingLine2Prefix": "Meets",
+    "headingLine2Highlight": "Artistry",
+    "quote": "Our Purpose is simple to help you feel beautiful, empowered and confident in your own skin",
+    "description1": "Novellah Restyle was founded with a vision to create a luxury medical aesthetics clinic that goes beyond treatments delivering transformative experience.",
+    "description2": "We combine advanced medical expertise with an artistic approach to beauty. ensuring natural, elegant and long lasting results tailored uniquely for you",
+    "feature1Title": "Expert Care",
+    "feature1Desc": "Certified Medical professionals with years of experience",
+    "feature2Title": "Natural Results",
+    "feature2Desc": "Enhancing your natural beauty with subtle, refined results",
+    "feature3Title": "Premium Experience",
+    "feature3Desc": "Luxury Environment designed for your comfort and privacy",
+    "feature4Title": "Safe & Trusted",
+    "feature4Desc": "International Standards and strict safety protocols",
+    "stat1Value": "Innovation",
+    "stat1Label": "Modern Technology",
+    "stat2Value": "Quality",
+    "stat2Label": "Premium Standards",
+    "stat3Value": "30+",
+    "stat3Label": "Advanced Treatments",
+    "stat4Value": "World-Class",
+    "stat4Label": "Aesthetic Experience"
+  },
+ 
+ 
+  "clinicGallery": {
+    "eyebrow": "Clinic Gallery",
+    "heading": "Step Inside Novellah",
+    "subheading": "Every Space at Novellah Restyle is thoughtfully designed to offer comfort, elegance and an elevated experience"
+  },
+ 
+
+ 
+  "doctorsHero": {
+    "eyebrow": "Our Experts",
+    "headingLine1Prefix": "Expert",
+    "headingLine1Highlight": "Care.",
+    "headingLine2Prefix": "Exceptional",
+    "headingLine2Highlight": "Results",
+    "subheading": "Our Experienced medical professionals combine advanced expertise, modern technology, and personalized care to deliver exceptional results tailored to every client",
+    "ctaBook": "Book Appointment",
+    "ctaWhatsapp": "WhatsApp Us",
+    "point1Title": "Qualified & Certified",
+    "point1Desc": "Internationally trained and board-certified professionals",
+    "point2Title": "Personalized Approach",
+    "point2Desc": "Every treatments is tailored to your unique needs",
+    "point3Title": "Compassionate Care",
+    "point3Desc": "Your comfort, safety, and satisfaction are our top priorities"
+  },
+
+  
+  "doctorsList": {
+    "eyebrow": "Meet Our Doctors",
+    "headingPrefix": "Our Medical",
+    "headingHighlight": "Experts",
+    "subheading": "A team of highly qualified and experienced professionals dedicated to helping you look and feel your absolute",
+    "filterAll": "All Doctors",
+    "experienceLabel": "Experience",
+    "ctaProfile": "View Profile"
+  }
+ 
+ 
+ 
+
 }
 
  
