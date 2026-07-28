@@ -2,6 +2,7 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { Phone, Mail, MapPin, HelpCircle, Clock, Sparkle } from "lucide-react";
 import { navLinks, treatmentsMegaMenu } from "@/lib/navigation";
+import { siteConfig } from "@/lib/siteConfig";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -28,19 +29,19 @@ export async function Footer() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <Phone size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{t("phone")}</p>
+                <p className="font-body text-sm text-white">{siteConfig.phone}</p>
               </div>
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <Mail size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{t("email")}</p>
+                <p className="font-body text-sm text-white">{siteConfig.email}</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <MapPin size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{t("address")}</p>
+                <p className="font-body text-sm text-white">{siteConfig.address[locale]}</p>
               </div>
             </div>
           </div>
@@ -144,7 +145,7 @@ export async function Footer() {
             <p className="font-body text-sm text-white/70">{t("questionSubtext")}</p>
 
             
-            <a  href="https://wa.me/971501234567"
+            <a  href={siteConfig.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 rounded-xl border border-secondary px-5 py-2.5 font-body text-sm font-semibold text-secondary"

@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
-import { ArrowRight, Clock, Droplet } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import Image from "next/image";
 import { treatmentsMegaMenu } from "@/lib/navigation";
 import { treatments } from "@/lib/content/treatments";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { DecorativeFlower } from "@/components/ui/DecorativeFlower";
+import { TreatmentCard } from "@/components/ui/TreatmentCard";
 
 const trustPoints = [
   { icon: "/images/icons/visible-results.svg", titleKey: "trust1Title", descKey: "trust1Desc" },
@@ -22,7 +21,7 @@ const CARDS_PER_PAGE = 4;
 export function SignatureTreatmentsSection() {
   const t = useTranslations("signatureTreatments");
   const locale = useLocale() as "en" | "ar";
-  const [activeCategory, setActiveCategory] = useState(treatmentsMegaMenu[3].categorySlug); // defaults to Advanced Skin Care, matching the design
+  const [activeCategory, setActiveCategory] = useState(treatmentsMegaMenu[3].categorySlug);
   const [page, setPage] = useState(0);
 
   const categoryTreatments = treatments.filter((tr) => tr.categorySlug === activeCategory);
@@ -36,38 +35,37 @@ export function SignatureTreatmentsSection() {
 
   return (
     <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-      <DecorativeFlower/>
+      <DecorativeFlower />
       <div className="mx-auto max-w-7xl">
-        {/* Header */}
-         <SectionHeader
-  eyebrow={t("eyebrow")}
-  heading={
-    <>
-      {t("headingLine1")} <span className="text-primary">{t("headingLine2")}</span>
-    </>
-  }
-  subheading={t("subheading")}
-  ctaLabel={t("ctaViewAll")}
-  ctaHref="/treatments"
-/>
+        <SectionHeader
+          eyebrow={t("eyebrow")}
+          heading={
+            <>
+              {t("headingLine1")} <span className="text-primary">{t("headingLine2")}</span>
+            </>
+          }
+          subheading={t("subheading")}
+          ctaLabel={t("ctaViewAll")}
+          ctaHref="/treatments"
+        />
 
         {/* Trust points */}
- <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
-  {trustPoints.map((point) => (
-    <div key={point.titleKey} className="flex items-start gap-3">
-      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-secondary/40 shadow-soft">
-        <Image src={point.icon} alt="" width={18} height={18} />
-      </span>
-      <div>
-        <p className="font-body text-sm font-semibold text-foreground">{t(point.titleKey)}</p>
-        <p className="mt-0.5 font-body text-xs text-muted-foreground">{t(point.descKey)}</p>
-      </div>
-    </div>
-  ))}
-</div>
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4">
+          {trustPoints.map((point) => (
+            <div key={point.titleKey} className="flex items-start gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-secondary/40 shadow-soft">
+                <Image src={point.icon} alt="" width={18} height={18} />
+              </span>
+              <div>
+                <p className="font-body text-sm font-semibold text-foreground">{t(point.titleKey)}</p>
+                <p className="mt-0.5 font-body text-xs text-muted-foreground">{t(point.descKey)}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Category tabs */}
-        <div className="mt-12 flex bg-card flex-wrap justify-center gap-2 rounded-full border border-border p-2">
+        <div className="mt-12 flex flex-wrap justify-center gap-2 rounded-full border border-border bg-card p-2">
           {treatmentsMegaMenu.map((category) => (
             <button
               key={category.categorySlug}
@@ -83,40 +81,19 @@ export function SignatureTreatmentsSection() {
           ))}
         </div>
 
-        {/* Treatment cards */}
+        {/* Treatment cards — now via shared TreatmentCard */}
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {visibleTreatments.map((treatment) => (
-            <div
+            <TreatmentCard
               key={treatment.slug}
-              className="overflow-hidden rounded-2xl border border-border bg-card"
-            >
-              <div className="relative h-48 w-full">
-                <Image src={treatment.image} alt="" fill className="object-cover" />
-              </div>
-              <div className="p-5">
-                <h3 className="font-heading text-lg font-bold text-primary">{treatment.title[locale]}</h3>
-                <div className="mt-1 mb-3 h-px w-8 bg-secondary" />
-                <p className="font-body text-sm text-muted-foreground">{treatment.description[locale]}</p>
-                <div className="mt-4 flex items-center font-medium gap-4 font-body text-xs text-muted-foreground">
-                  <span className="flex items-center gap-1">
-                    <Clock size={14} /> {treatment.durationMinutes} {t("durationUnit")}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <Droplet size={14} /> {treatment.skinType[locale]}
-                  </span>
-                </div>
-                
-                  <a href={`/treatments/${treatment.categorySlug}/${treatment.slug}`}
-                  className="mt-4 inline-flex items-center gap-1 font-body text-sm font-semibold uppercase text-primary"
-                >
-                  {t("ctaExplore")} <ArrowRight size={14} />
-                </a>
-              </div>
-            </div>
+              treatment={treatment}
+              locale={locale}
+              durationUnit={t("durationUnit")}
+              ctaLabel={t("ctaExplore")}
+            />
           ))}
         </div>
 
-        {/* Pagination dots — only shown if a category has more than one page */}
         {pageCount > 1 && (
           <div className="mt-8 flex justify-center gap-2">
             {Array.from({ length: pageCount }).map((_, i) => (

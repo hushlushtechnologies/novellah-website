@@ -2,6 +2,7 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { siteConfig } from "@/lib/siteConfig";
 
 export async function AboutHeroSection() {
   const t = await getTranslations("aboutHero");
@@ -49,7 +50,7 @@ export async function AboutHeroSection() {
             {t("ctaBook")}
           </Button>
           <Button
-            href="https://wa.me/971501234567"
+            href={siteConfig.whatsappHref}
             variant="outline"
     
           >

@@ -1,11 +1,13 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations,getLocale } from "next-intl/server";
 import { ArrowRight, Phone, MapPin, Clock, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { NewsletterForm } from "./NewsletterForm";
+import { siteConfig } from "@/lib/siteConfig";
 
 export async function FinalCtaSection() {
   const t = await getTranslations("finalCta");
+   const locale = (await getLocale()) as "en" | "ar";
 
   return (
     <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
@@ -91,7 +93,7 @@ export async function FinalCtaSection() {
                 <p className="font-body font-bold text-xs uppercase tracking-wide text-white">
                   {t("callLabel")}
                 </p>
-                <p className="font-body text-sm font-semibold text-white">{t("phone")}</p>
+                <p className="font-body text-sm font-semibold text-white">{siteConfig.phone}</p>
               </div>
             </div>
 
@@ -103,7 +105,7 @@ export async function FinalCtaSection() {
                 <p className="font-body font-bold text-xs uppercase tracking-wide text-white">
                   {t("visitLabel")}
                 </p>
-                <p className="font-body text-sm font-semibold text-white">{t("address")}</p>
+                <p className="font-body text-sm font-semibold text-white">{siteConfig.address[locale]}</p>
               </div>
             </div>
 

@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/navigation";
+ import type { Localized } from "@/lib/navigation";
 
 export type DoctorCategory = "dermatology" | "aesthetic-medicine" | "laser-specialist" | "skin-care";
 
@@ -12,6 +12,15 @@ export interface Doctor {
   qualification: string;
   qualificationField: Localized;
   image: string;
+  cutoutImage: string;
+  roomImage: string;
+  bio: Localized;
+  languages: Localized;
+  educationDetail: Localized;
+   philosophySubheading: Localized; //  
+  aboutParagraph1: Localized;
+  aboutParagraph2: Localized;
+  treatmentCategorySlugs: string[];
 }
 
 export const doctorCategories: { slug: DoctorCategory; label: string }[] = [
@@ -32,82 +41,29 @@ export const doctors: Doctor[] = [
     qualification: "MBBS, MD",
     qualificationField: { en: "Dermatology", ar: "الأمراض الجلدية" },
     image: "/images/doctors/ahamed-razeen.png",
-  },
-  {
-    slug: "sarah-mathew",
-    name: "Dr. Sarah Mathew",
-    title: { en: "Senior Dermatologist", ar: "استشارية الأمراض الجلدية" },
-    specialty: { en: "Clinical Dermatology", ar: "الأمراض الجلدية السريرية" },
-    category: "dermatology",
-    experienceYears: 8,
-    qualification: "MBBS, DDVL",
-    qualificationField: { en: "Dermatology", ar: "الأمراض الجلدية" },
-    image: "/images/doctors/ahamed-razeen.png",
-  },
-  {
-    slug: "mohamed-faisal",
-    name: "Dr. Mohamed Faisal",
-    title: { en: "Aesthetic Physician", ar: "طبيب تجميل" },
-    specialty: { en: "Botox & Fillers", ar: "البوتوكس والفيلر" },
-    category: "aesthetic-medicine",
-    experienceYears: 11,
-    qualification: "MBBS, MD",
-    qualificationField: { en: "Aesthetic Medicine", ar: "الطب التجميلي" },
-    image: "/images/doctors/ahamed-razeen.png",
-  },
-  {
-    slug: "nadia-hassan",
-    name: "Dr. Nadia Hassan",
-    title: { en: "Cosmetic Physician", ar: "طبيبة تجميل" },
-    specialty: { en: "Facial Rejuvenation", ar: "تجديد شباب الوجه" },
-    category: "aesthetic-medicine",
-    experienceYears: 7,
-    qualification: "MBBS, PGDAC",
-    qualificationField: { en: "Cosmetic Medicine", ar: "الطب التجميلي" },
-    image: "/images/doctors/ahamed-razeen.png",
-  },
-  {
-    slug: "riyaz-rahman",
-    name: "Dr. Riyaz Rahman",
-    title: { en: "Laser Specialist", ar: "أخصائي الليزر" },
-    specialty: { en: "Laser Hair Removal", ar: "إزالة الشعر بالليزر" },
-    category: "laser-specialist",
-    experienceYears: 9,
-    qualification: "MBBS, MD",
-    qualificationField: { en: "Laser Therapy", ar: "العلاج بالليزر" },
-    image: "/images/doctors/ahamed-razeen.png",
-  },
-  {
-    slug: "fatima-noor",
-    name: "Dr. Fatima Noor",
-    title: { en: "Laser Consultant", ar: "استشارية الليزر" },
-    specialty: { en: "Skin Laser Treatments", ar: "علاجات الجلد بالليزر" },
-    category: "laser-specialist",
-    experienceYears: 6,
-    qualification: "MBBS, DVD",
-    qualificationField: { en: "Laser Dermatology", ar: "الأمراض الجلدية بالليزر" },
-    image: "/images/doctors/ahamed-razeen.png",
-  },
-  {
-    slug: "anjali-nair",
-    name: "Dr. Anjali Nair",
-    title: { en: "Skin Care Specialist", ar: "أخصائية العناية بالبشرة" },
-    specialty: { en: "Acne & Pigmentation", ar: "حب الشباب والتصبغات" },
-    category: "skin-care",
-    experienceYears: 5,
-    qualification: "MBBS, DDVL",
-    qualificationField: { en: "Skin Care", ar: "العناية بالبشرة" },
-    image: "/images/doctors/ahamed-razeen.png",
-  },
-  {
-    slug: "omar-khalid",
-    name: "Dr. Omar Khalid",
-    title: { en: "Skin Wellness Expert", ar: "خبير صحة البشرة" },
-    specialty: { en: "Hydra Facial & Skin Rejuvenation", ar: "الهيدرا فيشل وتجديد البشرة" },
-    category: "skin-care",
-    experienceYears: 8,
-    qualification: "MBBS, MD",
-    qualificationField: { en: "Aesthetic Dermatology", ar: "الأمراض الجلدية التجميلية" },
-    image: "/images/doctors/ahamed-razeen.png",
+    cutoutImage: "/images/doctors/ahamed-razeen-cutout.png",
+    roomImage: "/images/doctors/ahamed-razeen-room.png",
+    bio: {
+      en: "Dedicated to enhancing natural beauty through advanced aesthetic treatments and personalized care. With a passion for precision and a commitment to excellence, Dr. Ahamed helps his clients look and feel their absolute best.",
+      ar: "مكرّس لتعزيز الجمال الطبيعي من خلال علاجات تجميلية متقدمة ورعاية شخصية.",
+    },
+    languages: { en: "English, Arabic", ar: "الإنجليزية، العربية" },
+    educationDetail: {
+      en: "MBBS, American University of Sharjah",
+      ar: "بكالوريوس الطب والجراحة، الجامعة الأمريكية في الشارقة",
+    },
+    philosophySubheading: {
+  en: "Dr. Ahamed believes that true beauty lies in confidence. His approach is centered on enhancing your natural features with advanced techniques, personalized care and the highest standards of safety",
+  ar: "...",
+},
+aboutParagraph1: {
+  en: "With over 10 years of experience in aesthetic medicine, Dr. Ahamed combines medical expertise with an artistic eye...",
+  ar: "...",
+},
+aboutParagraph2: {
+  en: "He continuously updates his knowledge with international training and the latest technologies to provide his clients with the best possible care",
+  ar: "...",
+},
+treatmentCategorySlugs: ["advanced-skin-care"],
   },
 ];

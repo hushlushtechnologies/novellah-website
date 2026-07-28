@@ -12,7 +12,7 @@ function formatDate(dateStr: string, locale: string) {
   });
 }
 
-export async function BlogFeaturedSection() {
+export async function BlogFeaturedSection({ showViewAll = true }: { showViewAll?: boolean }) {
   const t = await getTranslations("blogFeatured");
   const locale = (await getLocale()) as "en" | "ar";
 
@@ -38,9 +38,11 @@ export async function BlogFeaturedSection() {
             subheading={t("subheading")}
             className="max-w-2xl"
           />
-          <Button href="/blog" variant="outline" className="w-full justify-center lg:w-fit">
-            {t("ctaViewAll")}
-          </Button>
+          {showViewAll && (
+            <Button href="/blog" variant="outline" className="w-full justify-center lg:w-fit">
+              {t("ctaViewAll")}
+            </Button>
+          )}
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-12 sm:gap-8 lg:grid-cols-2 lg:items-stretch">

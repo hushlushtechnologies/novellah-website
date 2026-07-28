@@ -349,10 +349,328 @@
     "experienceLabel": "Experience",
     "ctaProfile": "View Profile"
   }
+ ,
  
  
+  "doctorDetail": {
+    "eyebrow": "Our Specialist",
+    "experienceLabel": "Years of Experience",
+    "specializationLabel": "Specialization",
+    "languagesLabel": "Languages",
+    "educationLabel": "Education",
+    "ctaBook": "Book Appointment",
+    "ctaWhatsapp": "WhatsApp Us"
+  },
  
+  
+  "doctorPhilosophy": {
+    "eyebrow": "Biography",
+    "headingLine1": "Dedicated to Enhancing",
+    "headingHighlight": "Natural Beauty",
+    "point1Title": "Patient Centered Care",
+    "point1Desc": "Every treatment is tailored to your unique needs and goals",
+    "point2Title": "Natural & Safe Approach",
+    "point2Desc": "Enhancing beauty with safe, proven and advanced techniques",
+    "point3Title": "Excellence in Aesthetics",
+    "point3Desc": "Committed to the highest standards of precision, safety and results",
+    "point4Title": "Compassionate Care",
+    "point4Desc": "Building trust and Lasting relationships with every client",
+    "aboutHeadingPrefix": "About Dr."
+  },
+ 
+ 
+  "doctorTreatments": {
+    "eyebrow": "Treatments Offered",
+    "headingLine1": "Advanced Treatments,",
+    "headingLine2": "Personalized for you",
+    "durationUnit": "min",
+    "ctaExplore": "Explore Treatments"
+  },
 
+ 
+  "offersHero": {
+    "eyebrow": "Exclusive Offers",
+    "headingLine1": "Discover Exclusive",
+    "headingLine2Prefix": "",
+    "headingHighlight": "Beauty",
+    "headingSuffix": "Offers",
+    "subheading": "Explore our latest beauty, skincare, laser and aesthetic offers carefully curated to help you experience premium treatments at exceptional",
+    "ctaBook": "Book Appointment",
+    "ctaWhatsapp": "WhatsApp Us",
+    "badge1Line1": "Limited",
+    "badge1Line2": "Time",
+    "badge1Line3": "Exclusive",
+    "badge1Line4": "Offers",
+    "badge2Line1": "Save",
+    "badge2Line2": "More",
+    "badge2Line3": "Feel Your",
+    "badge2Line4": "Best"
+  },
+
+ 
+  "loyaltyHero": {
+    "eyebrow": "Novellah Rewards",
+    "headingLine1": "Beauty That",
+    "headingHighlight": "Rewards",
+    "headingSuffix": "Every Visit",
+    "subheading": "Join the Novellah Loyalty program and enjoy exclusive privileges, personalized offers and exceptional benefits designed for our valued client",
+    "ctaContact": "Contact Us",
+    "ctaConsultation": "Book Consultation"
+  },
+
+   
+  "whatIsRewards": {
+    "eyebrow": "Novellah Rewards",
+    "headingLine1Prefix": "What is",
+    "headingLine1Highlight": "Novellah",
+    "headingLine2": "Rewards?",
+    "quote": "Our way of appreciating your trust and making your beauty journey even more special.",
+    "description": "Novellah rewards is our exclusive loyalty program designed to thank you for trusting us with your beauty journey. The more you indulge in our premium treatments, the more rewarding your experience",
+    "point1Title": "Exclusive Privileges",
+    "point1Desc": "Enjoy tier-based benefits, special discounts, and member-only offer",
+    "point2Title": "Rewarded Every Time",
+    "point2Desc": "Earn Greater rewards as your annual spending increases",
+    "point3Title": "Personalized Care",
+    "point3Desc": "Experience priority services, expert and premium beauty experienced"
+  }
+ ,
+ 
+  "howRewardsWorks": {
+    "eyebrow": "How It Works",
+    "headingPrefix": "How",
+    "headingHighlight": "Novellah Rewards",
+    "headingSuffix": "Works",
+    "subheading": "A simple way to enjoy more beauty, more rewards and more exclusive privileges",
+    "step1Title": "Join",
+    "step1Desc": "Become a member of Novellah Rewards by contacting our team. It's easy and quick",
+    "step2Title": "Enjoy Treatments",
+    "step2Desc": "Indulge in our premium treatments. Every eligible spend brings you closer to greater rewards",
+    "step3Title": "Upgrade Your Tier",
+    "step3Desc": "As your annual spending increases you'll unlock higher membership tiers and more benefits",
+    "step4Title": "Enjoy Exclusive Rewards",
+    "step4Desc": "Enjoy exciting discounts complimentary services priority experiences and VIP Privileges"
+  }
+ ,
+ 
+  "membershipTiers": {
+    "eyebrow": "Membership Tiers",
+    "headingPrefix": "Choose Your",
+    "headingHighlight": "Membership",
+    "subheading": "The more you indulge, the more rewarding your experience becomes, Unlock greater privileges as you move up the tiers",
+    "annualSpendingLabel": "Annual Spending",
+    "popularBadge": "Most Popular",
+    "bannerHeading": "Have questions or want to know which tier is right for you",
+    "bannerSubtext": "Contact our team to start your membership journey",
+    "ctaContact": "Contact Us"
+  }
+ ,
+ 
+ 
+  "faq": {
+    "eyebrow": "FAQ",
+    "headingPrefix": "Frequently",
+    "headingHighlight": "Asked Questions",
+    "subheading": "Everything you need to know about Novellah Rewards. Can't find what you're looking for? We're here to help",
+    "helpEyebrow": "Have More Questions?",
+    "helpHeading": "We're here to Help",
+    "helpBody": "Our skincare experts are happy to answer any questions and help you choose the right treatment",
+    "whatsappTitle": "Chat on WhatsApp",
+    "whatsappSubtext": "Get Instant Answer",
+    "consultationTitle": "Book a Consultation",
+    "consultationSubtext": "Speak with our experts",
+    "safetyTitle": "Your Skin is in safe hands.",
+    "safetyBody": "Experienced experts. Advanced technology. Personalized care."
+  }
+,
+ 
+  "contactHero": {
+    "eyebrow": "Contact Novellah",
+    "headingLine1": "Let's Begin your",
+    "headingHighlight": "Beauty Journey",
+    "subheading": "Whether you have question about our treatments needs professional guidance or are ready to book your consultation, our team is here to help",
+    "ctaBook": "Book Appointment",
+    "ctaWhatsapp": "WhatsApp Us",
+    "point1Title": "Expert Specialist",
+    "point1Desc": "Dedicated to your care",
+    "point2Title": "Trusted & Safe",
+    "point2Desc": "Your safety is our priority",
+    "point3Title": "Quick Response",
+    "point3Desc": "We reply within 24 hrs"
+  },
+ 
+ 
+  "contactForm": {
+    "eyebrow": "Get In Touch",
+    "headingPrefix": "We'd love to",
+    "headingHighlight": "Hear from you",
+    "subheading": "Have a question need expert advice or want to book your consultation? Fill out the form and our team will get back to you shortly",
+    "formTitle": "Send Us Message",
+    "fullNameLabel": "Full Name",
+    "fullNamePlaceholder": "Enter your Name",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Enter your Phone Number",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your Email ID",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Select Subject",
+    "contactMethodLabel": "Preferred Contact Method",
+    "contactMethodPlaceholder": "Phone / WhatsApp / Email",
+    "messageTitle": "Messages",
+    "messagePlaceholder": "Type your message here....",
+    "ctaSend": "Send Message",
+    "sendNote": "Our team typically responds within one business day",
+    "clinicInfoTitle": "Clinic Information",
+    "workingHoursTitle": "Working Hourse",
+    "socialMediaTitle": "Social Media",
+    "whatsappTitle": "Chat on WhatsApp",
+    "whatsappSubtext": "Get Instant Answer",
+    "consultationTitle": "Book a Consultation",
+    "consultationSubtext": "Speak with our experts",
+    "subjectGeneral": "General Inquiry",
+    "subjectTreatment": "Treatment Question",
+    "subjectAppointment": "Appointment Request",
+    "subjectOther": "Other"
+  },
+ 
+  "bookingHero": {
+    "eyebrow": "Book Your Consultation",
+    "headingLine1": "Yours Beauty Journey",
+    "headingHighlight": "Starts Here",
+    "subheading": "Book a personalized consultation with our experienced specialist. We understand your goals, assess your needs and recommend the treatment that's right for you",
+    "ctaViewTreatment": "View Treatment",
+    "ctaContact": "Contact Us"
+  }
+ ,
+
+ 
+  "bookingForm": {
+    "eyebrow": "Book Your Slot",
+    "headingPrefix": "Schedule Your",
+    "headingHighlight": "Consultation",
+    "subheading": "Fill in your details and our team will get in touch with you to confirm your appointment",
+    "personalInfoTitle": "Personal Information",
+    "fullNameLabel": "Full Name",
+    "fullNamePlaceholder": "Enter your Name",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Enter your Phone Number",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your Email ID",
+    "appointmentDetailsTitle": "Appointment Details",
+    "treatmentLabel": "Pick a Treatment",
+    "treatmentPlaceholder": "Any Specialist",
+    "doctorLabel": "Preferred Doctor",
+    "doctorPlaceholder": "Any Specialist",
+    "dateLabel": "Preferred Date",
+    "datePlaceholder": "Choose a Date",
+    "messageTitle": "Additional Messages",
+    "messageOptional": "(Optional)",
+    "messagePlaceholder": "Tell us about your concerns or what you would like to achieve",
+    "ctaSubmit": "Book Consultation",
+    "submitNote": "Your information is secure and confidential",
+    "footerTitle": "Our Team will contact you shortly to confirm your appointment",
+    "footerSubtext": "We look forward to welcoming you to Novellah"
+  }
+,
+ 
+  "blogHero": {
+    "eyebrow": "Novellah Journal",
+    "headingLine1": "Beauty Insights, Expert",
+    "headingLine2": "Advice & Skincare Stories.",
+    "subheading": "Explore expert skincare advice, advanced treatment guides, beauty trends, and professional insights from the specialists at Novellah Restyle. Learn how modern aesthetic treatments can help you look and feel your best.",
+    "ctaBook": "Book Appointment",
+    "ctaWhatsapp": "WhatsApp Us"
+  }
+,
+ 
+  "blogList": {
+    "eyebrow": "Latest Articles",
+    "headingPrefix": "Explore Beauty,",
+    "headingHighlight": "One Story",
+    "headingSuffix": "at a Time.",
+    "subheading": "Discover expert advice, skincare education, treatment guides, and beauty insights from the specialists at Novellah Restyle. Every article is thoughtfully written to help you make informed decisions on your journey to healthier skin and lasting confidence.",
+    "ctaReadMore": "Read More",
+    "readTimeUnit": "MIN READ",
+    "ctaLoadMore": "Load More"
+ 
+},
+
+ 
+  "blogDetail": {
+    "breadcrumbHome": "Blog",
+    "subscribeEyebrow": "Subscribe",
+    "subscribeBody": "Be a part of our community. Follow us on social media and subscribe to our newsletter for exclusive deals and insights.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your Email ID",
+    "ctaSubscribe": "Subscribe",
+    "subscribeDisclaimer": "By subscribing, you agree to receive occasional emails from Novellah Restyle. You can unsubscribe at any time.",
+    "followUsLabel": "Follow Us On Social Media",
+    "featuredArticlesEyebrow": "Featured Article",
+    "readTimeUnit": "MIN READ",
+    "ctaReadMore": "Read More"
+  }
+  ,
+ 
+  "relatedArticles": {
+    "eyebrow": "Related",
+    "heading": "Related Article for you"
+  }
+ ,
+
+ 
+  "treatmentsHero": {
+    "eyebrow": "Advanced Beauty Solutions",
+    "headingLine1": "Treatments",
+    "headingLine2": "Designed for you",
+    "subheading": "Explore advanced treatments designed to enhance your natural beauty, restore confidence and deliver lasting, visible results",
+    "ctaExplore": "Explore Novellah",
+    "ctaBook": "Book Appointment",
+    "scrollToDiscover": "Scroll to Discover"
+  }
+ ,
+
+ 
+  "treatmentsList": {
+    "eyebrow": "All Treatments",
+    "headingPrefix": "Explore Our",
+    "headingHighlight": "Advanced Treatments",
+    "subheading": "Discover a wide range of advanced treatments expertly designed to enhance your natural beauty and deliver visible, long-lasting results",
+    "filterAll": "All Treatments",
+    "durationUnit": "min",
+    "ctaViewMore": "View More"
+  },
+ 
+  "treatmentDetail": {
+    "ctaBook": "Book Appointment",
+    "ctaWhatsapp": "WhatsApp Us",
+    "durationLabel": "Duration",
+    "durationUnit": "Mins",
+    "sessionsLabel": "Sessions",
+    "suitableForLabel": "Suitable For",
+    "procedureTypeLabel": "Procedure Type"
+  
+},
+ 
+ 
+  "treatmentOverview": {
+    "eyebrow": "Overview",
+    "headingPrefix": "What is",
+    "benefitsHeading": "Benefits",
+    "recommendedByLabel": "Recommended by",
+    "recommendedBySuffix": "Our Skin Experts"
+  },
+ 
+ 
+  "treatmentProcess": {
+    "eyebrow": "Treatment Process"
+  }
+ ,
+
+ 
+  "relatedTreatments": {
+    "eyebrow": "Related",
+    "heading": "Related Treatments for you"
+  }
+ 
 }
 
  
