@@ -1,6 +1,6 @@
- "use client";
+"use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { Search, Menu, ArrowRight } from "lucide-react";
@@ -10,12 +10,18 @@ import { TreatmentsMegaMenu } from "./TreatmentsMegaMenu";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileNav } from "./MobileNav";
 import { Button } from "@/components/ui/Button";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const t = useTranslations("nav");
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+const pathname = usePathname();
+
+  useEffect(() => {
+  setMegaMenuOpen(false);
+}, [pathname]);
 
   function openMenu() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -27,42 +33,79 @@ export function Navbar() {
   }
 
   return (
-    <header className="relative border-b border-border bg-background-light">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+    <header className="relative shadow-xl  bg-card">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center">
-          <Image src="/images/logo.svg" alt="Novellah" width={90} height={40} priority />
+          <Image
+            src="/images/logo.svg"
+            alt="Novellah"
+            width={90}
+            height={40}
+            priority
+          />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex">
+        <nav className="hidden items-center font-medium gap-8 lg:flex">
           {navLinks.map((link) =>
             link.hasMegaMenu ? (
-              <div key={link.href} onMouseEnter={openMenu} onMouseLeave={scheduleClose}>
+              <div
+                key={link.href}
+                onMouseEnter={openMenu}
+                onMouseLeave={scheduleClose}
+              >
                 <button
-                  className="flex items-center gap-1 font-body text-sm text-foreground"
+                  className="flex items-center font-medium gap-1 font-body  text-sm text-foreground"
                   aria-expanded={megaMenuOpen}
                   aria-haspopup="true"
                 >
-                  {t(link.key)}
-                  <svg width="12" height="12" viewBox="0 0 12 12" className={`transition-transform ${megaMenuOpen ? "rotate-180" : ""}`}>
-                    <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" />
-                  </svg>
+                  <Link
+                    href={link.href}
+             
+                    className="flex items-center gap-1 font-body text-sm text-foreground"
+                  >
+                    {t(link.key)}
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 12 12"
+                      className={`transition-transform ${
+                        megaMenuOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      <path
+                        d="M2 4l4 4 4-4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        fill="none"
+                      />
+                    </svg>
+                  </Link>
                 </button>
-                {megaMenuOpen && <TreatmentsMegaMenu />}
+                {megaMenuOpen && <TreatmentsMegaMenu  />}
               </div>
             ) : (
-              <Link key={link.href} href={link.href} className="font-body text-sm text-foreground">
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-body text-sm text-foreground"
+              >
                 {t(link.key)}
               </Link>
-            )
+            ),
           )}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <button aria-label="Search" className="flex h-9 w-9 items-center justify-center rounded-full bg-background text-primary">
+          <button
+            aria-label="Search"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-background text-primary"
+          >
             <Search size={16} />
           </button>
           <LocaleSwitcher />
-           <Button href="/book-appintment" icon={<ArrowRight size={14} />}>{t("bookAppointment")} </Button>
+          <Button href="/book-appointment" >
+            {t("bookAppointment")}{" "}
+          </Button>
         </div>
 
         <button

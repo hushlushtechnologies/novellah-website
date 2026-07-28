@@ -13,7 +13,7 @@
   { key: "ourDoctors", href: "/our-doctors" },
   { key: "specialOffers", href: "/special-offer" },
   { key: "blogs", href: "/blog" },
-  { key: "loyaltyCard", href: "/loyality-cards" },
+  { key: "loyaltyCard", href: "/loyalty-cards" },
   { key: "contactUs", href: "/contact-us" },
 ];
 
@@ -27,7 +27,7 @@
     en: "Advanced Treatments Personalized for your",
     ar: "علاجات متطورة مخصصة لك",
   },
-  ctaHref: "/book-appintment",
+  ctaHref: "/book-appointment",
 };
 
  export const treatmentsMegaMenuQuickLinks = [
@@ -78,8 +78,8 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
       ar: "العناية بالشعر والجمال",
     },
     categorySlug: "hair-care-beauty",
-    icon: "/images/icons/haircare.png",
-    image: "/images/categories/hair-care-beauty.jpg",
+    icon: "/images/icons/haircare.svg",
+    image: "/images/categories/hair-care-beauty.png",
     description: {
       en: "Restore strength, enhance beauty, and nourish your hair with personalised treatments designed for healthier, more confident results.",
       ar: "استعيدي قوة شعرك وجماله وغذيه بعلاجات مخصصة لنتائج صحية وأكثر ثقة.",
@@ -95,7 +95,7 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
       ar: "حلول مكافحة الشيخوخة",
     },
     categorySlug: "anti-aging-solution",
-    icon: "/images/icons/antiagin.png",
+    icon: "/images/icons/antiagin.svg",
     image: "/images/categories/anti-aging-solution.jpg",
     description: {
       en: "Advanced aesthetic treatments that reduce visible signs of aging while restoring youthful, radiant, and naturally refreshed skin.",
@@ -112,7 +112,7 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
       ar: "الاستشارة والتحليل",
     },
     categorySlug: "consultation-analysis",
-    icon: "/images/icons/consultation.png",
+    icon: "/images/icons/consultation.svg",
     image: "/images/categories/consultation-analysis.jpg",
     description: {
       en: "Comprehensive skin and scalp analysis using advanced technology to create personalised treatment plans tailored to your needs.",
@@ -133,7 +133,7 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
       ar: "العناية المتقدمة بالبشرة",
     },
     categorySlug: "advanced-skin-care",
-    icon: "/images/icons/advancedskincare.png",
+    icon: "/images/icons/advancedskincare.svg",
     image: "/images/categories/advanced-skin-care.jpg",
     description: {
       en: "Professional skincare solutions designed to cleanse, repair, brighten, and rejuvenate your skin for long-lasting healthy results.",
@@ -167,7 +167,7 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
       ar: "العلاج بالليزر",
     },
     categorySlug: "laser-treatment",
-    icon: "/images/icons/lasertreatment.png",
+    icon: "/images/icons/lasertreatment.svg",
     image: "/images/categories/laser-treatment.jpg",
     description: {
       en: "Safe, precision laser treatments for smoother skin, hair removal, pigmentation correction, and advanced aesthetic care.",
@@ -188,7 +188,7 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
       ar: "تعزيز الجمال",
     },
     categorySlug: "beauty-enhancement",
-    icon: "/images/icons/beautyenhancement.png",
+    icon: "/images/icons/beautyenhancement.svg",
     image: "/images/categories/beauty-enhancement.jpg",
     description: {
       en: "Enhance your natural features with expertly delivered beauty treatments, permanent makeup, and personalised cosmetic services.",

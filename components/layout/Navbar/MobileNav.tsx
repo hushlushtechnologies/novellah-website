@@ -90,7 +90,7 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
           </div>
           <div className="flex items-center gap-3">
             <LocaleSwitcher />
-            <Button href="/book-appintment" className="flex-1 justify-center" onClick={onClose}>
+            <Button href="/book-appointment" className="flex-1 justify-center" onClick={onClose}>
               {t("bookAppointment")}
             </Button>
           </div>
