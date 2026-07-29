@@ -7,6 +7,8 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/Navbar/Navbar";
 import { Footer } from "@/components/ui/Footer";
+import { FloatingContact } from "@/components/ui/FloatingContact";
+import { ChatbotButton } from "@/components/ui/ChatbotButton";
 
 export const metadata: Metadata = {
   title: {
@@ -34,12 +36,18 @@ export default async function LocaleLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir} className={`${cormorant.variable} ${inter.variable}`}>
+    <html
+      lang={locale}
+      dir={dir}
+      className={`scroll-smooth ${cormorant.variable} ${inter.variable}`}
+    >
       <body>
         <NextIntlClientProvider messages={messages}>
-           <Navbar />
+          <FloatingContact />
+          <ChatbotButton />
+          <Navbar />
           {children}
-          <Footer/>
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>

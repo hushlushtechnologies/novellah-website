@@ -20,7 +20,7 @@ export async function WelcomeSection() {
   const t = await getTranslations("welcome");
 
   return (
-    <section className="relative overflow-hidden py-12 lg:py-20">
+    <section   id="welcome" className="relative overflow-hidden py-12 lg:py-20">
   
 
       {/* Grid row — NOT wrapped in max-w, so the image column can reach the true page edge on lg+ */}

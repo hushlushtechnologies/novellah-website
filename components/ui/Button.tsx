@@ -29,10 +29,18 @@ const variants = {
 };
 
 export function Button({ children, variant = "primary", icon, className = "", href, ...props }: ButtonProps) {
+  // const classes = `inline-flex w-fit items-center gap-2 rounded-md px-6 py-3 font-body text-sm font-medium
+  //   shadow-soft uppercase transition-shadow duration-300 hover:shadow-hover
+  //   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
+  //   ${variants[variant]} ${className}`;
+
   const classes = `inline-flex w-fit items-center gap-2 rounded-md px-6 py-3 font-body text-sm font-medium
-    shadow-soft uppercase transition-shadow duration-300 hover:shadow-hover
-    focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
-    ${variants[variant]} ${className}`;
+  shadow-soft uppercase
+  transition-all duration-300 ease-out
+  hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-hover
+  active:translate-y-0 active:scale-[0.98]
+  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
+  ${variants[variant]} ${className}`;
 
   if (href) {
     return (
