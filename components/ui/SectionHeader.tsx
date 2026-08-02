@@ -1,6 +1,7 @@
- import { ReactNode } from "react";
+import { ReactNode } from "react";
 import { Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { sectionHeadingClasses, sectionEyebrowClasses, sectionDividerClasses, sectionDescriptionClasses } from "@/lib/styles";
 
 interface SectionHeaderProps {
   eyebrow: string;
@@ -10,6 +11,7 @@ interface SectionHeaderProps {
   ctaHref?: string;
   sides?: "both" | "start";
   align?: "center" | "start";
+  dividerColor?: "primary" | "secondary";
   className?: string;
 }
 
@@ -21,32 +23,30 @@ export function SectionHeader({
   ctaHref,
   sides = "both",
   align = "center",
+  dividerColor = "secondary",
   className = "",
 }: SectionHeaderProps) {
   const isCenter = align === "center";
+  const dividerColorClass = dividerColor === "primary" ? "bg-primary" : "bg-secondary";
 
   return (
     <div className={`max-w-4xl ${isCenter ? "mx-auto text-center" : "text-start"} ${className}`}>
       <div className={`mb-4 flex items-center gap-2 ${isCenter ? "justify-center" : "justify-start"}`}>
-        <div className="h-1 w-10 rounded-full bg-secondary" />
+        <div className={`${sectionDividerClasses} ${dividerColorClass}`} />
         <Sparkle size={12} className="text-secondary" fill="currentColor" />
-        <p className="font-body text-xs font-semibold uppercase tracking-[0.6em] text-primary">
-          {eyebrow}
-        </p>
+        <p className={`${sectionEyebrowClasses} text-primary`}>{eyebrow}</p>
         {sides === "both" && (
           <>
             <Sparkle size={12} className="text-secondary" fill="currentColor" />
-            <div className="h-1 w-10 rounded-full bg-secondary" />
+            <div className={`${sectionDividerClasses} ${dividerColorClass}`} />
           </>
         )}
       </div>
 
-      <h2 className="font-heading text-4xl font-extrabold leading-tight text-foreground sm:text-5xl">
-        {heading}
-      </h2>
+      <h2 className={`${sectionHeadingClasses} text-foreground`}>{heading}</h2>
 
       {subheading && (
-        <p className={`mt-4 max-w-2xl font-body text-sm text-muted-foreground sm:text-base ${isCenter ? "mx-auto" : ""}`}>
+        <p className={`${sectionDescriptionClasses} max-w-2xl ${isCenter ? "mx-auto" : ""}`}>
           {subheading}
         </p>
       )}

@@ -9,6 +9,7 @@ import { Navbar } from "@/components/layout/Navbar/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { FloatingContact } from "@/components/ui/FloatingContact";
 import { ChatbotButton } from "@/components/ui/ChatbotButton";
+ 
 
 export const metadata: Metadata = {
   title: {

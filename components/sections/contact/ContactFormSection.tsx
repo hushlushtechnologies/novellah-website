@@ -83,7 +83,7 @@ export async function ContactFormSection() {
 
               <div className="mt-3 flex items-center justify-between border-b border-border pb-4">
                 <p className="whitespace-pre-line font-body text-sm text-foreground">
-                  {siteConfig.address[locale]}
+                  {siteConfig.address1[locale]}
                 </p>
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-white">
                   <MapPin size={16} />

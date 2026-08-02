@@ -41,7 +41,13 @@ export async function Footer() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <MapPin size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{siteConfig.address[locale]}</p>
+                <p className="font-body text-sm text-white">{siteConfig.address1[locale]}</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
+                  <MapPin size={15} className="text-secondary" />
+                </span>
+                <p className="font-body text-sm text-white">{siteConfig.address2[locale]}</p>
               </div>
             </div>
           </div>

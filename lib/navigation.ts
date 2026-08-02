@@ -79,7 +79,7 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
     },
     categorySlug: "hair-care-beauty",
     icon: "/images/icons/haircare.svg",
-    image: "/images/categories/hair-care-beauty.png",
+    image: "/images/categories/hair-care-beauty.jpg",
     description: {
       en: "Restore strength, enhance beauty, and nourish your hair with personalised treatments designed for healthier, more confident results.",
       ar: "استعيدي قوة شعرك وجماله وغذيه بعلاجات مخصصة لنتائج صحية وأكثر ثقة.",
@@ -91,10 +91,10 @@ export const treatmentsMegaMenu: TreatmentMenuCategory[] = [
   },
   {
     title: {
-      en: "Anti Aging Solution",
+      en: "Anti Aging Solutions",
       ar: "حلول مكافحة الشيخوخة",
     },
-    categorySlug: "anti-aging-solution",
+    categorySlug: "anti-aging-solutions",
     icon: "/images/icons/antiagin.svg",
     image: "/images/categories/anti-aging-solution.jpg",
     description: {

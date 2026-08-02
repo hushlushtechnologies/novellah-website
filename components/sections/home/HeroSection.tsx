@@ -4,7 +4,7 @@ import { ArrowRight, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { ScrollCue } from "@/components/ui/ScrollCue";
 import { WatchGalleryButton } from "@/components/ui/WatchGalleryButton";
-import { heroHeadingClasses } from "@/lib/styles";
+import { heroDescriptionClasses, heroEyebrowClasses, heroHeadingClasses } from "@/lib/styles";
 import heroImage from "@/public/images/hero-treatments.png";
 
 export async function HeroSection() {
@@ -27,7 +27,7 @@ export async function HeroSection() {
 
         {/* Content */}
         <div className="relative flex h-full max-w-xl flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-12 lg:px-16">
-          <p className="font-body text-xs font-bold uppercase tracking-wider text-[#FFCA62] sm:text-sm">
+          <p className={heroEyebrowClasses}>
             {t("eyebrow")}
           </p>
 
@@ -42,7 +42,7 @@ export async function HeroSection() {
             <Sparkle size={14} className="text-secondary" fill="currentColor" />
           </div>
 
-          <p className="font-body text-sm text-white/90 sm:text-base">
+          <p className={heroDescriptionClasses}>
             {t("description")}
             <br />
             <span className="font-semibold">{t("descriptionBold")}</span>

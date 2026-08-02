@@ -4,6 +4,7 @@ import { MembershipTiersSection } from "@/components/sections/loyalty/Membership
 import { WhatIsRewardsSection } from "@/components/sections/loyalty/WhatIsRewardsSection";
 import { FaqSection } from "@/components/sections/shared/FaqSection";
 import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
+import { generalFaqItems } from "@/lib/content/faq";
 
 export default function LoyaltyCardsPage() {
   return (
@@ -12,7 +13,7 @@ export default function LoyaltyCardsPage() {
       <WhatIsRewardsSection/>
       <HowRewardsWorksSection/>
       <MembershipTiersSection/>
-      <FaqSection/>
+   <FaqSection items={generalFaqItems}/>
       <FinalCtaSection/>
     </>
   );

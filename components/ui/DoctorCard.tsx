@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { ArrowRight, Star, GraduationCap } from "lucide-react";
 import type { Doctor } from "@/lib/content/doctors";
+import { cardBaseClasses } from "@/lib/styles";
 
 interface DoctorCardProps {
   doctor: Doctor;
@@ -11,15 +12,15 @@ interface DoctorCardProps {
 
 export function DoctorCard({ doctor, locale, experienceLabel, ctaLabel }: DoctorCardProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-border bg-card">
+    <div className={`overflow-hidden ${cardBaseClasses}`}>
       <div className="relative h-52 w-full sm:h-64">
         <Image src={doctor.image} alt={doctor.name} fill className="object-cover" />
       </div>
       <div className="p-4 sm:p-5">
-        <h3 className="font-heading text-base font-extrabold text-primary sm:text-lg">
+        <h3 className="font-heading text-base font-extrabold text-primary sm:text-xl">
           {doctor.name}
         </h3>
-        <div className="mt-1 mb-2 h-1 w-8 rounded-full bg-secondary sm:mb-3" />
+        <div className="mt-1 mb-2 h-0.5 w-12 rounded-full bg-secondary sm:mb-3" />
         <p className="font-body text-sm font-semibold text-secondary">{doctor.title[locale]}</p>
         <p className="mt-1 font-body text-sm text-muted-foreground">{doctor.specialty[locale]}</p>
 

@@ -6,7 +6,7 @@ export interface FaqItem {
   answer: Localized;
 }
 
-export const faqItems: FaqItem[] = [
+export const generalFaqItems: FaqItem[] = [
   {
     id: "what-is-rewards",
     question: { en: "What is Novellah Rewards", ar: "ما هو برنامج نوفيلاه للمكافآت" },

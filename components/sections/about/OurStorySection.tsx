@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Quote, Sparkle } from "lucide-react";
+import { sectionEyebrowClasses, sectionHeadingClasses } from "@/lib/styles";
 
 const features = [
   { icon: "/images/icons/expert-care.svg", titleKey: "feature1Title", descKey: "feature1Desc" },
@@ -44,12 +45,12 @@ export async function OurStorySection() {
             <div className="flex items-center gap-2">
               <div className="h-1 rounded-full w-10 bg-primary" />
                <Sparkle size={10} className="text-primary sm:size-3" fill="currentColor" />
-              <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-primary">
+              <p className={`${sectionEyebrowClasses} text-primary`}>
                 {t("eyebrow")}
               </p>
             </div>
 
-            <h2 className="mt-4 font-heading font-extrabold text-4xl leading-tight text-foreground sm:text-5xl">
+            <h2 className={`${sectionHeadingClasses} text-foreground `}>
               {t("headingLine1")}
               <br />
               {t("headingLine2Prefix")} <span className="text-primary">{t("headingLine2Highlight")}</span>

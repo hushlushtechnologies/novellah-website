@@ -14,31 +14,29 @@ import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
 import { LoyaltyPromoSection } from "@/components/sections/shared/LoyaltyPromoSection";
 import { SpecialOffersSection } from "@/components/sections/shared/SpecialOffersSection";
 import { TestimonialsSection } from "@/components/sections/shared/TestimonialsSection";
- 
 
 export default function HomePage() {
- 
   return (
- <>
- <HeroSection/>
-  <HomeIntroWrapper>
+    <>
+      <HeroSection />
+      <HomeIntroWrapper>
         <WelcomeSection />
         <WhyChooseSection />
-     <FlowerDivider />
-      <CategoryTreatmentsSection/>
-       <FlowerDivider />
-      <SignatureTreatmentsSection/>
-       </HomeIntroWrapper>
-       <TechnologyMeetsBeautySection/>
-       <BrandStorySection/>
-  
-       <DoctorsSection/>
-       <BeforeAfterSection/>
-       <LoyaltyPromoSection/>
-       <SpecialOffersSection/>
-       <BlogFeaturedSection/>
-       <TestimonialsSection/>
-       <FinalCtaSection/>
- </>
+        <FlowerDivider />
+        <CategoryTreatmentsSection />
+        <FlowerDivider />
+        <SignatureTreatmentsSection />
+      </HomeIntroWrapper>
+      <TechnologyMeetsBeautySection />
+      <BrandStorySection />
+
+      <DoctorsSection />
+      <BeforeAfterSection />
+      <LoyaltyPromoSection />
+      <SpecialOffersSection />
+      <BlogFeaturedSection />
+      <TestimonialsSection />
+      <FinalCtaSection />
+    </>
   );
 }

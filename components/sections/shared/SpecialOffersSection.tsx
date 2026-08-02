@@ -46,7 +46,7 @@ export async function SpecialOffersSection() {
 
   {/* 2x2 grid of smaller cards */}
   <div className="grid grid-cols-2 gap-6">
-    {rest.map((offer) => (
+    {/* {rest.map((offer) => (
       <div
         key={offer.slug}
         className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[237px]"
@@ -62,7 +62,26 @@ export async function SpecialOffersSection() {
           {t("ctaBookNow")}
         </Button>
       </div>
-    ))}
+    ))} */}
+
+    {rest.map((offer) => (
+  <div
+    key={offer.slug}
+    className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[237px]"
+  >
+    <Image src={offer.image} alt="" fill className="object-cover" />
+
+    <Button
+      href={`/special-offer/${offer.slug}`}
+      variant="solid"
+      size="sm"
+      icon={<ArrowRight size={12} className="shrink-0" />}
+      className="absolute bottom-3 start-1/2 -translate-x-1/2 justify-center px-4 sm:bottom-4"
+    >
+      {t("ctaBookNow")}
+    </Button>
+  </div>
+))}
   </div>
 </div>
       </div>

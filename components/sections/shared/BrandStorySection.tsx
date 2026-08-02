@@ -1,6 +1,7 @@
  import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { BrainCircuit, Eye, Quote, Sparkle } from "lucide-react";
+import { sectionEyebrowClasses, sectionHeadingClasses } from "@/lib/styles";
 
 export async function BrandStorySection() {
   const t = await getTranslations("brandStory");
@@ -12,7 +13,7 @@ export async function BrandStorySection() {
         <div className="mb-6 flex items-center justify-center gap-2 sm:mb-10">
           <div className="h-1 w-6 rounded-full bg-secondary sm:w-10" />
           <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
-          <p className="font-body text-[10px] font-bold uppercase tracking-[0.3em] text-secondary sm:text-xs sm:tracking-[0.6em]">
+          <p className={`${sectionEyebrowClasses} text-secondary`}>
             {t("eyebrow")}
           </p>
           <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
@@ -86,14 +87,14 @@ export async function BrandStorySection() {
         <div className="mt-10 grid items-center gap-8 sm:mt-16 lg:grid-cols-2 lg:gap-16">
           <div>
             <div className="flex items-center gap-3">
-              <p className="font-body text-[10px] font-semibold uppercase tracking-[0.3em] text-secondary sm:text-xs sm:tracking-[0.6em]">
+              <p className={` ${sectionEyebrowClasses} text-secondary  `}>
                 {t("ceoLabel")}
               </p>
               <div className="h-1 max-w-24 flex-1 rounded-full bg-secondary" />
               <Sparkle size={12} className="text-secondary" fill="currentColor" />
             </div>
 
-            <h2 className="mt-4 font-heading text-3xl font-extrabold leading-tight text-white sm:text-4xl lg:text-5xl">
+            <h2 className= {`${sectionHeadingClasses} text-white`} >
               {t("ceoHeadingLine1")} {t("ceoHeadingLine2From")}{" "}
               <span className="text-secondary">{t("ceoHeadingHighlight")}</span>
             </h2>
@@ -107,7 +108,7 @@ export async function BrandStorySection() {
 
               <Quote
                 size={32}
-                className="absolute -top-2   start-0 text-primary/30 sm:size-10"
+                className="absolute -top-2 -left-2  start-0 text-primary/30 sm:size-10"
                 fill="currentColor"
               />
 
@@ -119,7 +120,7 @@ export async function BrandStorySection() {
 
               <Quote
                 size={32}
-                className="absolute -bottom-5 lg:-right-2 end-0 rotate-180 text-primary/30 sm:-bottom-5 sm:size-10"
+                className="absolute -bottom-5 lg:-right-4 end-0 rotate-180 text-primary/30 sm:-bottom-5 sm:size-10"
                 fill="currentColor"
               />
             </div>

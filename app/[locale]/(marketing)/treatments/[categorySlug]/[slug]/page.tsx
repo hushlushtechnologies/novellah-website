@@ -9,6 +9,7 @@ import { FaqSection } from "@/components/sections/shared/FaqSection";
 import { BeforeAfterSection } from "@/components/sections/shared/BeforeAfterSection";
 import { RelatedTreatmentsSection } from "@/components/sections/treatments/RelatedTreatmentsSection";
 import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
+import { FlowerDivider } from "@/components/sections/home/FlowerDivider";
 
 export function generateStaticParams() {
   return treatments.map((tr) => ({
@@ -23,12 +24,16 @@ export default async function TreatmentDetailPage({
   params: Promise<{ categorySlug: string; slug: string }>;
 }) {
   const { categorySlug, slug } = await params;
-  const treatment = treatments.find((tr) => tr.slug === slug && tr.categorySlug === categorySlug);
+  const treatment = treatments.find(
+    (tr) => tr.slug === slug && tr.categorySlug === categorySlug,
+  );
 
   if (!treatment) notFound();
 
   const locale = (await getLocale()) as "en" | "ar";
-  const category = treatmentsMegaMenu.find((c) => c.categorySlug === categorySlug);
+  const category = treatmentsMegaMenu.find(
+    (c) => c.categorySlug === categorySlug,
+  );
 
   return (
     <>
@@ -38,15 +43,16 @@ export default async function TreatmentDetailPage({
         locale={locale}
       />
       <TreatmentOverviewSection treatment={treatment} locale={locale} />
+      <FlowerDivider />
       <TreatmentProcessSection treatment={treatment} locale={locale} />
-      <FaqSection/>
-      <BeforeAfterSection/>
+      <FaqSection items={treatment.faq} />
+      <BeforeAfterSection />
       <RelatedTreatmentsSection
-  currentSlug={treatment.slug}
-  categorySlug={treatment.categorySlug}
-  locale={locale}
-/>
-<FinalCtaSection/>
+        currentSlug={treatment.slug}
+        categorySlug={treatment.categorySlug}
+        locale={locale}
+      />
+      <FinalCtaSection />
     </>
   );
 }

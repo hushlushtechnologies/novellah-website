@@ -9,6 +9,7 @@ interface DecorativeFlowerProps {
     | "center-left"
     | "center-right"
     | "top-right-half"
+    | "top-lefts"
     ;
   size?: "sm" | "md" | "lg";
   opacity?: number;
@@ -17,6 +18,7 @@ interface DecorativeFlowerProps {
 
 const positionClasses = {
   "top-left": "start-[-10%] top-20 ",
+  "top-lefts": "start-[-10%] -top-36",
   "top-right": "top-0 -end-48 rotate-180",
   "bottom-left": "bottom-0 start-0",
   "bottom-right": "bottom-0 end-0",
@@ -39,6 +41,7 @@ export function DecorativeFlower({
 }: DecorativeFlowerProps) {
   return (
     <div
+    dir="ltr"
       className={`pointer-events-none absolute hidden md:block -z-10 ${positionClasses[position]} ${sizeClasses[size]} ${className}`}
       style={{ opacity }}
     >

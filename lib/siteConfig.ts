@@ -2,13 +2,17 @@ import type { Localized } from "@/lib/navigation";
 
 export const siteConfig = {
   name: "Novellah Restyle",
-  phone: "+971 50 123 4567",
-  phoneHref: "tel:+971501234567",
+  phone: "+94 77 993 1646",
+  phoneHref: "tel:+94779931646",
   whatsappHref: "https://wa.me/971501234567",
   email: "info@novellah.ae",
   emailHref: "mailto:info@novellah.ae",
-  address: {
-    en: "Novellah Restyle Clinic\nAl Wasl Road, Jumeirah 1\nDubai, United Arab Emirates",
+  address1: {
+    en: "13th Floor BurJuman Business Center - Al Mankhool - Dubai",
+    ar: "عيادة نوفيلاه ريستايل\nشارع الوصل، جميرا 1\nدبي، الإمارات العربية المتحدة",
+  } as Localized,
+  address2: {
+    en: "Thiruganansampanthar Street, Trincomalee 31000, Sri Lanka",
     ar: "عيادة نوفيلاه ريستايل\nشارع الوصل، جميرا 1\nدبي، الإمارات العربية المتحدة",
   } as Localized,
   hours: {

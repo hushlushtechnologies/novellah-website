@@ -4,6 +4,7 @@ import { ArrowRight, Phone, MapPin, Clock, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { NewsletterForm } from "./NewsletterForm";
 import { siteConfig } from "@/lib/siteConfig";
+import { sectionDescriptionClasses, sectionDividerClasses, sectionEyebrowClasses, sectionHeadingClasses } from "@/lib/styles";
 
 export async function FinalCtaSection() {
   const t = await getTranslations("finalCta");
@@ -16,22 +17,22 @@ export async function FinalCtaSection() {
         <div className="grid items-center gap-8 rounded-3xl bg-gradient-background p-6 sm:p-10 lg:grid-cols-2 lg:gap-10">
           <div>
             <div className="mb-4 flex items-center gap-2">
-              <div className="h-1 rounded-full w-10 bg-secondary" />
+              <div className={`${sectionDividerClasses} bg-secondary`} />
                <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
-              <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+              <p className={`${sectionEyebrowClasses} text-primary`}>
                 {t("eyebrow")}
               </p>
                <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
-              <div className="h-1 rounded-full w-10 bg-secondary" />
+              <div className={`${sectionDividerClasses} bg-secondary`} />
             </div>
 
-            <h2 className="font-heading font-extrabold text-4xl leading-tight text-foreground sm:text-5xl">
+            <h2 className={`${sectionHeadingClasses} text-foreground `}>
               {t("headingLine1Prefix")} <span className="text-primary">{t("headingLine1Highlight")}</span>
               <br />
               {t("headingLine2Prefix")} <span className="text-secondary">{t("headingLine2Highlight")}</span>
             </h2>
 
-            <p className="mt-4 font-semibold font-body text-sm text-muted-foreground sm:text-base">
+            <p className={` ${sectionDescriptionClasses} text-muted-foreground`}>
               {t("subheading")}
             </p>
 
@@ -102,14 +103,26 @@ export async function FinalCtaSection() {
                 <MapPin size={18} className="text-white" />
               </span>
               <div>
-                <p className="font-body font-bold text-xs uppercase tracking-wide text-white">
+                <p className="font-body font-extralight text-xs uppercase tracking-wide text-white">
                   {t("visitLabel")}
                 </p>
-                <p className="font-body text-sm font-semibold text-white">{siteConfig.address[locale]}</p>
+                <p className="font-body text-sm font-semibold text-white">{siteConfig.address1[locale]}</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/10">
+                <MapPin size={18} className="text-white" />
+              </span>
+              <div>
+                <p className="font-body font-extralight text-xs uppercase tracking-wide text-white">
+                  {t("visitLabelTwo")}  
+                </p>
+                <p className="font-body text-sm font-semibold text-white">{siteConfig.address2[locale]}</p>
+              </div>
+            </div>
+
+            {/* <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white/10">
                 <Clock size={18} className="text-white" />
               </span>
@@ -121,9 +134,9 @@ export async function FinalCtaSection() {
                   {t("hours")} <span className="block sm:inline">{t("hoursSubtext")}</span>
                 </p>
               </div>
-            </div>
+            </div> */}
 
-            <p className="font-heading  font bold text-lg text-secondary lg:text-end">
+            <p className="font-heading  font-extrabold text-lg text-secondary lg:text-end">
               {t("welcomeNote")}
             </p>
           </div>

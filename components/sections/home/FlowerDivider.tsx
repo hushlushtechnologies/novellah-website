@@ -4,7 +4,7 @@ import Image from "next/image";
 export function FlowerDivider() {
   return (
     <div className="pointer-events-none relative z-0 -my-32 hidden h-80 overflow-hidden md:block">
-      <div className="absolute end-0 h-full w-96 translate-x-3/4 rotate-180 lg:w-[36rem]">
+      <div className="absolute -end-8 h-full w-[32rem] -translate-y-[20px] translate-x-3/4 rotate-180 lg:w-[56rem]">
         <Image
           src="/images/decorative/flower-full.svg"
           alt=""

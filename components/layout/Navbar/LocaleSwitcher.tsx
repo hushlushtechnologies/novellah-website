@@ -24,7 +24,7 @@ export function LocaleSwitcher() {
   return (
     <button
       onClick={switchLocale}
-      className="flex h-9 w-9 items-center justify-center rounded-full bg-background text-xs font-medium text-primary"
+      className="flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-background text-xs font-medium text-primary"
     >
       {nextLocale.toUpperCase()}
     </button>

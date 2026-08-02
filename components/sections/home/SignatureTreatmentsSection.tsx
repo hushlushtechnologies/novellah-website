@@ -10,10 +10,26 @@ import { DecorativeFlower } from "@/components/ui/DecorativeFlower";
 import { TreatmentCard } from "@/components/ui/TreatmentCard";
 
 const trustPoints = [
-  { icon: "/images/icons/visible-results.svg", titleKey: "trust1Title", descKey: "trust1Desc" },
-  { icon: "/images/icons/safe-proven.svg", titleKey: "trust2Title", descKey: "trust2Desc" },
-  { icon: "/images/icons/personalized-care-3.svg", titleKey: "trust3Title", descKey: "trust3Desc" },
-  { icon: "/images/icons/premium-experience.svg", titleKey: "trust4Title", descKey: "trust4Desc" },
+  {
+    icon: "/images/icons/visible-results.svg",
+    titleKey: "trust1Title",
+    descKey: "trust1Desc",
+  },
+  {
+    icon: "/images/icons/safe-proven.svg",
+    titleKey: "trust2Title",
+    descKey: "trust2Desc",
+  },
+  {
+    icon: "/images/icons/personalized-care-3.svg",
+    titleKey: "trust3Title",
+    descKey: "trust3Desc",
+  },
+  {
+    icon: "/images/icons/premium-experience.svg",
+    titleKey: "trust4Title",
+    descKey: "trust4Desc",
+  },
 ] as const;
 
 const CARDS_PER_PAGE = 4;
@@ -21,12 +37,22 @@ const CARDS_PER_PAGE = 4;
 export function SignatureTreatmentsSection() {
   const t = useTranslations("signatureTreatments");
   const locale = useLocale() as "en" | "ar";
-  const [activeCategory, setActiveCategory] = useState(treatmentsMegaMenu[3].categorySlug);
+  const [activeCategory, setActiveCategory] = useState(
+    treatmentsMegaMenu[3].categorySlug,
+  );
   const [page, setPage] = useState(0);
 
-  const categoryTreatments = treatments.filter((tr) => tr.categorySlug === activeCategory);
-  const pageCount = Math.max(1, Math.ceil(categoryTreatments.length / CARDS_PER_PAGE));
-  const visibleTreatments = categoryTreatments.slice(page * CARDS_PER_PAGE, page * CARDS_PER_PAGE + CARDS_PER_PAGE);
+  const categoryTreatments = treatments.filter(
+    (tr) => tr.categorySlug === activeCategory,
+  );
+  const pageCount = Math.max(
+    1,
+    Math.ceil(categoryTreatments.length / CARDS_PER_PAGE),
+  );
+  const visibleTreatments = categoryTreatments.slice(
+    page * CARDS_PER_PAGE,
+    page * CARDS_PER_PAGE + CARDS_PER_PAGE,
+  );
 
   function selectCategory(slug: string) {
     setActiveCategory(slug);
@@ -41,7 +67,8 @@ export function SignatureTreatmentsSection() {
           eyebrow={t("eyebrow")}
           heading={
             <>
-              {t("headingLine1")} <span className="text-primary">{t("headingLine2")}</span>
+              {t("headingLine1")}{" "}
+              <span className="text-primary">{t("headingLine2")}</span>
             </>
           }
           subheading={t("subheading")}
@@ -57,28 +84,41 @@ export function SignatureTreatmentsSection() {
                 <Image src={point.icon} alt="" width={18} height={18} />
               </span>
               <div>
-                <p className="font-body text-sm font-semibold text-foreground">{t(point.titleKey)}</p>
-                <p className="mt-0.5 font-body text-xs text-muted-foreground">{t(point.descKey)}</p>
+                <p className="font-body text-sm font-semibold text-foreground">
+                  {t(point.titleKey)}
+                </p>
+                <p className="mt-2 font-body text-xs text-muted-foreground">
+                  {t(point.descKey)}
+                </p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Category tabs */}
-        <div className="mt-12 flex flex-wrap justify-center gap-2 rounded-full border border-border bg-card p-2">
-          {treatmentsMegaMenu.map((category) => (
-            <button
-              key={category.categorySlug}
-              onClick={() => selectCategory(category.categorySlug)}
-              className={`rounded-full px-4 py-2 font-body text-sm font-medium transition-colors ${
-                activeCategory === category.categorySlug
-                  ? "bg-gradient-primary text-white"
-                  : "text-foreground hover:bg-background-light"
-              }`}
-            >
-              {category.title[locale]}
-            </button>
-          ))}
+        <div className="mx-auto mt-8 max-w-6xl rounded-2xl border border-border bg-card p-2 sm:mt-12 sm:rounded-full">
+          <div
+            className="
+      flex gap-2 overflow-x-auto scroll-smooth
+      snap-x snap-mandatory
+      scrollbar-hide
+      sm:flex-wrap sm:justify-center sm:overflow-visible sm:snap-none
+    "
+          >
+            {treatmentsMegaMenu.map((category) => (
+              <button
+                key={category.categorySlug}
+                onClick={() => selectCategory(category.categorySlug)}
+                className={`shrink-0 cursor-pointer snap-start whitespace-nowrap rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${
+                  activeCategory === category.categorySlug
+                    ? "bg-gradient-primary text-white"
+                    : "text-foreground hover:bg-background-light"
+                }`}
+              >
+                {category.title[locale]}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Treatment cards — now via shared TreatmentCard */}
