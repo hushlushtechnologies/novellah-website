@@ -11,17 +11,22 @@ import { LocaleSwitcher } from "./LocaleSwitcher";
 import { MobileNav } from "./MobileNav";
 import { Button } from "@/components/ui/Button";
 import { usePathname } from "next/navigation";
+import { SearchTooltip } from "../SearchTooltip";
+ 
 
 export function Navbar() {
   const t = useTranslations("nav");
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-const pathname = usePathname();
+  const searchButtonRef = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
-  setMegaMenuOpen(false);
-}, [pathname]);
+    setMegaMenuOpen(false);
+    setSearchOpen(false);
+  }, [pathname]);
 
   function openMenu() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -95,18 +100,26 @@ const pathname = usePathname();
           )}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+ <div className="hidden items-center gap-3 lg:flex">
           <button
+            ref={searchButtonRef}
             aria-label="Search"
-            className="flex h-9 w-9 items-center justify-center rounded-full bg-background text-primary"
+            aria-expanded={searchOpen}
+            onClick={() => setSearchOpen((v) => !v)}
+            title="Search"
+            className="flex cursor-pointer h-9 w-9 items-center justify-center rounded-full bg-background text-primary"
           >
             <Search size={16} />
           </button>
           <LocaleSwitcher />
-          <Button href="/book-appointment" >
-            {t("bookAppointment")}{" "}
-          </Button>
+          <Button href="/book-appointment">{t("bookAppointment")} </Button>
         </div>
+
+              <SearchTooltip
+        open={searchOpen}
+        onClose={() => setSearchOpen(false)}
+        anchorRef={searchButtonRef}
+      />
 
         <button
           onClick={() => setMobileNavOpen(true)}
@@ -117,7 +130,7 @@ const pathname = usePathname();
         </button>
       </div>
 
-      <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
+        <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
     </header>
   );
 }

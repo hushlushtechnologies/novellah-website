@@ -8,6 +8,22 @@ import { DoctorsSection } from "@/components/sections/shared/DoctorsSection";
 import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
 import { TestimonialsSection } from "@/components/sections/shared/TestimonialsSection";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
+import { pageMeta } from "@/lib/content/pageMeta";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "en" | "ar" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata(locale, pageMeta.aboutUs);
+}
+
+
+
+
 export default function AboutUsPage() {
   return (
     <>

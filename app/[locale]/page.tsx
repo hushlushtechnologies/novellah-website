@@ -14,8 +14,23 @@ import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
 import { LoyaltyPromoSection } from "@/components/sections/shared/LoyaltyPromoSection";
 import { SpecialOffersSection } from "@/components/sections/shared/SpecialOffersSection";
 import { TestimonialsSection } from "@/components/sections/shared/TestimonialsSection";
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
+import { pageMeta } from "@/lib/content/pageMeta";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "en" | "ar" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata(locale, pageMeta.home);
+}
+
 
 export default function HomePage() {
+
+  
   return (
     <>
       <HeroSection />

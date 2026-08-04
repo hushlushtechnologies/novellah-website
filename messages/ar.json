@@ -9,7 +9,15 @@
   "loyaltyCard": "بطاقة الولاء",
   "contactUs": "اتصل بنا",
   "bookAppointment": "احجز موعدًا",
-  "viewAll": "عرض الكل"
+  "viewAll": "عرض الكل",
+  
+  "search": {
+    "label": "بحث عن العلاجات",
+    "placeholder": "ابحث عن العلاجات...",
+    "noResults": "لم يتم العثور على علاجات لـ \"{query}\"",
+    "clear": "مسح البحث"
+ 
+}
 },
  
 "home": {

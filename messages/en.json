@@ -10,7 +10,23 @@
     "loyaltyCard": "Loyalty Card",
     "contactUs": "Contact Us",
     "bookAppointment": "Book Appointment",
-    "viewAll": "VIEW ALL"
+    "viewAll": "VIEW ALL",
+    "viewLess": "VIEW LESS"
+  },
+
+  "notFound": {
+  "heading": "Page Not Found",
+  "description": "The page you're looking for doesn't exist or may have been moved. Let's get you back on track.",
+  "backHome": "Back to Home",
+  "browseTreatments": "Browse Treatments",
+  "contactPrompt": "Can't find what you need? Contact us"
+}
+,
+  "search": {
+    "label": "Search treatments",
+    "placeholder": "Search treatments...",
+    "noResults": "No treatments found for \"{query}\"",
+    "clear": "Clear search"
   },
   "home": {
     "eyebrow": "Advanced Aesthetics. Personalized Care.",

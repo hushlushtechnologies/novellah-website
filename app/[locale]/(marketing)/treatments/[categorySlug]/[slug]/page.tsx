@@ -10,6 +10,20 @@ import { BeforeAfterSection } from "@/components/sections/shared/BeforeAfterSect
 import { RelatedTreatmentsSection } from "@/components/sections/treatments/RelatedTreatmentsSection";
 import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
 import { FlowerDivider } from "@/components/sections/home/FlowerDivider";
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
+import { pageMeta } from "@/lib/content/pageMeta";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "en" | "ar"; categorySlug: string }>;
+}): Promise<Metadata> {
+  const { locale, categorySlug } = await params;
+  const category = treatmentsMegaMenu.find((c) => c.categorySlug === categorySlug);
+  if (!category) return { title: "Not found" };
+  return buildMetadata(locale, category);
+}
 
 export function generateStaticParams() {
   return treatments.map((tr) => ({

@@ -9,6 +9,7 @@ import { Navbar } from "@/components/layout/Navbar/Navbar";
 import { Footer } from "@/components/ui/Footer";
 import { FloatingContact } from "@/components/ui/FloatingContact";
 import { ChatbotButton } from "@/components/ui/ChatbotButton";
+import Script from "next/script";
  
 
 export const metadata: Metadata = {
@@ -45,11 +46,16 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <FloatingContact />
-          <ChatbotButton />
+          {/* <ChatbotButton /> */}
           <Navbar />
           {children}
           <Footer />
         </NextIntlClientProvider>
+        <Script
+          id="hubspot-script"
+          src="https://js-na2.hs-scripts.com/246953792.js"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

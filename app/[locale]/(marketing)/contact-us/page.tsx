@@ -3,6 +3,21 @@ import { ContactHeroSection } from "@/components/sections/contact/ContactHeroSec
 import { FaqSection } from "@/components/sections/shared/FaqSection";
 import { generalFaqItems } from "@/lib/content/faq";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
+import { pageMeta } from "@/lib/content/pageMeta";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "en" | "ar" }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return buildMetadata(locale, pageMeta.contactUs);
+}
+
+
+
 export default function ContactUsPage() {
   return (
     <>

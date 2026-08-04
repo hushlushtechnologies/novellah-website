@@ -6,6 +6,25 @@ import { blogPosts } from "@/lib/content/blog";
 import { RelatedArticlesSection } from "@/components/sections/blog/RelatedArticlesSection";
 import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/metadata";
+ 
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: "en" | "ar"; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
+  if (!post) return { title: "Not found" };
+
+  return buildMetadata(locale, {
+    title: post.title,
+    description: post.excerpt,
+  });
+}
+
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
