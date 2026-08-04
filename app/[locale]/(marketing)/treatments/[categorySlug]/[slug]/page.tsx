@@ -60,7 +60,7 @@ export default async function TreatmentDetailPage({
       <FlowerDivider />
       <TreatmentProcessSection treatment={treatment} locale={locale} />
       <FaqSection items={treatment.faq} />
-      <BeforeAfterSection />
+     <BeforeAfterSection treatmentSlug={treatment.slug} />
       <RelatedTreatmentsSection
         currentSlug={treatment.slug}
         categorySlug={treatment.categorySlug}

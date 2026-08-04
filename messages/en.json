@@ -182,8 +182,9 @@
     "headingLine1": "Real Results. Real",
     "headingLine2": "Confidence",
     "subheading": "Discover the visible transformation our clients love advanced treatments, Natural looking results",
-    "beforeLabel": "BEFORE",
-    "afterLabel": "AFTER"
+  "subheadingFallback": "See results from our related treatments",
+    "beforeLabel": "Before",
+    "afterLabel": "After"
   },
 
  

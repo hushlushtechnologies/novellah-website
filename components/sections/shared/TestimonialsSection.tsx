@@ -53,7 +53,7 @@ export function TestimonialsSection() {
           {visibleTestimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className={`${cardBaseClasses} p-6`}
+              className={`${cardBaseClasses}  p-6`}
             >
               <div className="relative mb-4 h-12 w-12 overflow-hidden rounded-full">
                 <Image src={testimonial.avatar} alt={testimonial.name} fill className="object-cover" />

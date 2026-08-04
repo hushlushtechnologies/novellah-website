@@ -7,6 +7,7 @@ export interface TreatmentBenefit {
   title: Localized;
   description: Localized;
 }
+ 
 
 export interface ProcessStep {
   image: string;
@@ -33,6 +34,7 @@ export interface Treatment {
   processHeadingHighlight: Localized;
   process: ProcessStep[];
   faq: FaqItem[];
+  
 }
 
 export const treatments: Treatment[] = [

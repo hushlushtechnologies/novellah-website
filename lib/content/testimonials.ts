@@ -8,43 +8,35 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
   {
-    id: "sarah-m-1",
-    name: "Sarah M.",
-    rating: 4.5,
+    id: "nimal-perera-1",
+    name: "Nimal Perera",
+    rating: 5,
     quote:
       "I've struggled with acne for years, and after just a few sessions, I noticed a huge improvement. The doctors were professional, and the staff made me feel comfortable throughout my treatment. I couldn't be happier with the results.",
-    avatar: "/images/testimonials/sarah-m.svg",
+    avatar: "/images/testimonials/tsicon.svg",
   },
   {
-    id: "james-r-2",
-    name: "James R.",
+    id: "kasun-fernando-1",
+    name: "Kasun Fernando",
     rating: 5,
     quote:
-      "The Hydra Facial exceeded my expectations. My skin felt refreshed, smooth, and glowing immediately after the treatment. The team was welcoming and highly skilled.",
-    avatar: "/images/testimonials/sarah-m.svg",
+      "The Hydra Facial completely changed my skin. It's brighter, smoother, and so much more even. The whole team walked me through every step and made sure I felt relaxed the entire time. I'm already booked in for my next session.",
+    avatar: "/images/testimonials/tsicon.svg",
   },
   {
-    id: "emily-k-3",
-    name: "Emily K.",
-    rating: 4.8,
-    quote:
-      "I had laser hair removal sessions here, and the experience was fantastic. The procedure was comfortable, and the results have been amazing. Highly recommended!",
-    avatar: "/images/testimonials/sarah-m.svg",
-  },
-  {
-    id: "michael-t-4",
-    name: "Michael T.",
+    id: "dinesh-jayasinghe-1",
+    name: "Dinesh Jayasinghe",
     rating: 5,
     quote:
-      "From consultation to follow-up, everything was handled professionally. The staff explained every step clearly, and I'm extremely satisfied with the outcome.",
-    avatar: "/images/testimonials/sarah-m.svg",
+      "I was nervous about trying Botox for the first time, but the specialists here made the process easy to understand and completely painless. The results look so natural—exactly the refreshed look I was hoping for.",
+    avatar: "/images/testimonials/tsicon.svg",
   },
   {
-    id: "olivia-h-5",
-    name: "Olivia H.",
-    rating: 4.7,
+    id: "chamara-silva-1",
+    name: "Chamara Silva",
+    rating: 5,
     quote:
-      "Novellah Restyle truly transformed my skincare journey. The personalized treatment plan and friendly atmosphere made every visit enjoyable. I will definitely return.",
-    avatar: "/images/testimonials/sarah-m.svg",
+      "After my microneedling sessions, my acne scars have faded so much more than I expected. The clinic is spotless, the staff is warm and welcoming, and I always leave feeling well taken care of.",
+    avatar: "/images/testimonials/tsicon.svg",
   },
 ];
