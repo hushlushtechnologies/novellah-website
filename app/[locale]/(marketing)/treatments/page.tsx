@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { BeforeAfterSection } from "@/components/sections/shared/BeforeAfterSection";
 import { DoctorsSection } from "@/components/sections/shared/DoctorsSection";
 import { FinalCtaSection } from "@/components/sections/shared/FinalCtaSection";
@@ -17,12 +18,13 @@ export async function generateMetadata({
   return buildMetadata(locale, pageMeta.treatments);
 }
 
-
 export default function TreatmentsPage() {
   return (
     <>
       <TreatmentsHeroSection />
-      <TreatmentsListSection />
+      <Suspense fallback={null}>
+        <TreatmentsListSection />
+      </Suspense>
       <DoctorsSection />
       <BeforeAfterSection />
       <FinalCtaSection />

@@ -131,7 +131,7 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
                 key={i}
                 onClick={() => setPage(i)}
                 aria-label={`Page ${i + 1}`}
-                className={`h-2 rounded-full transition-all ${
+                className={`h-2 rounded-full cursor-pointer transition-all ${
                   page === i ? "w-6 bg-primary" : "w-2 bg-border"
                 }`}
               />

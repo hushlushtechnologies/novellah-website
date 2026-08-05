@@ -1,6 +1,6 @@
  "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { X, ChevronDown, Search } from "lucide-react";
 import { navLinks, treatmentsMegaMenu } from "@/lib/navigation";
@@ -18,6 +18,21 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
   const tSearch = useTranslations("search");
   const [treatmentsExpanded, setTreatmentsExpanded] = useState(false);
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+  if (open) {
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none"; // Better for mobile
+  } else {
+    document.body.style.overflow = "";
+    document.body.style.touchAction = "";
+  }
+
+  return () => {
+    document.body.style.overflow = "";
+    document.body.style.touchAction = "";
+  };
+}, [open]);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -141,14 +156,14 @@ export function MobileNav({ open, onClose }: { open: boolean; onClose: () => voi
                 {treatmentsExpanded && (
                   <div className="space-y-4 px-6 pb-5">
                     {treatmentsMegaMenu.map((category) => (
-                      <Link
-                        key={category.categorySlug}
-                        href={`/treatments/${category.categorySlug}`}
-                        onClick={handleClose}
-                        className="block font-body text-sm text-muted-foreground"
-                      >
-                        {category.title[locale]}
-                      </Link>
+                   <Link
+  key={category.categorySlug}
+  href={`/treatments?category=${category.categorySlug}#next-section`}
+  onClick={handleClose}
+  className="block font-body text-sm text-muted-foreground"
+>
+  {category.title[locale]}
+</Link>
                     ))}
                   </div>
                 )}

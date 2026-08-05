@@ -1517,7 +1517,7 @@ export const treatments: Treatment[] = [
       ar: "اكتشف احتياجات بشرتك الحقيقية باستخدام تقنيات تشخيص متقدمة مصممة لتحليل البشرة وفهمها وتخصيص رحلة العناية بها. تجمع تقنياتنا المتقدمة بين التحليل الدقيق وتوصيات الخبراء لإنشاء خطط علاج مخصصة تمنحك بشرة أكثر صحة وإشراقًا.",
     },
 
-    image: "/images/treatments/advanced-beauty-technologys.jpg",
+    image: "/images/treatments/advanced-beauty-technology.jpg",
 
     durationMinutes: "45",
 

@@ -58,7 +58,7 @@ export async function HeroSection() {
               {t("ctaExplore")}
             </Button>
             <Button
-              href="/book-appintment"
+              href="/book-appointment"
               variant="outline"
               className="w-full justify-center border-secondary bg-white/90 text-secondary sm:w-fit"
             >

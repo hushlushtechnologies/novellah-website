@@ -1,8 +1,9 @@
- import Image from "next/image";
+import Image from "next/image";
 import { getTranslations, getLocale } from "next-intl/server";
 import { Phone, Mail, MapPin, HelpCircle, Clock, Sparkle } from "lucide-react";
 import { navLinks, treatmentsMegaMenu } from "@/lib/navigation";
 import { siteConfig } from "@/lib/siteConfig";
+import Link from "next/link";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -15,12 +16,23 @@ export async function Footer() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
           {/* Brand column */}
           <div className="border-e-0 pe-0 sm:col-span-2 lg:col-span-1 lg:border-e lg:pe-1">
-            <Image src="/images/logo-white.png" alt="Novellah" width={100} height={44} />
-            <p className="mt-4 font-body text-sm text-white/70">{t("tagline")}</p>
+            <Image
+              src="/images/logo-white.png"
+              alt="Novellah"
+              width={100}
+              height={44}
+            />
+            <p className="mt-4 font-body text-sm text-white/70">
+              {t("tagline")}
+            </p>
 
             <div className="mt-4 flex items-center gap-2">
               <div className="h-1 w-10 rounded-full bg-secondary sm:w-18" />
-              <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
+              <Sparkle
+                size={10}
+                className="text-secondary sm:size-3"
+                fill="currentColor"
+              />
               <div className="h-1 w-10 rounded-full bg-secondary sm:w-18" />
             </div>
 
@@ -29,25 +41,33 @@ export async function Footer() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <Phone size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{siteConfig.phone}</p>
+                <p className="font-body text-sm text-white">
+                  {siteConfig.phone}
+                </p>
               </div>
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <Mail size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{siteConfig.email}</p>
+                <p className="font-body text-sm text-white">
+                  {siteConfig.email}
+                </p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <MapPin size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{siteConfig.address1[locale]}</p>
+                <p className="font-body text-sm text-white">
+                  {siteConfig.address1[locale]}
+                </p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                   <MapPin size={15} className="text-secondary" />
                 </span>
-                <p className="font-body text-sm text-white">{siteConfig.address2[locale]}</p>
+                <p className="font-body text-sm text-white">
+                  {siteConfig.address2[locale]}
+                </p>
               </div>
             </div>
           </div>
@@ -59,17 +79,27 @@ export async function Footer() {
             </h3>
             <div className="mt-2 mb-4 flex items-center gap-2">
               <div className="h-1 w-8 rounded-full bg-secondary" />
-              <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
+              <Sparkle
+                size={10}
+                className="text-secondary sm:size-3"
+                fill="currentColor"
+              />
             </div>
             <ul className="space-y-3">
-             <li>
-  <a href="/" className="font-body text-sm text-white/80 hover:text-white">
-    {t("homeLabel")}
-  </a>
-</li>
+              <li>
+                <a
+                  href="/"
+                  className="font-body text-sm text-white/80 hover:text-white"
+                >
+                  {t("homeLabel")}
+                </a>
+              </li>
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="font-body text-sm text-white/80 hover:text-white">
+                  <a
+                    href={link.href}
+                    className="font-body text-sm text-white/80 hover:text-white"
+                  >
                     {tNav(link.key)}
                   </a>
                 </li>
@@ -84,20 +114,24 @@ export async function Footer() {
             </h3>
             <div className="mt-2 mb-4 flex items-center gap-2">
               <div className="h-1 w-8 rounded-full bg-secondary" />
-              <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
+              <Sparkle
+                size={10}
+                className="text-secondary sm:size-3"
+                fill="currentColor"
+              />
             </div>
-            <ul className="space-y-3">
-              {treatmentsMegaMenu.map((category) => (
-                <li key={category.categorySlug}>
-                  <a
-                    href={`/treatments/${category.categorySlug}`}
-                    className="font-body text-sm text-white/80 hover:text-white"
-                  >
-                    {category.title[locale]}
-                  </a>
-                </li>
-              ))}
-            </ul>
+    <ul className="space-y-3">
+  {treatmentsMegaMenu.map((category) => (
+    <li key={category.categorySlug}>
+      <Link
+        href={`/treatments?category=${category.categorySlug}#next-section`}
+        className="font-body text-sm text-white/80 transition-colors hover:text-white"
+      >
+        {category.title[locale]}
+      </Link>
+    </li>
+  ))}
+</ul>
           </div>
 
           {/* Customer Care */}
@@ -107,26 +141,42 @@ export async function Footer() {
             </h3>
             <div className="mt-2 mb-4 flex items-center gap-2">
               <div className="h-1 w-8 rounded-full bg-secondary" />
-              <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
+              <Sparkle
+                size={10}
+                className="text-secondary sm:size-3"
+                fill="currentColor"
+              />
             </div>
             <ul className="space-y-3">
               <li>
-                <a href="/book-appintment" className="font-body text-sm text-white/80 hover:text-white">
+                <a
+                  href="/book-appointment"
+                  className="font-body text-sm text-white/80 hover:text-white"
+                >
                   {t("careBookAppointment")}
                 </a>
               </li>
               <li>
-                <a href="/faqs" className="font-body text-sm text-white/80 hover:text-white">
+                <a
+                  href="/faqs"
+                  className="font-body text-sm text-white/80 hover:text-white"
+                >
                   {t("careFaqs")}
                 </a>
               </li>
               <li>
-                <a href="/contact-us" className="font-body text-sm text-white/80 hover:text-white">
+                <a
+                  href="/contact-us"
+                  className="font-body text-sm text-white/80 hover:text-white"
+                >
                   {t("careContactUs")}
                 </a>
               </li>
               <li>
-                <a href="/privacy-policy" className="font-body text-sm text-white/80 hover:text-white">
+                <a
+                  href="/privacy-policy"
+                  className="font-body text-sm text-white/80 hover:text-white"
+                >
                   {t("carePrivacyPolicy")}
                 </a>
               </li>
@@ -140,18 +190,26 @@ export async function Footer() {
             </h3>
             <div className="mt-2 mb-4 flex items-center gap-2">
               <div className="h-1 w-8 rounded-full bg-secondary" />
-              <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
+              <Sparkle
+                size={10}
+                className="text-secondary sm:size-3"
+                fill="currentColor"
+              />
             </div>
 
             <span className="flex h-10 w-10 items-center justify-center rounded-full border border-secondary/40">
               <HelpCircle size={18} className="text-secondary" />
             </span>
 
-            <p className="mt-4 font-body text-sm text-white/70">{t("questionPrompt")}</p>
-            <p className="font-body text-sm text-white/70">{t("questionSubtext")}</p>
+            <p className="mt-4 font-body text-sm text-white/70">
+              {t("questionPrompt")}
+            </p>
+            <p className="font-body text-sm text-white/70">
+              {t("questionSubtext")}
+            </p>
 
-            
-            <a  href={siteConfig.whatsappHref}
+            <a
+              href={siteConfig.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-2 rounded-xl border border-secondary px-5 py-2.5 font-body text-sm font-semibold text-secondary"
@@ -167,8 +225,12 @@ export async function Footer() {
                 <p className="font-body text-xs uppercase tracking-wide text-white/50">
                   {t("hoursLabel")}
                 </p>
-                <p className="font-body text-sm font-semibold text-white">{t("hours")}</p>
-                <p className="font-body text-sm font-semibold text-white">{t("hoursSubtext")}</p>
+                <p className="font-body text-sm font-semibold text-white">
+                  {t("hours")}
+                </p>
+                <p className="font-body text-sm font-semibold text-white">
+                  {t("hoursSubtext")}
+                </p>
               </div>
             </div>
           </div>
@@ -180,35 +242,35 @@ export async function Footer() {
             {t("copyright")}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-  <Image
-    src="/images/payment/koko.png"
-    className="rounded-lg border border-secondary/30 bg-white/5 p-3"
-    alt="Koko"
-    width={64}
-    height={40}
-  />
-  <Image
-    src="/images/payment/visa.svg"
-    className="rounded-lg border border-secondary/30 bg-white/5 p-3"
-    alt="Visa"
-    width={64}
-    height={40}
-  />
-  <Image
-    src="/images/payment/apple-pay.svg"
-    className="rounded-lg border border-secondary/30 bg-white/5 p-3"
-    alt="Apple Pay"
-    width={64}
-    height={40}
-  />
-  <Image
-    src="/images/payment/mastercard.svg"
-    className="rounded-lg border border-secondary/30 bg-white/5 p-3"
-    alt="Mastercard"
-    width={64}
-    height={40}
-  />
-</div>
+            <Image
+              src="/images/payment/koko.png"
+              className="rounded-lg border border-secondary/30 bg-white/5 p-3"
+              alt="Koko"
+              width={64}
+              height={40}
+            />
+            <Image
+              src="/images/payment/visa.svg"
+              className="rounded-lg border border-secondary/30 bg-white/5 p-3"
+              alt="Visa"
+              width={64}
+              height={40}
+            />
+            <Image
+              src="/images/payment/apple-pay.svg"
+              className="rounded-lg border border-secondary/30 bg-white/5 p-3"
+              alt="Apple Pay"
+              width={64}
+              height={40}
+            />
+            <Image
+              src="/images/payment/mastercard.svg"
+              className="rounded-lg border border-secondary/30 bg-white/5 p-3"
+              alt="Mastercard"
+              width={64}
+              height={40}
+            />
+          </div>
         </div>
       </div>
     </footer>

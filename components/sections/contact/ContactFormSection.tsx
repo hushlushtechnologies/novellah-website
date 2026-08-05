@@ -4,12 +4,13 @@ import { MapPin, Phone, Mail, Clock, ArrowRight, CalendarCheck } from "lucide-re
 import { siteConfig } from "@/lib/siteConfig";
 import { ContactFormFields } from "./ContactFormFields";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { FacebookIcon, InstagramIcon, LinkedinIcon, YoutubeIcon } from "@/components/ui/SocialIcons";
 
 const socialIcons = [
-  { icon: Clock, href: siteConfig.socials.instagram },
-  { icon: Clock, href: siteConfig.socials.linkedin },
-  { icon: Clock, href: siteConfig.socials.facebook },
-  { icon: Clock, href: siteConfig.socials.youtube },
+  { icon: InstagramIcon, href: siteConfig.socials.instagram },
+  { icon: LinkedinIcon, href: siteConfig.socials.linkedin },
+  { icon: FacebookIcon, href: siteConfig.socials.facebook },
+  { icon: YoutubeIcon, href: siteConfig.socials.youtube },
 ];
 
 export async function ContactFormSection() {
@@ -151,6 +152,8 @@ export async function ContactFormSection() {
                 ))}
               </div>
 
+               
+
               <div className="mt-5 divide-y divide-border rounded-xl border border-border">
                 <a href={siteConfig.whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/40">
@@ -164,7 +167,7 @@ export async function ContactFormSection() {
                   </span>
                   <ArrowRight size={14} className="text-primary" />
                 </a>
-                <a href="/book-appintment" className="flex items-center gap-3 p-3">
+                <a href="/book-appointment" className="flex items-center gap-3 p-3">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/40">
                     <CalendarCheck size={16} className="text-secondary" />
                   </span>

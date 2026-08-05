@@ -1,8 +1,21 @@
-"use client";
+ "use client";
 
-import { useState } from "react";
-import { Send, User, Phone, Mail, ClipboardList, MessageCircle, ShieldCheck } from "lucide-react";
+import { useRef, useState, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
+import {
+  Send,
+  User,
+  Phone,
+  Mail,
+  ClipboardList,
+  MessageCircle,
+  ShieldCheck,
+  Loader2,
+  AlertCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FormSuccessState } from "@/components/ui/FormSuccessState";
+import { useTranslations } from "next-intl";
 
 interface ContactFormFieldsProps {
   formTitle: string;
@@ -23,6 +36,8 @@ interface ContactFormFieldsProps {
   subjectOptions: string[];
 }
 
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
 export function ContactFormFields({
   formTitle,
   fullNameLabel,
@@ -41,55 +56,130 @@ export function ContactFormFields({
   sendNote,
   subjectOptions,
 }: ContactFormFieldsProps) {
-  const [submitted, setSubmitted] = useState(false);
+  const t = useTranslations("contactForm");
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // No backend yet — real submission logic goes here later.
-    setSubmitted(true);
+    if (!formRef.current) return;
+
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        formRef.current,
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! },
+      );
+      setStatus("success");
+      formRef.current.reset();
+    } catch (err) {
+      console.error("EmailJS send failed:", err);
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <FormSuccessState
+        heading={t("successHeading")}
+        lines={[t("successLine1"), t("successLine2"), t("successLine3")]}
+        buttonLabel={t("successBackHome")}
+        buttonHref="/"
+        footerNote={t("successFooterNote")}
+        imageSrc="/images/contact-success.png"
+      />
+    );
   }
 
   const inputClasses =
     "w-full rounded-xl border border-border bg-white py-3 ps-4 pe-10 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary";
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl bg-background-light p-6 sm:p-8">
+    <form
+      ref={formRef}
+      onSubmit={handleSubmit}
+      className="rounded-2xl bg-background-light p-6 sm:p-8"
+    >
       <div className="flex items-center gap-2">
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-white">
           <Send size={16} />
         </span>
-        <h3 className="font-body text-sm font-bold uppercase tracking-wide text-primary">{formTitle}</h3>
+        <h3 className="font-body text-sm font-bold uppercase tracking-wide text-primary">
+          {formTitle}
+        </h3>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <label className="font-body text-sm text-foreground">{fullNameLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {fullNameLabel}
+          </label>
           <div className="relative mt-2">
-            <input required placeholder={fullNamePlaceholder} className={inputClasses} />
-            <User size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
+            <input
+              name="user_name"
+              required
+              placeholder={fullNamePlaceholder}
+              className={inputClasses}
+            />
+            <User
+              size={16}
+              className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary"
+            />
           </div>
         </div>
 
         <div>
-          <label className="font-body text-sm text-foreground">{phoneLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {phoneLabel}
+          </label>
           <div className="relative mt-2">
-            <input required type="tel" placeholder={phonePlaceholder} className={inputClasses} />
-            <Phone size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
+            <input
+              name="user_phone"
+              required
+              type="tel"
+              placeholder={phonePlaceholder}
+              className={inputClasses}
+            />
+            <Phone
+              size={16}
+              className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary"
+            />
           </div>
         </div>
 
         <div>
-          <label className="font-body text-sm text-foreground">{emailLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {emailLabel}
+          </label>
           <div className="relative mt-2">
-            <input required type="email" placeholder={emailPlaceholder} className={inputClasses} />
-            <Mail size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
+            <input
+              name="user_email"
+              required
+              type="email"
+              placeholder={emailPlaceholder}
+              className={inputClasses}
+            />
+            <Mail
+              size={16}
+              className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary"
+            />
           </div>
         </div>
 
         <div>
-          <label className="font-body text-sm text-foreground">{subjectLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {subjectLabel}
+          </label>
           <div className="relative mt-2">
-            <select required defaultValue="" className={`${inputClasses} appearance-none`}>
+            <select
+              name="subject"
+              required
+              defaultValue=""
+              className={`${inputClasses} appearance-none`}
+            >
               <option value="" disabled>
                 {subjectPlaceholder}
               </option>
@@ -99,15 +189,24 @@ export function ContactFormFields({
                 </option>
               ))}
             </select>
-            <ClipboardList size={16} className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
+            <ClipboardList
+              size={16}
+              className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-secondary"
+            />
           </div>
         </div>
       </div>
 
       <div className="mt-4">
-        <label className="font-body text-sm text-foreground">{contactMethodLabel}</label>
+        <label className="font-body text-sm text-foreground">
+          {contactMethodLabel}
+        </label>
         <div className="relative mt-2">
-          <select defaultValue="" className={`${inputClasses} appearance-none`}>
+          <select
+            name="contact_method"
+            defaultValue=""
+            className={`${inputClasses} appearance-none`}
+          >
             <option value="" disabled>
               {contactMethodPlaceholder}
             </option>
@@ -115,28 +214,47 @@ export function ContactFormFields({
             <option value="whatsapp">WhatsApp</option>
             <option value="email">Email</option>
           </select>
-          <MessageCircle size={16} className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
+          <MessageCircle
+            size={16}
+            className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-secondary"
+          />
         </div>
       </div>
 
       <div className="mt-6 flex items-center gap-2">
         <Send size={16} className="text-secondary" />
-        <h3 className="font-body text-sm font-bold uppercase tracking-wide text-primary">{messageTitle}</h3>
+        <h3 className="font-body text-sm font-bold uppercase tracking-wide text-primary">
+          {messageTitle}
+        </h3>
       </div>
       <textarea
+        name="message"
         required
         rows={4}
         placeholder={messagePlaceholder}
         className="mt-2 w-full rounded-xl border border-border bg-white p-4 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
       />
 
-      <Button type="submit" variant="solid" className="mt-6 w-full justify-center">
-        {ctaSend}
+      <Button
+        type="submit"
+        variant="solid"
+        disabled={status === "sending"}
+        className="mt-6 w-full justify-center"
+      >
+        {status === "sending" ? (
+          <span className="flex items-center justify-center gap-2">
+            <Loader2 size={16} className="animate-spin" />
+            {ctaSend}
+          </span>
+        ) : (
+          ctaSend
+        )}
       </Button>
 
-      {submitted && (
-        <p className="mt-2 text-center font-body text-xs text-primary">
-          Thanks — we've received your message!
+      {status === "error" && (
+        <p className="mt-2 flex items-center justify-center gap-2 text-center font-body text-xs text-red-600">
+          <AlertCircle size={14} />
+          Something went wrong. Please try again or contact us directly.
         </p>
       )}
 

@@ -1,6 +1,6 @@
-"use client";
+ "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { treatmentsMegaMenu } from "@/lib/navigation";
@@ -8,6 +8,7 @@ import { treatments } from "@/lib/content/treatments";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { DecorativeFlower } from "@/components/ui/DecorativeFlower";
 import { TreatmentCard } from "@/components/ui/TreatmentCard";
+import { CategoryTabs } from "@/components/ui/CategoryTabs";
 
 const trustPoints = [
   {
@@ -41,6 +42,12 @@ export function SignatureTreatmentsSection() {
     treatmentsMegaMenu[3].categorySlug,
   );
   const [page, setPage] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const categoryTabs = treatmentsMegaMenu.map((category) => ({
+    id: category.categorySlug,
+    label: category.title[locale],
+  }));
 
   const categoryTreatments = treatments.filter(
     (tr) => tr.categorySlug === activeCategory,
@@ -49,14 +56,28 @@ export function SignatureTreatmentsSection() {
     1,
     Math.ceil(categoryTreatments.length / CARDS_PER_PAGE),
   );
-  const visibleTreatments = categoryTreatments.slice(
-    page * CARDS_PER_PAGE,
-    page * CARDS_PER_PAGE + CARDS_PER_PAGE,
+  const pages = Array.from({ length: pageCount }, (_, i) =>
+    categoryTreatments.slice(i * CARDS_PER_PAGE, i * CARDS_PER_PAGE + CARDS_PER_PAGE),
   );
 
   function selectCategory(slug: string) {
     setActiveCategory(slug);
     setPage(0);
+    scrollRef.current?.scrollTo({ left: 0 });
+  }
+
+  function scrollToPage(i: number) {
+    const container = scrollRef.current;
+    if (!container) return;
+    container.scrollTo({ left: i * container.clientWidth, behavior: "smooth" });
+    setPage(i);
+  }
+
+  function handleScroll() {
+    const container = scrollRef.current;
+    if (!container || container.clientWidth === 0) return;
+    const newPage = Math.round(container.scrollLeft / container.clientWidth);
+    setPage(newPage);
   }
 
   return (
@@ -96,52 +117,70 @@ export function SignatureTreatmentsSection() {
         </div>
 
         {/* Category tabs */}
-        <div className="mx-auto mt-8 max-w-6xl rounded-2xl border border-border bg-card p-2 sm:mt-12 sm:rounded-full">
-          <div
-            className="
-      flex gap-2 overflow-x-auto scroll-smooth
-      snap-x snap-mandatory
-      scrollbar-hide
-      sm:flex-wrap sm:justify-center sm:overflow-visible sm:snap-none
-    "
-          >
-            {treatmentsMegaMenu.map((category) => (
-              <button
-                key={category.categorySlug}
-                onClick={() => selectCategory(category.categorySlug)}
-                className={`shrink-0 cursor-pointer snap-start whitespace-nowrap rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${
-                  activeCategory === category.categorySlug
-                    ? "bg-gradient-primary text-white"
-                    : "text-foreground hover:bg-background-light"
-                }`}
-              >
-                {category.title[locale]}
-              </button>
-            ))}
-          </div>
+        <CategoryTabs
+          className="mt-8 sm:mt-12"
+          items={categoryTabs}
+          activeId={activeCategory}
+          onChange={selectCategory}
+        />
+
+        {/* Mobile: one-card-at-a-time swipe carousel */}
+        <div
+          className="
+            mt-10 -mx-4 flex snap-x snap-mandatory gap-4
+            overflow-x-auto scroll-smooth px-4 scrollbar-hide
+            sm:hidden
+          "
+        >
+          {categoryTreatments.map((treatment) => (
+            <div key={treatment.slug} className="w-[82%] shrink-0 snap-center">
+              <TreatmentCard
+                treatment={treatment}
+                locale={locale}
+                durationUnit={t("durationUnit")}
+                ctaLabel={t("ctaExplore")}
+                className="h-full"
+              />
+            </div>
+          ))}
         </div>
 
-        {/* Treatment cards — now via shared TreatmentCard */}
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {visibleTreatments.map((treatment) => (
-            <TreatmentCard
-              key={treatment.slug}
-              treatment={treatment}
-              locale={locale}
-              durationUnit={t("durationUnit")}
-              ctaLabel={t("ctaExplore")}
-            />
+        {/* Tablet/desktop: page-at-a-time swipe/drag carousel, dots synced both ways */}
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="
+            mt-10 hidden snap-x snap-mandatory gap-6
+            overflow-x-auto scroll-smooth scrollbar-hide sm:flex
+          "
+        >
+          {pages.map((pageItems, i) => (
+            <div
+              key={i}
+              className="grid w-full shrink-0 snap-start grid-cols-2 gap-6 lg:grid-cols-4"
+            >
+              {pageItems.map((treatment) => (
+                <TreatmentCard
+                  key={treatment.slug}
+                  treatment={treatment}
+                  locale={locale}
+                  durationUnit={t("durationUnit")}
+                  ctaLabel={t("ctaExplore")}
+                  className="h-full"
+                />
+              ))}
+            </div>
           ))}
         </div>
 
         {pageCount > 1 && (
-          <div className="mt-8 flex justify-center gap-2">
+          <div className="mt-8 hidden justify-center gap-2 sm:flex">
             {Array.from({ length: pageCount }).map((_, i) => (
               <button
                 key={i}
-                onClick={() => setPage(i)}
+                onClick={() => scrollToPage(i)}
                 aria-label={`Page ${i + 1}`}
-                className={`h-2 rounded-full transition-all ${
+                className={`h-2 rounded-full cursor-pointer transition-all ${
                   page === i ? "w-6 bg-primary" : "w-2 bg-border"
                 }`}
               />

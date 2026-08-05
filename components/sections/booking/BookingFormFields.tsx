@@ -1,9 +1,14 @@
-"use client";
+ "use client";
 
-import { useState } from "react";
-import { useLocale } from "next-intl";
-import { User, Phone, Mail, Grape, UserRound, CalendarDays, Send, ArrowRight, ShieldCheck } from "lucide-react";
+import { useRef, useState, FormEvent } from "react";
+import emailjs from "@emailjs/browser";
+import { useLocale, useTranslations } from "next-intl";
+import {
+  User, Phone, Mail, Grape, UserRound, CalendarDays, Send,
+  ArrowRight, ShieldCheck, Loader2, AlertCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { FormSuccessState } from "@/components/ui/FormSuccessState";
 import { treatmentsMegaMenu } from "@/lib/navigation";
 import { doctors } from "@/lib/content/doctors";
 
@@ -28,6 +33,8 @@ interface BookingFormFieldsProps {
   submitNote: string;
 }
 
+type SubmitStatus = "idle" | "sending" | "success" | "error";
+
 export function BookingFormFields({
   personalInfoTitle,
   fullNameLabel,
@@ -48,20 +55,49 @@ export function BookingFormFields({
   ctaSubmit,
   submitNote,
 }: BookingFormFieldsProps) {
+  const t = useTranslations("bookingForm");
   const locale = useLocale() as "en" | "ar";
-  const [submitted, setSubmitted] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // No backend yet — real submission logic goes here later.
-    setSubmitted(true);
+    if (!formRef.current) return;
+
+    setStatus("sending");
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_BOOKING_TEMPLATE_ID!,
+        formRef.current,
+        { publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY! },
+      );
+      setStatus("success");
+      formRef.current.reset();
+    } catch (err) {
+      console.error("EmailJS send failed:", err);
+      setStatus("error");
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <FormSuccessState
+        heading={t("successHeading")}
+        lines={[t("successLine1"), t("successLine2")]}
+        buttonLabel={t("successBackHome")}
+        buttonHref="/"
+        footerNote={t("successFooterNote")}
+      />
+    );
   }
 
   const inputClasses =
     "w-full rounded-xl border border-border bg-white py-3 ps-4 pe-10 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary";
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-2xl bg-background-light p-6 sm:p-10">
+    <form ref={formRef} onSubmit={handleSubmit} className="rounded-2xl bg-background-light p-6 sm:p-10">
       {/* Personal Information */}
       <div className="flex items-center gap-2">
         <UserRound size={18} className="text-secondary" />
@@ -74,21 +110,21 @@ export function BookingFormFields({
         <div>
           <label className="font-body text-sm text-foreground">{fullNameLabel}</label>
           <div className="relative mt-2">
-            <input required placeholder={fullNamePlaceholder} className={inputClasses} />
+            <input name="user_name" required placeholder={fullNamePlaceholder} className={inputClasses} />
             <User size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
           </div>
         </div>
         <div>
           <label className="font-body text-sm text-foreground">{phoneLabel}</label>
           <div className="relative mt-2">
-            <input required type="tel" placeholder={phonePlaceholder} className={inputClasses} />
+            <input name="user_phone" required type="tel" placeholder={phonePlaceholder} className={inputClasses} />
             <Phone size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
           </div>
         </div>
         <div>
           <label className="font-body text-sm text-foreground">{emailLabel}</label>
           <div className="relative mt-2">
-            <input required type="email" placeholder={emailPlaceholder} className={inputClasses} />
+            <input name="user_email" required type="email" placeholder={emailPlaceholder} className={inputClasses} />
             <Mail size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
           </div>
         </div>
@@ -106,10 +142,10 @@ export function BookingFormFields({
         <div>
           <label className="font-body text-sm text-foreground">{treatmentLabel}</label>
           <div className="relative mt-2">
-            <select defaultValue="" className={`${inputClasses} appearance-none`}>
+            <select name="treatment" defaultValue="" className={`${inputClasses} appearance-none`}>
               <option value="">{treatmentPlaceholder}</option>
               {treatmentsMegaMenu.map((cat) => (
-                <option key={cat.categorySlug} value={cat.categorySlug}>
+                <option key={cat.categorySlug} value={cat.title[locale]}>
                   {cat.title[locale]}
                 </option>
               ))}
@@ -120,10 +156,10 @@ export function BookingFormFields({
         <div>
           <label className="font-body text-sm text-foreground">{doctorLabel}</label>
           <div className="relative mt-2">
-            <select defaultValue="" className={`${inputClasses} appearance-none`}>
+            <select name="doctor" defaultValue="" className={`${inputClasses} appearance-none`}>
               <option value="">{doctorPlaceholder}</option>
               {doctors.map((doc) => (
-                <option key={doc.slug} value={doc.slug}>
+                <option key={doc.slug} value={doc.name}>
                   {doc.name}
                 </option>
               ))}
@@ -134,7 +170,12 @@ export function BookingFormFields({
         <div>
           <label className="font-body text-sm text-foreground">{dateLabel}</label>
           <div className="relative mt-2">
-            <input type="date" min={new Date().toISOString().split("T")[0]} className={inputClasses} />
+            <input
+              name="appointment_date"
+              type="date"
+              min={new Date().toISOString().split("T")[0]}
+              className={inputClasses}
+            />
           </div>
         </div>
       </div>
@@ -147,6 +188,7 @@ export function BookingFormFields({
         </h3>
       </div>
       <textarea
+        name="message"
         rows={4}
         placeholder={messagePlaceholder}
         className="mt-2 w-full rounded-xl border border-border bg-white p-4 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
@@ -155,15 +197,17 @@ export function BookingFormFields({
       <Button
         type="submit"
         variant="solid"
-        icon={<ArrowRight size={16} />}
+        disabled={status === "sending"}
+        icon={status === "sending" ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
         className="mt-8 w-full justify-center"
       >
         {ctaSubmit}
       </Button>
 
-      {submitted && (
-        <p className="mt-2 text-center font-body text-xs text-primary">
-          Thanks — we've received your request!
+      {status === "error" && (
+        <p className="mt-2 flex items-center justify-center gap-2 text-center font-body text-xs text-red-600">
+          <AlertCircle size={14} />
+          Something went wrong. Please try again or contact us directly.
         </p>
       )}
 

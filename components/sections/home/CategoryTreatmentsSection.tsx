@@ -56,7 +56,7 @@ export async function CategoryTreatmentsSection() {
                 </p>
 
                 <a
-                  href={`/treatments/${category.categorySlug}`}
+                   href={`/treatments?category=${category.categorySlug}#next-section`}
                   className="mt-3 inline-flex items-center gap-1 font-body text-sm font-semibold uppercase text-primary sm:mt-4"
                 >
                   {t("ctaExplore")} <ArrowRight size={14} />

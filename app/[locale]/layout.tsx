@@ -46,14 +46,14 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <FloatingContact />
-          {/* <ChatbotButton /> */}
+         
           <Navbar />
           {children}
           <Footer />
         </NextIntlClientProvider>
         <Script
           id="hubspot-script"
-          src="https://js-na2.hs-scripts.com/246953792.js"
+          src={`https://js-na2.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID}.js`}
           strategy="afterInteractive"
         />
       </body>

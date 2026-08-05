@@ -82,7 +82,7 @@ export async function WhyChooseSection() {
         </div>
 
         {/* Awards row */}
-
+{/* 
         <div className="mt-14 flex flex-col gap-6 sm:flex-row sm:items-center">
           <p className="shrink-0 border-e-0 pe-0 font-bold font-heading text-base text-foreground sm:border-e sm:border-border sm:pe-6">
             {t("awardLabel").split(" by ")[0]} by
@@ -104,7 +104,7 @@ export async function WhyChooseSection() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

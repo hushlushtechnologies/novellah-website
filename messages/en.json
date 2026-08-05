@@ -547,7 +547,13 @@
     "subjectGeneral": "General Inquiry",
     "subjectTreatment": "Treatment Question",
     "subjectAppointment": "Appointment Request",
-    "subjectOther": "Other"
+    "subjectOther": "Other",
+    "successHeading": "Message Received",
+"successLine1": "Your message has been received successfully.",
+"successLine2": "Our specialists will carefully review your enquiry and contact you shortly to help you begin your personalized beauty and skincare experience.",
+"successLine3": "Thank you for choosing Novellah Restyle.",
+"successBackHome": "Back to Home",
+"successFooterNote": "Our team typically responds within one business day"
   },
  
   "bookingHero": {
@@ -586,7 +592,12 @@
     "ctaSubmit": "Book Consultation",
     "submitNote": "Your information is secure and confidential",
     "footerTitle": "Our Team will contact you shortly to confirm your appointment",
-    "footerSubtext": "We look forward to welcoming you to Novellah"
+    "footerSubtext": "We look forward to welcoming you to Novellah",
+    "successHeading": "Appointment Requested",
+"successLine1": "Your appointment request has been received successfully.",
+"successLine2": "Our team will confirm your preferred date and time within one business day.",
+"successBackHome": "Back to Home",
+"successFooterNote": "Our team typically responds within one business day"
   }
 ,
  
