@@ -51,9 +51,9 @@ export function FormSuccessState({
         {heading}
       </h2>
 
-      <div className="mx-auto mt-4 max-w-sm space-y-3">
+      <div className="mx-auto mt-4 max-w-xl space-y-3">
         {lines.map((line, i) => (
-          <p key={i} className="font-body text-sm text-muted-foreground sm:text-base">
+          <p key={i} className="font-body text-xs text-muted-foreground sm:text-xs">
             {line}
           </p>
         ))}

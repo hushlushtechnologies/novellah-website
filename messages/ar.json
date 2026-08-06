@@ -263,7 +263,380 @@
   "hoursSubtext": "طوال أيام الأسبوع",
   "copyright": "© 2026 نوفيلاه ريستايل. جميع الحقوق محفوظة."
 }
+,
 
+"aboutHero": {
+  "eyebrow": "عن نوفيلاه",
+  "line1Word": "نعيد تعريف",
+  "line1Highlight": "الجمال.",
+  "line2Word": "ونستعيد",
+  "line2Highlight": "الثقة",
+  "subheading": "في نوفيلاه ريستايل، نجمع بين الخبرة الطبية المتقدمة ونهج شخصي لإبراز أفضل نسخة منك، لأن كل تفصيل مهم... وأنت كذلك.",
+  "ctaBook": "احجز موعدًا",
+  "ctaWhatsapp": "تواصل عبر واتساب"
+},
+
+"ourStory": {
+  "eyebrow": "قصتنا",
+  "headingLine1": "حيث يلتقي",
+  "headingLine2Prefix": "العلم",
+  "headingLine2Highlight": "بالفن",
+  "quote": "هدفنا بسيط... أن نساعدك على الشعور بالجمال، والقوة، والثقة في بشرتك.",
+  "description1": "تأسست نوفيلاه ريستايل برؤية تهدف إلى إنشاء عيادة فاخرة للتجميل الطبي تتجاوز مجرد تقديم العلاجات لتمنح تجربة تحول حقيقية.",
+  "description2": "نجمع بين الخبرة الطبية المتقدمة والرؤية الفنية للجمال لنحقق نتائج طبيعية، راقية، وطويلة الأمد، مصممة خصيصًا لك.",
+  "feature1Title": "رعاية احترافية",
+  "feature1Desc": "أطباء معتمدون يتمتعون بخبرة طويلة",
+  "feature2Title": "نتائج طبيعية",
+  "feature2Desc": "إبراز جمالك الطبيعي بنتائج راقية ومتوازنة",
+  "feature3Title": "تجربة فاخرة",
+  "feature3Desc": "بيئة راقية صُممت لراحتك وخصوصيتك",
+  "feature4Title": "آمنة وموثوقة",
+  "feature4Desc": "معايير عالمية وبروتوكولات سلامة صارمة",
+  "stat1Value": "الابتكار",
+  "stat1Label": "تقنيات حديثة",
+  "stat2Value": "الجودة",
+  "stat2Label": "معايير فاخرة",
+  "stat3Value": "+30",
+  "stat3Label": "علاجًا متقدمًا",
+  "stat4Value": "عالمية",
+  "stat4Label": "تجربة تجميل راقية"
+},
+
+"clinicGallery": {
+  "eyebrow": "معرض العيادة",
+  "heading": "اكتشف نوفيلاه من الداخل",
+  "subheading": "صُممت كل مساحة في نوفيلاه ريستايل بعناية لتوفر الراحة والأناقة وتجربة استثنائية."
+},
+
+"doctorsHero": {
+  "eyebrow": "خبراؤنا",
+  "headingLine1Prefix": "رعاية",
+  "headingLine1Highlight": "احترافية.",
+  "headingLine2Prefix": "نتائج",
+  "headingLine2Highlight": "استثنائية",
+  "subheading": "يجمع فريقنا من الأطباء ذوي الخبرة بين المعرفة الطبية المتقدمة، وأحدث التقنيات، والرعاية الشخصية لتقديم نتائج مميزة تناسب احتياجات كل عميل.",
+  "ctaBook": "احجز موعدًا",
+  "ctaWhatsapp": "تواصل عبر واتساب",
+  "point1Title": "مؤهلون ومعتمدون",
+  "point1Desc": "خبراء مدربون دوليًا ومعتمدون من الهيئات المختصة",
+  "point2Title": "نهج شخصي",
+  "point2Desc": "كل علاج يُصمم وفق احتياجاتك الفريدة",
+  "point3Title": "رعاية باهتمام",
+  "point3Desc": "راحتك وسلامتك ورضاك هي أولوياتنا"
+},
+
+"doctorsList": {
+  "eyebrow": "تعرّف على أطبائنا",
+  "headingPrefix": "خبراؤنا",
+  "headingHighlight": "الطبيون",
+  "subheading": "فريق من الأطباء والأخصائيين المؤهلين وذوي الخبرة، ملتزمون بمساعدتك لتبدو وتشعر بأفضل حال.",
+  "filterAll": "جميع الأطباء",
+  "experienceLabel": "سنوات الخبرة",
+  "ctaProfile": "عرض الملف الشخصي"
+},
+
+"doctorDetail": {
+  "eyebrow": "أخصائيونا",
+  "experienceLabel": "سنوات الخبرة",
+  "specializationLabel": "التخصص",
+  "languagesLabel": "اللغات",
+  "educationLabel": "المؤهلات العلمية",
+  "ctaBook": "احجز موعدًا",
+  "ctaWhatsapp": "تواصل عبر واتساب"
+},
+
+"doctorPhilosophy": {
+  "eyebrow": "نبذة شخصية",
+  "headingLine1": "ملتزمون بإبراز",
+  "headingHighlight": "جمالك الطبيعي",
+  "point1Title": "رعاية تتمحور حول المريض",
+  "point1Desc": "كل علاج يُصمم بما يتناسب مع احتياجاتك وأهدافك.",
+  "point2Title": "نهج طبيعي وآمن",
+  "point2Desc": "تعزيز الجمال باستخدام تقنيات متطورة وآمنة ومثبتة.",
+  "point3Title": "التميز في التجميل",
+  "point3Desc": "الالتزام بأعلى معايير الدقة والسلامة والنتائج.",
+  "point4Title": "رعاية إنسانية",
+  "point4Desc": "بناء الثقة وعلاقات طويلة الأمد مع كل عميل.",
+  "aboutHeadingPrefix": "نبذة عن د."
+},
+
+"doctorTreatments": {
+  "eyebrow": "العلاجات المقدمة",
+  "headingLine1": "علاجات متطورة،",
+  "headingLine2": "مصممة خصيصًا لك",
+  "durationUnit": "دقيقة",
+  "ctaExplore": "استكشف العلاجات"
+},
+
+
+"offersHero": {
+  "eyebrow": "العروض الحصرية",
+  "headingLine1": "اكتشف عروض",
+  "headingLine2Prefix": "",
+  "headingHighlight": "الجمال",
+  "headingSuffix": "الحصرية",
+  "subheading": "استكشف أحدث عروضنا في التجميل، والعناية بالبشرة، والليزر، والعلاجات التجميلية، والمصممة بعناية لتمنحك تجربة فاخرة بأسعار استثنائية.",
+  "ctaBook": "احجز موعدًا",
+  "ctaWhatsapp": "تواصل عبر واتساب",
+  "badge1Line1": "لفترة",
+  "badge1Line2": "محدودة",
+  "badge1Line3": "عروض",
+  "badge1Line4": "حصرية",
+  "badge2Line1": "وفّر",
+  "badge2Line2": "أكثر",
+  "badge2Line3": "واشعر",
+  "badge2Line4": "بأفضل حال"
+},
+
+"loyaltyHero": {
+  "eyebrow": "مكافآت نوفيلاه",
+  "headingLine1": "الجمال الذي",
+  "headingHighlight": "يكافئك",
+  "headingSuffix": "في كل زيارة",
+  "subheading": "انضم إلى برنامج ولاء نوفيلاه واستمتع بامتيازات حصرية، وعروض مخصصة، ومزايا استثنائية صُممت خصيصًا لعملائنا الكرام.",
+  "ctaContact": "تواصل معنا",
+  "ctaConsultation": "احجز استشارة"
+},
+
+"whatIsRewards": {
+  "eyebrow": "مكافآت نوفيلاه",
+  "headingLine1Prefix": "ما هو",
+  "headingLine1Highlight": "برنامج نوفيلاه",
+  "headingLine2": "للمكافآت؟",
+  "quote": "طريقتنا في تقدير ثقتك وجعل رحلتك الجمالية أكثر تميزًا.",
+  "description": "برنامج مكافآت نوفيلاه هو برنامج ولاء حصري صُمم لشكر عملائنا على ثقتهم بنا. وكلما استمتعت بعلاجاتنا الفاخرة، زادت المكافآت التي تحصل عليها.",
+  "point1Title": "امتيازات حصرية",
+  "point1Desc": "استمتع بمزايا حسب مستوى العضوية، وخصومات خاصة، وعروض حصرية للأعضاء.",
+  "point2Title": "مكافآت في كل زيارة",
+  "point2Desc": "احصل على مزايا أكبر مع زيادة إنفاقك السنوي.",
+  "point3Title": "عناية مخصصة",
+  "point3Desc": "استمتع بأولوية الخدمة، واستشارات الخبراء، وتجربة تجميل فاخرة."
+},
+
+"howRewardsWorks": {
+  "eyebrow": "كيف يعمل البرنامج",
+  "headingPrefix": "كيف يعمل",
+  "headingHighlight": "برنامج مكافآت نوفيلاه",
+  "headingSuffix": "",
+  "subheading": "طريقة بسيطة للاستمتاع بمزيد من الجمال، والمكافآت، والامتيازات الحصرية.",
+  "step1Title": "انضم",
+  "step1Desc": "انضم إلى برنامج مكافآت نوفيلاه بالتواصل مع فريقنا. العملية سهلة وسريعة.",
+  "step2Title": "استمتع بالعلاجات",
+  "step2Desc": "استمتع بعلاجاتنا الفاخرة، فكل إنفاق مؤهل يقربك من مزايا ومكافآت أكبر.",
+  "step3Title": "ارتقِ بعضويتك",
+  "step3Desc": "كلما زاد إنفاقك السنوي، ارتقيت إلى مستويات عضوية أعلى مع مزايا إضافية.",
+  "step4Title": "استمتع بالمكافآت الحصرية",
+  "step4Desc": "احصل على خصومات مميزة، وخدمات مجانية، وأولوية في الحجز، وامتيازات كبار الشخصيات."
+},
+
+"membershipTiers": {
+  "eyebrow": "مستويات العضوية",
+  "headingPrefix": "اختر",
+  "headingHighlight": "عضويتك",
+  "subheading": "كلما استمتعت أكثر بعلاجاتنا، أصبحت تجربتك أكثر تميزًا. ارتقِ بين مستويات العضوية واستمتع بامتيازات أكبر.",
+  "annualSpendingLabel": "الإنفاق السنوي",
+  "popularBadge": "الأكثر شيوعًا",
+  "bannerHeading": "هل لديك استفسارات أو ترغب في معرفة مستوى العضوية المناسب لك؟",
+  "bannerSubtext": "تواصل مع فريقنا وابدأ رحلة عضويتك اليوم.",
+  "ctaContact": "تواصل معنا"
+},
+
+"faq": {
+  "eyebrow": "الأسئلة الشائعة",
+  "headingPrefix": "الأسئلة",
+  "headingHighlight": "الشائعة",
+  "subheading": "كل ما تحتاج معرفته عن برنامج مكافآت نوفيلاه. إذا لم تجد الإجابة التي تبحث عنها، فنحن هنا لمساعدتك.",
+  "helpEyebrow": "هل لديك المزيد من الأسئلة؟",
+  "helpHeading": "نحن هنا لمساعدتك",
+  "helpBody": "يسعد خبراؤنا في العناية بالبشرة بالإجابة عن جميع استفساراتك ومساعدتك في اختيار العلاج المناسب.",
+  "whatsappTitle": "الدردشة عبر واتساب",
+  "whatsappSubtext": "احصل على رد فوري",
+  "consultationTitle": "احجز استشارة",
+  "consultationSubtext": "تحدث مع خبرائنا",
+  "safetyTitle": "بشرتك في أيدٍ أمينة.",
+  "safetyBody": "خبراء محترفون. تقنيات متطورة. عناية مخصصة."
+},
+
+"contactHero": {
+  "eyebrow": "تواصل مع نوفيلاه",
+  "headingLine1": "لنبدأ",
+  "headingHighlight": "رحلتك الجمالية",
+  "subheading": "سواء كان لديك استفسار عن علاجاتنا، أو تحتاج إلى استشارة احترافية، أو ترغب في حجز موعد، فإن فريقنا جاهز لمساعدتك.",
+  "ctaBook": "احجز موعدًا",
+  "ctaWhatsapp": "تواصل عبر واتساب",
+  "point1Title": "خبراء متخصصون",
+  "point1Desc": "ملتزمون برعايتك",
+  "point2Title": "موثوق وآمن",
+  "point2Desc": "سلامتك هي أولويتنا",
+  "point3Title": "استجابة سريعة",
+  "point3Desc": "نرد خلال 24 ساعة"
+},
+
+"contactForm": {
+  "eyebrow": "تواصل معنا",
+  "headingPrefix": "يسعدنا",
+  "headingHighlight": "سماع رأيك",
+  "subheading": "هل لديك سؤال، أو تحتاج إلى نصيحة من خبرائنا، أو ترغب في حجز استشارة؟ املأ النموذج وسيتواصل معك فريقنا في أقرب وقت.",
+  "formTitle": "أرسل لنا رسالة",
+  "fullNameLabel": "الاسم الكامل",
+  "fullNamePlaceholder": "أدخل اسمك",
+  "phoneLabel": "رقم الهاتف",
+  "phonePlaceholder": "أدخل رقم هاتفك",
+  "emailLabel": "البريد الإلكتروني",
+  "emailPlaceholder": "أدخل بريدك الإلكتروني",
+  "subjectLabel": "الموضوع",
+  "subjectPlaceholder": "اختر الموضوع",
+  "contactMethodLabel": "طريقة التواصل المفضلة",
+  "contactMethodPlaceholder": "الهاتف / واتساب / البريد الإلكتروني",
+  "messageTitle": "الرسالة",
+  "messagePlaceholder": "اكتب رسالتك هنا...",
+  "ctaSend": "إرسال الرسالة",
+  "sendNote": "يرد فريقنا عادةً خلال يوم عمل واحد.",
+  "clinicInfoTitle": "معلومات العيادة",
+  "workingHoursTitle": "ساعات العمل",
+  "socialMediaTitle": "وسائل التواصل الاجتماعي",
+  "whatsappTitle": "الدردشة عبر واتساب",
+  "whatsappSubtext": "احصل على رد فوري",
+  "consultationTitle": "احجز استشارة",
+  "consultationSubtext": "تحدث مع خبرائنا",
+  "subjectGeneral": "استفسار عام",
+  "subjectTreatment": "استفسار عن علاج",
+  "subjectAppointment": "طلب موعد",
+  "subjectOther": "أخرى",
+  "successHeading": "تم استلام رسالتك",
+  "successLine1": "تم استلام رسالتك بنجاح.",
+  "successLine2": "سيقوم فريقنا المختص بمراجعة استفسارك والتواصل معك قريبًا لمساعدتك في بدء رحلتك الشخصية في الجمال والعناية بالبشرة.",
+  "successLine3": "شكرًا لاختيارك نوفيلاه ريستايل.",
+  "successBackHome": "العودة إلى الرئيسية",
+  "successFooterNote": "يرد فريقنا عادةً خلال يوم عمل واحد."
+},
+
+"bookingHero": {
+  "eyebrow": "احجز استشارتك",
+  "headingLine1": "رحلتك الجمالية",
+  "headingHighlight": "تبدأ هنا",
+  "subheading": "احجز استشارة شخصية مع أحد خبرائنا. سنفهم أهدافك، ونقيّم احتياجاتك، ونوصي بالعلاج الأنسب لك.",
+  "ctaViewTreatment": "عرض العلاجات",
+  "ctaContact": "تواصل معنا"
+},
+"bookingForm": {
+  "eyebrow": "احجز موعدك",
+  "headingPrefix": "احجز",
+  "headingHighlight": "استشارتك",
+  "subheading": "املأ بياناتك وسيتواصل معك فريقنا لتأكيد موعدك.",
+  "personalInfoTitle": "المعلومات الشخصية",
+  "fullNameLabel": "الاسم الكامل",
+  "fullNamePlaceholder": "أدخل اسمك",
+  "phoneLabel": "رقم الهاتف",
+  "phonePlaceholder": "أدخل رقم هاتفك",
+  "emailLabel": "البريد الإلكتروني",
+  "emailPlaceholder": "أدخل بريدك الإلكتروني",
+  "appointmentDetailsTitle": "تفاصيل الموعد",
+  "treatmentLabel": "اختر العلاج",
+  "treatmentPlaceholder": "أي أخصائي",
+  "doctorLabel": "الطبيب المفضل",
+  "doctorPlaceholder": "أي أخصائي",
+  "dateLabel": "التاريخ المفضل",
+  "datePlaceholder": "اختر التاريخ",
+  "messageTitle": "رسائل إضافية",
+  "messageOptional": "(اختياري)",
+  "messagePlaceholder": "أخبرنا عن استفساراتك أو النتائج التي ترغب في تحقيقها",
+  "ctaSubmit": "احجز استشارة",
+  "submitNote": "بياناتك آمنة وسرية",
+  "footerTitle": "سيتواصل معك فريقنا قريبًا لتأكيد موعدك",
+  "footerSubtext": "نتطلع إلى الترحيب بك في نوفيلاه",
+  "successHeading": "تم استلام طلب الموعد",
+  "successLine1": "تم إرسال طلب حجز موعدك بنجاح.",
+  "successLine2": "سيقوم فريقنا بمراجعة طلبك والتواصل معك قريبًا لتأكيد موعد الاستشارة. في نوفيلاه ريستايل، يتم التخطيط لكل زيارة بعناية لتقديم تجربة مخصصة تناسب أهدافك الجمالية واحتياجات بشرتك.",
+  "successBackHome": "العودة إلى الرئيسية",
+  "successFooterNote": "يرد فريقنا عادةً خلال يوم عمل واحد."
+},
+
+"blogHero": {
+  "eyebrow": "مجلة نوفيلاه",
+  "headingLine1": "رؤى جمالية، ونصائح",
+  "headingLine2": "خبراء، وقصص العناية بالبشرة.",
+  "subheading": "استكشف نصائح خبرائنا للعناية بالبشرة، وأدلة العلاجات المتقدمة، واتجاهات الجمال، ورؤى احترافية من متخصصي نوفيلاه ريستايل. تعرّف كيف يمكن للعلاجات التجميلية الحديثة أن تساعدك على الظهور والشعور بأفضل حال.",
+  "ctaBook": "احجز موعدًا",
+  "ctaWhatsapp": "تواصل عبر واتساب"
+},
+
+"blogList": {
+  "eyebrow": "أحدث المقالات",
+  "headingPrefix": "اكتشف عالم الجمال،",
+  "headingHighlight": "مقالًا",
+  "headingSuffix": "بعد آخر.",
+  "subheading": "اكتشف نصائح الخبراء، ومعلومات العناية بالبشرة، وأدلة العلاجات، ورؤى الجمال من متخصصي نوفيلاه ريستايل. كُتب كل مقال بعناية لمساعدتك على اتخاذ قرارات مدروسة في رحلتك نحو بشرة صحية وثقة تدوم.",
+  "ctaReadMore": "اقرأ المزيد",
+  "readTimeUnit": "دقائق قراءة",
+  "ctaLoadMore": "عرض المزيد"
+},
+
+"blogDetail": {
+  "breadcrumbHome": "المدونة",
+  "subscribeEyebrow": "اشترك",
+  "subscribeBody": "كن جزءًا من مجتمعنا. تابعنا على وسائل التواصل الاجتماعي واشترك في نشرتنا البريدية للحصول على العروض الحصرية وأحدث النصائح.",
+  "emailLabel": "البريد الإلكتروني",
+  "emailPlaceholder": "أدخل بريدك الإلكتروني",
+  "ctaSubscribe": "اشترك",
+  "subscribeDisclaimer": "بالاشتراك، فإنك توافق على استلام رسائل بريد إلكتروني من نوفيلاه ريستايل من وقت لآخر. ويمكنك إلغاء الاشتراك في أي وقت.",
+  "followUsLabel": "تابعنا على وسائل التواصل الاجتماعي",
+  "featuredArticlesEyebrow": "المقال المميز",
+  "readTimeUnit": "دقائق قراءة",
+  "ctaReadMore": "اقرأ المزيد"
+},
+
+"relatedArticles": {
+  "eyebrow": "مقالات ذات صلة",
+  "heading": "مقالات قد تهمك"
+},
+
+"treatmentsHero": {
+  "eyebrow": "حلول تجميل متقدمة",
+  "headingLine1": "علاجات",
+  "headingLine2": "مصممة خصيصًا لك",
+  "subheading": "استكشف علاجات متطورة صُممت لتعزيز جمالك الطبيعي، واستعادة ثقتك بنفسك، وتحقيق نتائج واضحة تدوم طويلًا.",
+  "ctaExplore": "اكتشف نوفيلاه",
+  "ctaBook": "احجز موعدًا",
+  "scrollToDiscover": "مرر لاكتشاف المزيد"
+},
+
+"treatmentsList": {
+  "eyebrow": "جميع العلاجات",
+  "headingPrefix": "استكشف",
+  "headingHighlight": "علاجاتنا المتطورة",
+  "subheading": "اكتشف مجموعة واسعة من العلاجات المتقدمة المصممة باحترافية لإبراز جمالك الطبيعي وتحقيق نتائج واضحة وطويلة الأمد.",
+  "filterAll": "جميع العلاجات",
+  "durationUnit": "دقيقة",
+  "ctaViewMore": "عرض المزيد"
+},
+
+"treatmentDetail": {
+  "ctaBook": "احجز موعدًا",
+  "ctaWhatsapp": "تواصل عبر واتساب",
+  "durationLabel": "المدة",
+  "durationUnit": "دقيقة",
+  "sessionsLabel": "عدد الجلسات",
+  "suitableForLabel": "مناسب لـ",
+  "procedureTypeLabel": "نوع الإجراء"
+},
+
+"treatmentOverview": {
+  "eyebrow": "نظرة عامة",
+  "headingPrefix": "ما هو",
+  "benefitsHeading": "الفوائد",
+  "recommendedByLabel": "موصى به من قبل",
+  "recommendedBySuffix": "خبراء البشرة لدينا"
+},
+
+"treatmentProcess": {
+  "eyebrow": "خطوات العلاج"
+},
+
+"relatedTreatments": {
+  "eyebrow": "علاجات ذات صلة",
+  "heading": "علاجات قد تناسبك"
+}
 
 
 

@@ -31,7 +31,7 @@ export async function TechnologyMeetsBeautySection() {
   const t = await getTranslations("technologyMeetsBeauty");
 
   return (
-    <section className="relative overflow-hidden py-12 lg:pb-20">
+    <section className="relative overflow-hidden py-12 lg:pb-20"  dir="ltr">
       <Image
         src="/images/decorative/swirl-welcome.png"
         alt=""

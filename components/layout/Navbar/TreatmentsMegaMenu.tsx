@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation"
 import { Clock, ArrowRight } from "lucide-react";
 import {
   treatmentsMegaMenu,
@@ -24,9 +24,14 @@ export function TreatmentsMegaMenu() {
         <div className="space-y-6">
           <div className="overflow-hidden rounded-2xl bg-border">
             <div className="flex items-center gap-8">
-              <div className="relative h-[290px] w-[190px] shrink-0">
-                <Image src={treatmentsMegaMenuPromo.image} alt="" fill className="object-cover" />
-              </div>
+           <div className="relative h-[290px] w-[220px] max-w-[38%] shrink-0">
+  <Image
+    src={treatmentsMegaMenuPromo.image}
+    alt=""
+    fill
+    className="object-cover object-top"
+  />
+</div>
               <div className="flex flex-1 flex-col">
                 <h3 className="whitespace-pre-line font-heading text-[24px] font-bold leading-tight text-foreground">
                   {treatmentsMegaMenuPromo.heading[locale]}

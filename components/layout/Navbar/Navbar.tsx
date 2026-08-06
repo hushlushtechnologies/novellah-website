@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation"
 import { Search, Menu, ArrowRight } from "lucide-react";
 import { navLinks } from "@/lib/navigation";
 import Image from "next/image";

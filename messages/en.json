@@ -593,9 +593,9 @@
     "submitNote": "Your information is secure and confidential",
     "footerTitle": "Our Team will contact you shortly to confirm your appointment",
     "footerSubtext": "We look forward to welcoming you to Novellah",
-    "successHeading": "Appointment Requested",
-"successLine1": "Your appointment request has been received successfully.",
-"successLine2": "Our team will confirm your preferred date and time within one business day.",
+    "successHeading": "APPOINTMENT REQUEST RECEIVED",
+"successLine1": "Your appointment request has been successfully submitted.",
+"successLine2": "Our team will carefully review your request and contact you shortly to confirm your consultation. Every visit at Novellah Restyle is thoughtfully planned to provide a personalized experience tailored to your unique beauty and skincare goals.",
 "successBackHome": "Back to Home",
 "successFooterNote": "Our team typically responds within one business day"
   }

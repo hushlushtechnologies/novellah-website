@@ -1,6 +1,6 @@
-"use client";
+ "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -20,8 +20,9 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
   const t = useTranslations("beforeAfter");
   const locale = useLocale() as "en" | "ar";
   const [page, setPage] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Tier 1: exact treatment match
   const exactResults = treatmentSlug
     ? beforeAfterResults.filter((r) => r.treatmentSlug === treatmentSlug)
     : beforeAfterResults;
@@ -29,8 +30,6 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
   let results = exactResults;
   let isFallback = false;
 
-  // Tier 2: same-category fallback, only if no exact matches and a
-  // treatmentSlug was actually passed (unfiltered usage skips this entirely)
   if (treatmentSlug && exactResults.length === 0) {
     const currentTreatment = treatments.find((tr) => tr.slug === treatmentSlug);
     if (currentTreatment) {
@@ -57,6 +56,33 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
     page * CARDS_PER_PAGE + CARDS_PER_PAGE,
   );
 
+  // Track which card is centered in the mobile carousel as the user swipes
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    function handleScroll() {
+      if (!el) return;
+      const cardWidth = el.firstElementChild
+        ? (el.firstElementChild as HTMLElement).offsetWidth + 16 // + gap
+        : 1;
+      const index = Math.round(el.scrollLeft / cardWidth);
+      setMobileIndex(Math.min(index, results.length - 1));
+    }
+
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, [results.length]);
+
+  function scrollToCard(index: number) {
+    const el = carouselRef.current;
+    if (!el) return;
+    const card = el.children[index] as HTMLElement | undefined;
+    if (card) {
+      el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    }
+  }
+
   function getCategoryLabel(resultTreatmentSlug: string): string | null {
     const treatment = treatments.find((tr) => tr.slug === resultTreatmentSlug);
     if (!treatment) return null;
@@ -64,6 +90,38 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
       (c) => c.categorySlug === treatment.categorySlug,
     );
     return category?.title[locale] ?? null;
+  }
+
+  function renderCard(result: (typeof results)[number]) {
+    const categoryLabel = getCategoryLabel(result.treatmentSlug);
+    return (
+      <div key={result.id} className={`overflow-hidden ${cardBaseClasses}`}>
+        <div className="relative h-64 w-full">
+          <Image
+            src={result.image}
+            alt={result.title[locale]}
+            fill
+            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 25vw"
+            className="object-cover"
+          />
+        </div>
+
+        <div className="p-5">
+          <h3 className={cardHeadingClasses}>{result.title[locale]}</h3>
+          <div className={cardDividerClasses} />
+          <p className={CardDescriptionClasses}>{result.description[locale]}</p>
+
+          {categoryLabel && (
+            <>
+              <div className="mt-4 border-t border-border pt-3" />
+              <span className="font-body text-xs font-semibold uppercase tracking-wide text-secondary">
+                {categoryLabel}
+              </span>
+            </>
+          )}
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -83,49 +141,41 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
           subheading={isFallback ? t("subheadingFallback") : t("subheading")}
         />
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {visibleResults.map((result) => {
-            const categoryLabel = getCategoryLabel(result.treatmentSlug);
+        {/* Mobile: horizontal snap-scroll carousel, all results, no pagination */}
+        <div
+          ref={carouselRef}
+          className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {results.map((result) => (
+            <div key={result.id} className="w-[85%] shrink-0 snap-center">
+              {renderCard(result)}
+            </div>
+          ))}
+        </div>
 
-            return (
-              <div key={result.id} className={`overflow-hidden ${cardBaseClasses}`}>
-                <div className="relative h-64 w-full">
-                  <Image
-                    src={result.image}
-                    alt={result.title[locale]}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover"
-                  />
-                  {/* <span className="absolute start-3 top-3 rounded-full bg-white/95 px-3 py-1 font-body text-[10px] font-bold uppercase tracking-wide text-foreground">
-                    {t("beforeLabel")}
-                  </span>
-                  <span className="absolute end-3 top-3 rounded-full bg-white/95 px-3 py-1 font-body text-[10px] font-bold uppercase tracking-wide text-foreground">
-                    {t("afterLabel")}
-                  </span> */}
-                </div>
+        {/* Mobile carousel dots — driven by scroll position, not page state */}
+        {results.length > 1 && (
+          <div className="mt-6 flex justify-center gap-2 sm:hidden">
+            {results.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollToCard(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 rounded-full cursor-pointer transition-all ${
+                  mobileIndex === i ? "w-6 bg-primary" : "w-2 bg-border"
+                }`}
+              />
+            ))}
+          </div>
+        )}
 
-                <div className="p-5">
-                  <h3 className={cardHeadingClasses}>{result.title[locale]}</h3>
-                  <div className={cardDividerClasses} />
-                  <p className={CardDescriptionClasses}>{result.description[locale]}</p>
-
-                  {categoryLabel && (
-                    <>
-                      <div className="mt-4 border-t border-border pt-3" />
-                      <span className="font-body text-xs font-semibold uppercase tracking-wide text-secondary">
-                        {categoryLabel}
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        {/* Tablet/Desktop: existing paginated grid, unchanged */}
+        <div className="mt-12 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+          {visibleResults.map((result) => renderCard(result))}
         </div>
 
         {pageCount > 1 && (
-          <div className="mt-10 flex justify-center gap-2">
+          <div className="mt-10 hidden justify-center gap-2 sm:flex">
             {Array.from({ length: pageCount }).map((_, i) => (
               <button
                 key={i}

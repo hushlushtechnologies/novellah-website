@@ -89,6 +89,7 @@ export function BookingFormFields({
         buttonLabel={t("successBackHome")}
         buttonHref="/"
         footerNote={t("successFooterNote")}
+         imageSrc="/images/contact-success.png"
       />
     );
   }
