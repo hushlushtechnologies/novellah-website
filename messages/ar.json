@@ -9,16 +9,16 @@
   "loyaltyCard": "بطاقة الولاء",
   "contactUs": "اتصل بنا",
   "bookAppointment": "احجز موعدًا",
-  "viewAll": "عرض الكل",
-  
+  "viewAll": "عرض الكل"
+
+},
+
   "search": {
-    "label": "بحث عن العلاجات",
+    "label": "البحث عن العلاجات",
     "placeholder": "ابحث عن العلاجات...",
     "noResults": "لم يتم العثور على علاجات لـ \"{query}\"",
     "clear": "مسح البحث"
- 
-}
-},
+  },
  
 "home": {
   "eyebrow": "الجمال المتقدم. عناية مصممة خصيصًا لك.",
@@ -472,14 +472,14 @@
   "point3Desc": "نرد خلال 24 ساعة"
 },
 
-"contactForm": {
+ "contactForm": {
   "eyebrow": "تواصل معنا",
   "headingPrefix": "يسعدنا",
   "headingHighlight": "سماع رأيك",
   "subheading": "هل لديك سؤال، أو تحتاج إلى نصيحة من خبرائنا، أو ترغب في حجز استشارة؟ املأ النموذج وسيتواصل معك فريقنا في أقرب وقت.",
   "formTitle": "أرسل لنا رسالة",
   "fullNameLabel": "الاسم الكامل",
-  "fullNamePlaceholder": "أدخل اسمك",
+  "fullNamePlaceholder": "أدخل اسمك الكامل",
   "phoneLabel": "رقم الهاتف",
   "phonePlaceholder": "أدخل رقم هاتفك",
   "emailLabel": "البريد الإلكتروني",
@@ -493,6 +493,8 @@
   "ctaSend": "إرسال الرسالة",
   "sendNote": "يرد فريقنا عادةً خلال يوم عمل واحد.",
   "clinicInfoTitle": "معلومات العيادة",
+      "uaeLabel": "الإمارات",
+    "sriLankaLabel": "سريلانكا",
   "workingHoursTitle": "ساعات العمل",
   "socialMediaTitle": "وسائل التواصل الاجتماعي",
   "whatsappTitle": "الدردشة عبر واتساب",
@@ -501,13 +503,13 @@
   "consultationSubtext": "تحدث مع خبرائنا",
   "subjectGeneral": "استفسار عام",
   "subjectTreatment": "استفسار عن علاج",
-  "subjectAppointment": "طلب موعد",
+  "subjectAppointment": "حجز موعد",
   "subjectOther": "أخرى",
   "successHeading": "تم استلام رسالتك",
   "successLine1": "تم استلام رسالتك بنجاح.",
-  "successLine2": "سيقوم فريقنا المختص بمراجعة استفسارك والتواصل معك قريبًا لمساعدتك في بدء رحلتك الشخصية في الجمال والعناية بالبشرة.",
-  "successLine3": "شكرًا لاختيارك نوفيلاه ريستايل.",
-  "successBackHome": "العودة إلى الرئيسية",
+  "successLine2": "سيقوم فريقنا المختص بمراجعة استفسارك والتواصل معك قريبًا لمساعدتك في بدء رحلتك الشخصية نحو الجمال والعناية بالبشرة.",
+  "successLine3": "شكرًا لاختيارك نوفيلا ريستايل.",
+  "successBackHome": "العودة إلى الصفحة الرئيسية",
   "successFooterNote": "يرد فريقنا عادةً خلال يوم عمل واحد."
 },
 

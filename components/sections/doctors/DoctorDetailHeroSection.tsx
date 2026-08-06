@@ -68,7 +68,7 @@ export async function DoctorDetailHeroSection({
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
-              href="/book-appintment"
+              href="/book-appiontment"
               variant="solid"
               icon={<ArrowRight size={16} />}
               className="w-full justify-center sm:w-fit"

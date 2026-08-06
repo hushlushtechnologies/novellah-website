@@ -43,20 +43,20 @@ export async function AboutHeroSection() {
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <Button
-            href="/book-appintment"
+            href="/book-appointment"
             variant="solid"
             icon={<ArrowRight size={16} />}
             className="w-full justify-center sm:w-fit"
           >
             {t("ctaBook")}
           </Button>
-          <Button
-            href={siteConfig.whatsappHref}
-            variant="outline"
-    
-          >
-            {t("ctaWhatsapp")}
-          </Button>
+       <Button
+  href={siteConfig.whatsappHref}
+  variant="outline"
+  className="w-full justify-center sm:w-fit"
+>
+  {t("ctaWhatsapp")}
+</Button>
         </div>
       </div>
     </section>

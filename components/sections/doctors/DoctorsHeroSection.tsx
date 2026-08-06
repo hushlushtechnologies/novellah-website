@@ -20,7 +20,7 @@ export async function DoctorsHeroSection() {
 
       <div className="grid items-center gap-8 pt-8 sm:pt-10 lg:grid-cols-2 lg:gap-12 lg:pt-0">
         {/* Left: text — full padding until lg, start-only inset from lg up */}
-        <div className="relative z-10 px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-16 xl:pe-6">
+        <div className="relative z-10 px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-28 mb-3 xl:pe-6  ">
           <p className="font-body text-xs font-semibold uppercase tracking-[0.3em] text-secondary sm:text-sm">
             {t("eyebrow")}
           </p>
@@ -42,7 +42,7 @@ export async function DoctorsHeroSection() {
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
-              href="/book-appintment"
+              href="/book-appointment"
               variant="solid"
               icon={<ArrowRight size={16} />}
               className="w-full justify-center sm:w-fit"

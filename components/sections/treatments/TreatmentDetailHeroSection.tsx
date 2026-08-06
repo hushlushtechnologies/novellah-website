@@ -54,7 +54,7 @@ export async function TreatmentDetailHeroSection({
 
       <div className="grid flex-1 items-center gap-10 lg:grid-cols-2">
         {/* Left: text */}
-        <div className="relative z-10 px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-44 xl:pe-6">
+        <div className="relative mb-5 z-10 px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-44 xl:pe-6">
           <p className={`${heroEyebrowClasses} text-secondary`}>
             {categoryTitle}
           </p>

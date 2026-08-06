@@ -21,7 +21,7 @@ export async function OurStorySection() {
   const t = await getTranslations("ourStory");
 
   return (
-    <section className="relative overflow-hidden px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
+    <section id="our-story" className="relative overflow-hidden px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Left: framed image with quote overlay */}

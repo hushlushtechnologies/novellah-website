@@ -19,7 +19,7 @@ export async function LoyaltyHeroSection() {
       {/* Fade from solid white (text side) to transparent (photo side) */}
       <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent sm:via-white/70" />
 
-      <div className="relative flex min-h-[480px] items-center px-4 sm:min-h-[560px] sm:px-6 lg:min-h-[640px] lg:px-8">
+      <div className="relative flex min-h-[480px] items-center px-4 sm:min-h-[560px] sm:px-6 lg:min-h-[640px] lg:px-20">
         <div className="max-w-md lg:max-w-lg">
           <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-secondary sm:text-sm sm:tracking-[0.3em]">
             {t("eyebrow")}
@@ -47,7 +47,7 @@ export async function LoyaltyHeroSection() {
               {t("ctaContact")}
             </Button>
             <Button
-              href="/book-appintment"
+              href="/book-appointment"
               variant="outline"
               className="w-full justify-center sm:w-fit"
             >

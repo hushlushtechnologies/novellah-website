@@ -517,7 +517,7 @@
   },
  
  
-  "contactForm": {
+"contactForm": {
     "eyebrow": "Get In Touch",
     "headingPrefix": "We'd love to",
     "headingHighlight": "Hear from you",
@@ -538,6 +538,8 @@
     "ctaSend": "Send Message",
     "sendNote": "Our team typically responds within one business day",
     "clinicInfoTitle": "Clinic Information",
+    "uaeLabel": "UAE",
+    "sriLankaLabel": "Sri Lanka",
     "workingHoursTitle": "Working Hourse",
     "socialMediaTitle": "Social Media",
     "whatsappTitle": "Chat on WhatsApp",
@@ -549,11 +551,11 @@
     "subjectAppointment": "Appointment Request",
     "subjectOther": "Other",
     "successHeading": "Message Received",
-"successLine1": "Your message has been received successfully.",
-"successLine2": "Our specialists will carefully review your enquiry and contact you shortly to help you begin your personalized beauty and skincare experience.",
-"successLine3": "Thank you for choosing Novellah Restyle.",
-"successBackHome": "Back to Home",
-"successFooterNote": "Our team typically responds within one business day"
+    "successLine1": "Your message has been received successfully.",
+    "successLine2": "Our specialists will carefully review your enquiry and contact you shortly to help you begin your personalized beauty and skincare experience.",
+    "successLine3": "Thank you for choosing Novellah Restyle.",
+    "successBackHome": "Back to Home",
+    "successFooterNote": "Our team typically responds within one business day"
   },
  
   "bookingHero": {

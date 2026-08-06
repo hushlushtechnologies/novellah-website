@@ -19,7 +19,7 @@ export async function TreatmentsHeroSection() {
 
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent" />
 
-        <div className="relative flex h-full max-w-xl flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-12 lg:px-16">
+        <div className="relative flex h-full max-w-2xl  flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-12 lg:px-20 ">
           <p className="font-body text-xs font-semibold uppercase tracking-wider text-secondary sm:text-sm">
             {t("eyebrow")}
           </p>
@@ -49,7 +49,7 @@ export async function TreatmentsHeroSection() {
               {t("ctaExplore")}
             </Button>
             <Button
-              href="/book-appintment"
+              href="/book-appointment"
               variant="outline"
               className="w-full justify-center border-secondary bg-white/90 text-secondary sm:w-fit"
             >

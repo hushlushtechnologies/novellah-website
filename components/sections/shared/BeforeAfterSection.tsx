@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -56,7 +56,6 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
     page * CARDS_PER_PAGE + CARDS_PER_PAGE,
   );
 
-  // Track which card is centered in the mobile carousel as the user swipes
   useEffect(() => {
     const el = carouselRef.current;
     if (!el) return;
@@ -64,7 +63,7 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
     function handleScroll() {
       if (!el) return;
       const cardWidth = el.firstElementChild
-        ? (el.firstElementChild as HTMLElement).offsetWidth + 16 // + gap
+        ? (el.firstElementChild as HTMLElement).offsetWidth + 16
         : 1;
       const index = Math.round(el.scrollLeft / cardWidth);
       setMobileIndex(Math.min(index, results.length - 1));
@@ -94,27 +93,48 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
 
   function renderCard(result: (typeof results)[number]) {
     const categoryLabel = getCategoryLabel(result.treatmentSlug);
+
     return (
-      <div key={result.id} className={`overflow-hidden ${cardBaseClasses}`}>
-        <div className="relative h-64 w-full">
-          <Image
-            src={result.image}
-            alt={result.title[locale]}
-            fill
-            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover"
-          />
+      <div key={result.id} className={`flex h-full flex-col overflow-hidden ${cardBaseClasses}`}>
+        {/* Before / After image pair */}
+        <div className="grid grid-cols-2 gap-0.5">
+          <div className="relative h-48 w-full">
+            <Image
+              src={result.beforeImage}
+              alt={`${result.title[locale]} — ${t("beforeLabel")}`}
+              fill
+              sizes="(max-width: 640px) 42vw, (max-width: 1024px) 25vw, 12vw"
+              className="object-cover"
+            />
+            <span className="absolute start-2 top-2 rounded-full bg-white/95 px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wide text-primary">
+              {t("beforeLabel")}
+            </span>
+          </div>
+          <div className="relative h-48 w-full">
+            <Image
+              src={result.afterImage}
+              alt={`${result.title[locale]} — ${t("afterLabel")}`}
+              fill
+              sizes="(max-width: 640px) 42vw, (max-width: 1024px) 25vw, 12vw"
+              className="object-cover"
+            />
+            <span className="absolute end-2 top-2 rounded-full bg-white/95 px-2.5 py-1 font-body text-[10px] font-bold uppercase tracking-wide text-primary">
+              {t("afterLabel")}
+            </span>
+          </div>
         </div>
 
-        <div className="p-5">
+        <div className="flex flex-1 flex-col p-5">
           <h3 className={cardHeadingClasses}>{result.title[locale]}</h3>
           <div className={cardDividerClasses} />
-          <p className={CardDescriptionClasses}>{result.description[locale]}</p>
+          <p className={`${CardDescriptionClasses} pb-2 line-clamp-3`}>
+            {result.description[locale]}
+          </p>
 
           {categoryLabel && (
             <>
-              <div className="mt-4 border-t border-border pt-3" />
-              <span className="font-body text-xs font-semibold uppercase tracking-wide text-secondary">
+              <div className="mt-auto border-t border-border pt-3" />
+              <span className="mt-3 font-body text-xs font-semibold uppercase tracking-wide text-secondary">
                 {categoryLabel}
               </span>
             </>
@@ -141,7 +161,6 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
           subheading={isFallback ? t("subheadingFallback") : t("subheading")}
         />
 
-        {/* Mobile: horizontal snap-scroll carousel, all results, no pagination */}
         <div
           ref={carouselRef}
           className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -153,7 +172,6 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
           ))}
         </div>
 
-        {/* Mobile carousel dots — driven by scroll position, not page state */}
         {results.length > 1 && (
           <div className="mt-6 flex justify-center gap-2 sm:hidden">
             {results.map((_, i) => (
@@ -169,8 +187,7 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
           </div>
         )}
 
-        {/* Tablet/Desktop: existing paginated grid, unchanged */}
-        <div className="mt-12 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 hidden gap-6 sm:grid sm:grid-cols-2 sm:items-stretch lg:grid-cols-4">
           {visibleResults.map((result) => renderCard(result))}
         </div>
 

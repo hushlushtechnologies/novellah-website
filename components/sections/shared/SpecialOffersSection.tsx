@@ -26,7 +26,7 @@ export async function SpecialOffersSection() {
           }
           subheading={t("subheading")}
           ctaLabel={t("ctaViewAll")}
-          ctaHref="/special-offer"
+          // ctaHref="/special-offer"
         />
 
        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">

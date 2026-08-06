@@ -22,6 +22,7 @@ export function Navbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
+const tSearch = useTranslations("search");
 
   useEffect(() => {
     setMegaMenuOpen(false);
@@ -101,14 +102,14 @@ export function Navbar() {
         </nav>
 
  <div className="hidden items-center gap-3 lg:flex">
-          <button
-            ref={searchButtonRef}
-            aria-label="Search"
-            aria-expanded={searchOpen}
-            onClick={() => setSearchOpen((v) => !v)}
-            title="Search"
-            className="flex cursor-pointer h-9 w-9 items-center justify-center rounded-full bg-background text-primary"
-          >
+     <button
+  ref={searchButtonRef}
+  aria-label={tSearch("label")}
+  aria-expanded={searchOpen}
+  onClick={() => setSearchOpen((v) => !v)}
+  title={tSearch("label")}
+  className="flex cursor-pointer h-9 w-9 items-center justify-center rounded-full bg-background text-primary"
+>
             <Search size={16} />
           </button>
           <LocaleSwitcher />

@@ -38,7 +38,7 @@ export async function FinalCtaSection() {
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Button
-                href="/book-appintment"
+                href="/book-appointment"
                 variant="solid"
                 icon={<ArrowRight size={16} />}
                 className="w-full justify-center sm:w-fit"
@@ -61,7 +61,7 @@ export async function FinalCtaSection() {
         </div>
 
         {/* Newsletter */}
-        <div className="rounded-3xl border border-border bg-card p-6 sm:p-10">
+        {/* <div className="rounded-3xl border border-border bg-card p-6 sm:p-10">
           <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
             <div>
               <h3 className="font-heading font-extrabold text-2xl text-foreground sm:text-3xl">
@@ -81,7 +81,7 @@ export async function FinalCtaSection() {
               disclaimer={t("newsletterDisclaimer")}
             />
           </div>
-        </div>
+        </div> */}
 
         {/* Contact info strip */}
         <div className="rounded-3xl bg-drmsg px-6 py-8 sm:px-10">

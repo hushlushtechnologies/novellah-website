@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
@@ -28,7 +28,7 @@ export function FaqSection({ items }: FaqSectionProps) {
   return (
     <section className="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
       <DecorativeFlower position="top-left" size="lg" opacity={0.5} />
-       <DecorativeFlower position="top-right-half" size="lg" opacity={0.9} />
+      <DecorativeFlower position="top-right-half" size="lg" opacity={0.9} />
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow={t("eyebrow")}
@@ -43,16 +43,16 @@ export function FaqSection({ items }: FaqSectionProps) {
 
         <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-10 lg:grid-cols-[1fr_1.3fr] lg:gap-8">
           {/* Left: help card with contact options */}
-          <div className="relative overflow-hidden rounded-2xl bg-background-light p-4 sm:p-5">
+          <div className="relative overflow-hidden rounded-2xl bg-background-light p-5 sm:p-6 lg:p-5">
             <Image
               src="/images/decorative/faq-illustration.svg"
               alt=""
               fill
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 start-0 -z-0 h-full w-auto object-contain object-left-bottom opacity-90"
+              className="pointer-events-none absolute inset-y-0 start-0 -z-0 hidden h-full w-auto object-contain object-left-bottom opacity-90 lg:block"
             />
 
-            <div className="relative z-10 ms-auto max-w-[80%] sm:max-w-[85%] lg:mt-10   p-5  lg:space-y-5">
+            <div className="relative z-10 space-y-4 lg:ms-auto lg:mt-10 lg:max-w-[85%] lg:space-y-5">
               <div className="flex items-center gap-2">
                 <MessageCircle size={14} className="text-secondary" />
                 <p className="font-body text-xs font-bold uppercase tracking-wide text-secondary">
@@ -60,16 +60,16 @@ export function FaqSection({ items }: FaqSectionProps) {
                 </p>
               </div>
 
-              <h3 className="mt-2 font-heading text-2xl font-extrabold text-foreground">
+              <h3 className="font-heading text-2xl font-extrabold text-foreground">
                 {t("helpHeading")}
               </h3>
-              <p className="mt-1.5 font-body text-sm text-muted-foreground">
+              <p className="font-body text-sm text-muted-foreground">
                 {t("helpBody")}
               </p>
 
-              <div className="mt-4 divide-y divide-border rounded-xl border border-border bg-card">
-                <a
-                  href={siteConfig.whatsappHref}
+              <div className="divide-y divide-border rounded-xl border border-border bg-card">
+                
+               <a   href={siteConfig.whatsappHref}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 p-3"
@@ -88,8 +88,8 @@ export function FaqSection({ items }: FaqSectionProps) {
                   <ArrowRight size={14} className="text-primary" />
                 </a>
 
-                <a
-                  href="/book-appintment"
+                
+               <a   href="/book-appointment"
                   className="flex items-center gap-3 p-3"
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-secondary/40">
@@ -107,7 +107,7 @@ export function FaqSection({ items }: FaqSectionProps) {
                 </a>
               </div>
 
-              <div className="mt-3 flex items-center gap-3 bg-card p-3">
+              <div className="flex items-center gap-3 bg-card p-3">
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/40 bg-primary">
                   <ShieldCheck size={16} className="text-secondary" />
                 </span>
