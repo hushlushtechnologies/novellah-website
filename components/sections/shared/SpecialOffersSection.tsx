@@ -35,7 +35,7 @@ export async function SpecialOffersSection() {
     <Image src={featured.image} alt="" fill className="object-cover" />
 
     <Button
-      href={`/special-offer/${featured.slug}`}
+      href={`/book-appointment?offer=${featured.slug}`}
       variant="solid"
       icon={<ArrowRight size={16} />}
       className="absolute bottom-6 start-1/2 -translate-x-1/2 justify-center"
