@@ -1,4 +1,4 @@
-import type { Localized } from "@/lib/navigation";
+ import type { Localized } from "@/lib/navigation";
 
 export const siteConfig = {
   name: "Novellah Restyle",
@@ -16,10 +16,9 @@ export const siteConfig = {
     ar: "عيادة نوفيلاه ريستايل\nشارع الوصل، جميرا 1\nدبي، الإمارات العربية المتحدة",
   } as Localized,
   hours: {
-    weekdays: { en: "Monday - Saturday", ar: "الإثنين - السبت" } as Localized,
-    weekdaysTime: "10:00 AM - 08:00 PM",
-    weekend: { en: "Sunday", ar: "الأحد" } as Localized,
-    weekendTime: { en: "Closed", ar: "مغلق" } as Localized,
+    days: { en: "Monday - Sunday", ar: "الإثنين - الأحد" } as Localized,
+    time: "9:00 AM - 9:00 PM",
+    frequency: { en: "Every Week", ar: "كل أسبوع" } as Localized,
   },
   socials: {
     instagram: "https://instagram.com/novellahrestyle",

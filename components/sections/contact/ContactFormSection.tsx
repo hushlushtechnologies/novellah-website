@@ -31,7 +31,10 @@ export async function ContactFormSection() {
   const locale = (await getLocale()) as "en" | "ar";
 
   return (
-    <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20" dir="ltr">
+    <section
+      className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20"
+      dir="ltr"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow={t("eyebrow")}
@@ -47,29 +50,40 @@ export async function ContactFormSection() {
         <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* Left: form + map */}
           <div className="flex flex-col gap-6">
-            <ContactFormFields
-              formTitle={t("formTitle")}
-              fullNameLabel={t("fullNameLabel")}
-              fullNamePlaceholder={t("fullNamePlaceholder")}
-              phoneLabel={t("phoneLabel")}
-              phonePlaceholder={t("phonePlaceholder")}
-              emailLabel={t("emailLabel")}
-              emailPlaceholder={t("emailPlaceholder")}
-              subjectLabel={t("subjectLabel")}
-              subjectPlaceholder={t("subjectPlaceholder")}
-              contactMethodLabel={t("contactMethodLabel")}
-              contactMethodPlaceholder={t("contactMethodPlaceholder")}
-              messageTitle={t("messageTitle")}
-              messagePlaceholder={t("messagePlaceholder")}
-              ctaSend={t("ctaSend")}
-              sendNote={t("sendNote")}
-              subjectOptions={[
-                t("subjectGeneral"),
-                t("subjectTreatment"),
-                t("subjectAppointment"),
-                t("subjectOther"),
-              ]}
-            />
+           <ContactFormFields
+  formTitle={t("formTitle")}
+
+  firstNameLabel={t("firstNameLabel")}
+  firstNamePlaceholder={t("firstNamePlaceholder")}
+
+  lastNameLabel={t("lastNameLabel")}
+  lastNamePlaceholder={t("lastNamePlaceholder")}
+
+  phoneLabel={t("phoneLabel")}
+  phonePlaceholder={t("phonePlaceholder")}
+
+  emailLabel={t("emailLabel")}
+  emailPlaceholder={t("emailPlaceholder")}
+
+  subjectLabel={t("subjectLabel")}
+  subjectPlaceholder={t("subjectPlaceholder")}
+
+  contactMethodLabel={t("contactMethodLabel")}
+  contactMethodPlaceholder={t("contactMethodPlaceholder")}
+
+  messageTitle={t("messageTitle")}
+  messagePlaceholder={t("messagePlaceholder")}
+
+  ctaSend={t("ctaSend")}
+  sendNote={t("sendNote")}
+
+  subjectOptions={[
+    t("subjectGeneral"),
+    t("subjectTreatment"),
+    t("subjectAppointment"),
+    t("subjectOther"),
+  ]}
+/>
 
             <div className="relative h-64 w-full overflow-hidden rounded-2xl border border-border">
               <iframe
@@ -157,25 +171,17 @@ export async function ContactFormSection() {
                 </h3>
               </div>
 
-              <div className="mt-3 grid grid-cols-2 gap-4 border-b border-border pb-4">
-                <div>
-                  <p className="font-body text-sm text-foreground">
-                    {siteConfig.hours.weekdays[locale]}
-                  </p>
-                  <p className="mt-1 font-body text-sm text-muted-foreground">
-                    {siteConfig.hours.weekdaysTime}
-                  </p>
-                </div>
-                <div>
-                  <p className="font-body text-sm text-foreground">
-                    {siteConfig.hours.weekend[locale]}
-                  </p>
-                  <p className="mt-1 font-body text-sm text-muted-foreground">
-                    {siteConfig.hours.weekendTime[locale]}
-                  </p>
-                </div>
+              <div className="mt-3 border-b border-border pb-4">
+                <p className="font-body text-sm text-foreground">
+                  {siteConfig.hours.days[locale]}
+                </p>
+                <p className="mt-1 font-body text-sm text-muted-foreground">
+                  {siteConfig.hours.time}
+                </p>
+                <p className="mt-1 font-body text-sm text-muted-foreground">
+                  {siteConfig.hours.frequency[locale]}
+                </p>
               </div>
-
               <div className="mt-4 flex items-center gap-2">
                 <ShareIcon size={16} className="text-secondary" />
                 <h3 className="font-body text-sm font-bold uppercase tracking-wide text-primary">

@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import {
   useRef,
@@ -9,12 +9,18 @@ import {
 } from "react";
 import emailjs from "@emailjs/browser";
 import { useLocale, useTranslations } from "next-intl";
+import PhoneInput, {
+  isValidPhoneNumber,
+  parsePhoneNumber,
+} from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import {
-  User, Phone, Mail, Grape, UserRound, CalendarDays, Send,
-  ArrowRight, ShieldCheck, Loader2, AlertCircle, ChevronDown, Check,
+  User, Mail, Grape, UserRound, CalendarDays, Send,
+  ArrowRight, ShieldCheck, Loader2, AlertCircle, ChevronDown, Check, Sparkles 
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FormSuccessState } from "@/components/ui/FormSuccessState";
+import { DateField } from "@/components/ui/DateField";
 import { treatmentsMegaMenu } from "@/lib/navigation";
 import { doctors } from "@/lib/content/doctors";
 
@@ -41,10 +47,26 @@ interface BookingFormFieldsProps {
 
 type SubmitStatus = "idle" | "sending" | "success" | "error";
 
-// Strips spaces/dashes/parens for readability, then requires exactly 10 digits
-function isValidPhone(value: string): boolean {
-  const digitsOnly = value.replace(/[\s\-()]/g, "");
-  return /^[0-9]{10}$/.test(digitsOnly);
+// Phone: must pass the library's per-country shape check AND resolve to a
+// national number that isn't an obvious placeholder/test pattern.
+// Same logic as the contact form's isValidPhone.
+function isValidPhone(value?: string): boolean {
+  if (!value) return false;
+
+  if (!isValidPhoneNumber(value)) return false;
+
+  const parsed = parsePhoneNumber(value);
+  if (!parsed) return false;
+
+  const national = parsed.nationalNumber;
+
+  // reject numbers where every digit is identical, e.g. 1111111111
+  if (/^(\d)\1+$/.test(national)) return false;
+
+  // reject the two most common "fake" sequential numbers
+  if (national === "1234567890" || national === "0123456789") return false;
+
+  return true;
 }
 
 // Standard-shape email check
@@ -201,7 +223,8 @@ export function BookingFormFields({
   const [name, setName] = useState("");
   const [nameError, setNameError] = useState("");
 
-  const [phone, setPhone] = useState("");
+  // react-phone-number-input stores the value in E.164 format, e.g. "+9715xxxxxxxx"
+  const [phone, setPhone] = useState<string | undefined>(undefined);
   const [phoneError, setPhoneError] = useState("");
 
   const [email, setEmail] = useState("");
@@ -234,13 +257,12 @@ export function BookingFormFields({
     setNameError(name !== "" && !isValidName(name) ? t("nameInvalid") : "");
   }
 
-  function handlePhoneChange(e: ChangeEvent<HTMLInputElement>) {
-    const value = e.target.value;
+  function handlePhoneChange(value?: string) {
     setPhone(value);
-    if (phoneError && (value === "" || isValidPhone(value))) setPhoneError("");
+    if (phoneError && isValidPhone(value)) setPhoneError("");
   }
   function handlePhoneBlur() {
-    setPhoneError(phone !== "" && !isValidPhone(phone) ? t("phoneInvalid") : "");
+    setPhoneError(phone && !isValidPhone(phone) ? t("phoneInvalid") : "");
   }
 
   function handleEmailChange(e: ChangeEvent<HTMLInputElement>) {
@@ -252,9 +274,9 @@ export function BookingFormFields({
     setEmailError(email !== "" && !isValidEmail(email) ? t("emailInvalid") : "");
   }
 
-  function handleDateChange(e: ChangeEvent<HTMLInputElement>) {
-    setDate(e.target.value);
-    if (dateError && e.target.value !== "") setDateError("");
+  function handleDateChange(value: string) {
+    setDate(value);
+    if (dateError && value !== "") setDateError("");
   }
   function handleDateBlur() {
     setDateError(date === "" ? t("dateRequired") : "");
@@ -306,7 +328,7 @@ export function BookingFormFields({
       formRef.current.reset();
       setName("");
       setNameError("");
-      setPhone("");
+      setPhone(undefined);
       setPhoneError("");
       setEmail("");
       setEmailError("");
@@ -378,21 +400,22 @@ export function BookingFormFields({
           <label className="font-body text-sm text-foreground">
             {phoneLabel} <span className="text-primary">*</span>
           </label>
-          <div className="relative mt-2">
-            <input
+          <div className="mt-2">
+            <PhoneInput
               name="user_phone"
-              required
-              type="tel"
-              inputMode="numeric"
-              maxLength={12}
+              international
+              defaultCountry="AE"
               value={phone}
               onChange={handlePhoneChange}
               onBlur={handlePhoneBlur}
               placeholder={phonePlaceholder}
               aria-invalid={phoneError !== ""}
-              className={`${inputClasses} ${phoneError ? "border-red-400 focus:border-red-500" : ""}`}
+              className={`phone-input-field flex w-full items-center rounded-xl border bg-white py-3 ps-4 pe-4 font-body text-sm outline-none transition-colors ${
+                phoneError
+                  ? "border-red-400"
+                  : "border-border focus-within:border-primary"
+              } [&_.PhoneInputInput]:border-0 [&_.PhoneInputInput]:bg-transparent [&_.PhoneInputInput]:p-0 [&_.PhoneInputInput]:font-body [&_.PhoneInputInput]:text-sm [&_.PhoneInputInput]:text-foreground [&_.PhoneInputInput]:outline-none [&_.PhoneInputCountry]:me-3`}
             />
-            <Phone size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
           </div>
           {phoneError && (
             <p className="mt-1.5 flex items-center gap-1.5 font-body text-xs text-red-600">
@@ -452,7 +475,7 @@ export function BookingFormFields({
               }}
               options={treatmentOptions}
               placeholder={treatmentPlaceholder}
-              icon={<Grape size={16} />}
+              icon={<Sparkles  size={16} />}
               required
               hasError={treatmentError !== ""}
             />
@@ -496,23 +519,15 @@ export function BookingFormFields({
           <label className="font-body text-sm text-foreground">
             {dateLabel} <span className="text-primary">*</span>
           </label>
-          <div className="relative mt-2">
-            <input
+          <div className="mt-2">
+            <DateField
               name="appointment_date"
-              required
-              type="date"
-              min={new Date().toISOString().split("T")[0]}
               value={date}
               onChange={handleDateChange}
               onBlur={handleDateBlur}
-              aria-invalid={dateError !== ""}
-              className={`${inputClasses} ps-10 ${
-                date === "" ? "text-muted-foreground" : "text-foreground"
-              } ${dateError ? "border-red-400 focus:border-red-500" : ""}`}
-            />
-            <CalendarDays
-              size={16}
-              className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-secondary"
+              placeholder="Choose a date"
+              required
+              error={dateError !== ""}
             />
           </div>
           {dateError && (

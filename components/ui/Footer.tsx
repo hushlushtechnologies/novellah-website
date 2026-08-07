@@ -120,18 +120,18 @@ export async function Footer() {
                 fill="currentColor"
               />
             </div>
-    <ul className="space-y-3">
-  {treatmentsMegaMenu.map((category) => (
-    <li key={category.categorySlug}>
-      <Link
-        href={`/treatments?category=${category.categorySlug}#next-section`}
-        className="font-body text-sm text-white/80 transition-colors hover:text-white"
-      >
-        {category.title[locale]}
-      </Link>
-    </li>
-  ))}
-</ul>
+            <ul className="space-y-3">
+              {treatmentsMegaMenu.map((category) => (
+                <li key={category.categorySlug}>
+                  <Link
+                    href={`/treatments?category=${category.categorySlug}#next-section`}
+                    className="font-body text-sm text-white/80 transition-colors hover:text-white"
+                  >
+                    {category.title[locale]}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Customer Care */}
@@ -156,14 +156,14 @@ export async function Footer() {
                   {t("careBookAppointment")}
                 </a>
               </li>
-         <li>
-  <Link
-    href="/contact-us#faq"
-    className="font-body text-sm text-white/80 hover:text-white"
-  >
-    {t("careFaqs")}
-  </Link>
-</li>
+              <li>
+                <Link
+                  href="/contact-us#faq"
+                  className="font-body text-sm text-white/80 hover:text-white"
+                >
+                  {t("careFaqs")}
+                </Link>
+              </li>
               <li>
                 <a
                   href="/contact-us"
@@ -217,22 +217,25 @@ export async function Footer() {
               {t("ctaWhatsapp")}
             </a>
 
-            <div className="mt-6 flex items-start gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/40">
-                <Clock size={16} className="text-secondary" />
-              </span>
-              <div>
-                <p className="font-body text-xs uppercase tracking-wide text-white/50">
-                  {t("hoursLabel")}
-                </p>
-                <p className="font-body text-sm font-semibold text-white">
-                  {t("hours")}
-                </p>
-                <p className="font-body text-sm font-semibold text-white">
-                  {t("hoursSubtext")}
-                </p>
-              </div>
-            </div>
+  <div className="mt-6 flex items-start gap-3">
+  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-secondary/40">
+    <Clock size={16} className="text-secondary" />
+  </span>
+  <div>
+    <p className="font-body text-xs uppercase tracking-wide text-white/50">
+      {t("hoursLabel")}
+    </p>
+    <p className="font-body text-sm font-semibold text-white">
+      {siteConfig.hours.days[locale]}
+    </p>
+    <p className="font-body text-sm font-semibold text-white">
+      {siteConfig.hours.time}
+    </p>
+    <p className="font-body text-sm font-semibold text-white">
+      {siteConfig.hours.frequency[locale]}
+    </p>
+  </div>
+</div>
           </div>
         </div>
 

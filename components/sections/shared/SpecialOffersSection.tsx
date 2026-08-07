@@ -14,8 +14,9 @@ export async function SpecialOffersSection() {
 
   return (
     <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-           <DecorativeFlower position="top-left" size="lg" opacity={0.9} />
-              <DecorativeFlower position="top-right-half" size="lg" opacity={0.9} />
+      <DecorativeFlower position="top-left" size="lg" opacity={0.9} />
+      <DecorativeFlower position="top-right-half" size="lg" opacity={0.9} />
+
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow={t("eyebrow")}
@@ -26,64 +27,61 @@ export async function SpecialOffersSection() {
           }
           subheading={t("subheading")}
           ctaLabel={t("ctaViewAll")}
-          // ctaHref="/special-offer"
+          ctaHref="/special-offer"
         />
 
-       <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
-  {/* Featured large card */}
-  <div className="relative h-[420px] overflow-hidden rounded-2xl sm:h-[500px]">
-    <Image src={featured.image} alt="" fill className="object-cover" />
+        <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+          {/* Featured large card */}
+          <div className="relative h-[420px] overflow-hidden rounded-2xl sm:h-[500px]">
+            <Image
+              src={featured.image}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              priority
+            />
 
-    <Button
-      href={`/book-appointment?offer=${featured.slug}`}
-      variant="solid"
-      icon={<ArrowRight size={16} />}
-      className="absolute bottom-6 start-1/2 -translate-x-1/2 justify-center"
-    >
-      {t("ctaBookNow")}
-    </Button>
-  </div>
+            <div className="absolute bottom-6 start-1/2 -translate-x-1/2 sm:bottom-8">
+              <Button
+                href={`/book-appointment?offer=${featured.slug}`}
+                variant="solid"
+                icon={<ArrowRight size={16} />}
+              >
+                {t("ctaBookNow")}
+              </Button>
+            </div>
+          </div>
 
-  {/* 2x2 grid of smaller cards */}
-  <div className="grid grid-cols-2 gap-6">
-    {/* {rest.map((offer) => (
-      <div
-        key={offer.slug}
-        className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[237px]"
-      >
-        <Image src={offer.image} alt="" fill className="object-cover" />
+          {/* 2x2 grid of smaller cards */}
+          <div className="grid grid-cols-2 gap-6">
+            {rest.map((offer) => (
+              <div
+                key={offer.slug}
+                className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[237px]"
+              >
+                <Image
+                  src={offer.image}
+                  alt=""
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 25vw, 50vw"
+                />
 
-        <Button
-          href={`/special-offer/${offer.slug}`}
-          variant="solid"
-          icon={<ArrowRight size={14} />}
-          className="absolute bottom-4 start-1/2 -translate-x-1/2 justify-center"
-        >
-          {t("ctaBookNow")}
-        </Button>
-      </div>
-    ))} */}
-
-    {rest.map((offer) => (
-  <div
-    key={offer.slug}
-    className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[237px]"
-  >
-    <Image src={offer.image} alt="" fill className="object-fill" />
-
-    <Button
-      href={`/special-offer/${offer.slug}`}
-      variant="solid"
-      size="sm"
-      icon={<ArrowRight size={12} className="shrink-0" />}
-      className="absolute bottom-3 start-1/2 -translate-x-1/2 justify-center px-4 sm:bottom-4"
-    >
-      {t("ctaBookNow")}
-    </Button>
-  </div>
-))}
-  </div>
-</div>
+                <div className="absolute bottom-4 start-1/2 -translate-x-1/2 sm:bottom-5">
+                  <Button
+                    href={`/special-offer/${offer.slug}`}
+                    variant="solid"
+                    size="sm"
+                    icon={<ArrowRight size={14} />}
+                  >
+                    {t("ctaBookNow")}
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
