@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { DecorativeFlower } from "@/components/ui/DecorativeFlower";
@@ -25,27 +25,27 @@ interface OffersHeroContentProps {
   badge2Line4: string;
 }
 
-const textContainer = {
+const textContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-const revealUp = {
+const revealUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const collageContainer = {
+const collageContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.25 } },
 };
 
-const mainPhoto = {
+const mainPhoto: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const badgePop = {
+const badgePop: Variants = {
   hidden: { opacity: 0, scale: 0.6 },
   visible: {
     opacity: 1,
@@ -54,7 +54,7 @@ const badgePop = {
   },
 };
 
-const sidePhoto = {
+const sidePhoto: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };

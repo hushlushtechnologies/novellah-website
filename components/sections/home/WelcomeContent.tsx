@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import {
@@ -35,22 +35,22 @@ interface WelcomeContentProps {
   stats: Stat[];
 }
 
-const textContainer = {
+const textContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.14, delayChildren: 0.05 } },
 };
 
-const revealUp = {
+const revealUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const featureGrid = {
+const featureGrid: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
 };
 
-const featureCard = {
+const featureCard: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };

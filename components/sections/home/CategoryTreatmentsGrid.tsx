@@ -1,7 +1,7 @@
-"use client";
+ "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import {
   cardBaseClasses,
@@ -22,12 +22,12 @@ interface CategoryTreatmentsGridProps {
   ctaExplore: string;
 }
 
-const gridContainer = {
+const gridContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-const cardReveal = {
+const cardReveal: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };

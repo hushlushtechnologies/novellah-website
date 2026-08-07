@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Quote, Sparkle } from "lucide-react";
 import { sectionEyebrowClasses, sectionHeadingClasses } from "@/lib/styles";
 
@@ -31,27 +31,27 @@ interface BrandStoryContentProps {
   bannerSubtext: string;
 }
 
-const revealUp = {
+const revealUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const trioContainer = {
+const trioContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
 };
 
-const trioColumn = {
+const trioColumn: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
 };
 
-const imageScaleIn = {
+const imageScaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.94 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const ceoTextContainer = {
+const ceoTextContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.15, delayChildren: 0.1 } },
 };

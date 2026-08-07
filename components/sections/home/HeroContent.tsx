@@ -2,7 +2,7 @@
 
 import { ReactNode, useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { ArrowRight, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { heroDescriptionClasses, heroEyebrowClasses, heroHeadingClasses } from "@/lib/styles";
@@ -20,12 +20,12 @@ interface HeroContentProps {
   watchGalleryButton: ReactNode;
 }
 
-const container = {
+const container: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.14, delayChildren: 0.1 } },
 };
 
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };

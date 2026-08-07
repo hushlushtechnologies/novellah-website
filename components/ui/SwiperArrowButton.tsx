@@ -1,4 +1,5 @@
-// Small reusable nav-arrow button so mobile/desktop stay in sync visually
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 function SwiperArrowButton({
   direction,
   onClick,

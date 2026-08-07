@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowRight, Sparkle, UserCheck, HeartHandshake, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { DecorativeFlower } from "@/components/ui/DecorativeFlower";
@@ -31,22 +31,22 @@ interface DoctorsHeroContentProps {
   points: Point[];
 }
 
-const textContainer = {
+const textContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-const revealUp = {
+const revealUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const pointsGrid = {
+const pointsGrid: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
-const pointItem = {
+const pointItem: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };

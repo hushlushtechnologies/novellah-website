@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Quote, Sparkle } from "lucide-react";
 
 interface Point {
@@ -20,27 +20,27 @@ interface WhatIsRewardsContentProps {
   points: Point[];
 }
 
-const imageScaleIn = {
+const imageScaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.94 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const textContainer = {
+const textContainer: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-const revealUp = {
+const revealUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-const pointsGrid = {
+const pointsGrid: Variants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
-const pointItem = {
+const pointItem: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
