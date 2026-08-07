@@ -1,4 +1,6 @@
-"use client";
+ "use client";
+
+import { motion } from "framer-motion";
 
 interface TabItem {
   id: string;
@@ -20,7 +22,7 @@ export function CategoryTabs({
 }: CategoryTabsProps) {
   return (
     <div
-       className={`mx-auto w-fit max-w-full rounded-2xl border border-border bg-card p-2 ${className}`}
+      className={`mx-auto w-fit max-w-full rounded-2xl border border-border bg-card p-2 ${className}`}
     >
       <div
         className="
@@ -30,21 +32,30 @@ export function CategoryTabs({
           sm:flex-wrap sm:justify-center sm:overflow-visible sm:snap-none
         "
       >
-        {items.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => onChange(item.id)}
-            className={`shrink-0 cursor-pointer snap-start whitespace-nowrap rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${
-              activeId === item.id
-                ? "bg-gradient-primary text-white"
-                : "text-foreground hover:bg-background-light"
-            }`}
-          >
-            {item.label}
-          </button>
-        ))}
+        {items.map((item) => {
+          const isActive = activeId === item.id;
+          return (
+            <motion.button
+              key={item.id}
+              type="button"
+              onClick={() => onChange(item.id)}
+              whileTap={{ scale: 0.95 }}
+              className={`relative shrink-0 cursor-pointer snap-start whitespace-nowrap rounded-full px-3 py-1.5 font-body text-xs font-medium transition-colors sm:px-4 sm:py-2 sm:text-sm ${
+                isActive ? "text-white" : "text-foreground hover:bg-background-light"
+              }`}
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="category-tab-active-pill"
+                  className="absolute inset-0 rounded-full bg-gradient-primary"
+                  transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                />
+              )}
+              <span className="relative z-10">{item.label}</span>
+            </motion.button>
+          );
+        })}
       </div>
     </div>
   );
-}  
+}

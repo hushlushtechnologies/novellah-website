@@ -98,7 +98,6 @@
     "ctaExplore": "Explore Treatments"
   }
  ,
- 
  "signatureTreatments": {
     "eyebrow": "Signature Treatments",
     "headingLine1": "Our Most",
@@ -114,9 +113,10 @@
     "trust3Title": "Personalized Care",
     "trust3Desc": "Tailored Treatments for unique you",
     "trust4Title": "Premium Experience",
-    "trust4Desc": "Luxury Care in a relaxing environment"
+    "trust4Desc": "Luxury Care in a relaxing environment",
+    "prevSlide": "Previous",
+    "nextSlide": "Next"
   },
-
  
   "technologyMeetsBeauty": {
     "eyebrow": "Technology Meets Beauty",

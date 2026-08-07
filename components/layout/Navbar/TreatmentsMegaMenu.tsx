@@ -18,7 +18,7 @@ export function TreatmentsMegaMenu() {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
 
   return (
-    <div className="absolute inset-x-0 top-full z-50 border-t border-border bg-white shadow-card">
+    <div className="border-t border-border bg-white shadow-card">
       <div className="mx-auto grid max-w-7xl grid-cols-[500px_1fr] gap-10 px-4 py-10 sm:px-6 lg:px-8">
         {/* Left: promo + quick links — unchanged */}
         <div className="space-y-6">

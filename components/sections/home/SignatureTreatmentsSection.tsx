@@ -4,8 +4,9 @@ import { useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { treatmentsMegaMenu } from "@/lib/navigation";
 import { treatments } from "@/lib/content/treatments";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -14,6 +15,7 @@ import { TreatmentCard } from "@/components/ui/TreatmentCard";
 import { CategoryTabs } from "@/components/ui/CategoryTabs";
 
 import "swiper/css";
+import "swiper/css/navigation";
 
 const trustPoints = [
   {
@@ -38,6 +40,32 @@ const trustPoints = [
   },
 ] as const;
 
+// Reusable nav-arrow button — refCallback wires it into Swiper's
+// navigation.prevEl/nextEl via onBeforeInit below.
+function SwiperArrowButton({
+  direction,
+  refCallback,
+  ariaLabel,
+  className = "",
+}: {
+  direction: "prev" | "next";
+  refCallback: (el: HTMLButtonElement | null) => void;
+  ariaLabel: string;
+  className?: string;
+}) {
+  const Icon = direction === "prev" ? ChevronLeft : ChevronRight;
+  return (
+    <button
+      ref={refCallback}
+      type="button"
+      aria-label={ariaLabel}
+      className={`flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-border bg-card text-foreground shadow-soft transition-colors hover:border-primary hover:text-primary disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
+    >
+      <Icon className="h-5 w-5" />
+    </button>
+  );
+}
+
 export function SignatureTreatmentsSection() {
   const t = useTranslations("signatureTreatments");
   const locale = useLocale() as "en" | "ar";
@@ -48,6 +76,12 @@ export function SignatureTreatmentsSection() {
   const mobileSwiperRef = useRef<SwiperType | null>(null);
   const desktopSwiperRef = useRef<SwiperType | null>(null);
 
+  // Nav button DOM refs — handed to Swiper's navigation config on init
+  const mobilePrevRef = useRef<HTMLButtonElement | null>(null);
+  const mobileNextRef = useRef<HTMLButtonElement | null>(null);
+  const desktopPrevRef = useRef<HTMLButtonElement | null>(null);
+  const desktopNextRef = useRef<HTMLButtonElement | null>(null);
+
   const categoryTabs = treatmentsMegaMenu.map((category) => ({
     id: category.categorySlug,
     label: category.title[locale],
@@ -57,6 +91,14 @@ export function SignatureTreatmentsSection() {
     (tr) => tr.categorySlug === activeCategory,
   );
   const desktopDotCount = Math.max(1, Math.ceil(categoryTreatments.length / 4));
+
+  const showMobileArrows = categoryTreatments.length > 1;
+  const showDesktopArrows = categoryTreatments.length > 4;
+
+  // t() throws on a missing key rather than returning undefined, so a
+  // `?? "fallback"` never actually protects you — use t.has() instead.
+  const prevLabel = t.has("prevSlide") ? t("prevSlide") : "Previous";
+  const nextLabel = t.has("nextSlide") ? t("nextSlide") : "Next";
 
   function selectCategory(slug: string) {
     setActiveCategory(slug);
@@ -114,20 +156,36 @@ export function SignatureTreatmentsSection() {
           onChange={selectCategory}
         />
 
-        {/* Mobile: one-card-at-a-time swiper with autoplay */}
+        {/* Mobile: one-card-at-a-time swiper with autoplay + arrows below */}
         <div className="mt-10 sm:hidden">
           <Swiper
             key={`mobile-${activeCategory}`}
             dir={locale === "ar" ? "rtl" : "ltr"}
-            modules={[Autoplay]}
+            modules={[Autoplay, Navigation]}
             slidesPerView={1.15}
             spaceBetween={16}
-            loop={categoryTreatments.length > 1}
+            // loop={categoryTreatments.length > 1}
+            loop={false}
             autoplay={
               categoryTreatments.length > 1
                 ? { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true }
                 : false
             }
+            navigation={
+              showMobileArrows
+                ? { prevEl: mobilePrevRef.current, nextEl: mobileNextRef.current }
+                : false
+            }
+            onBeforeInit={(swiper) => {
+              if (
+                showMobileArrows &&
+                typeof swiper.params.navigation !== "boolean" &&
+                swiper.params.navigation
+              ) {
+                swiper.params.navigation.prevEl = mobilePrevRef.current;
+                swiper.params.navigation.nextEl = mobileNextRef.current;
+              }
+            }}
             onSwiper={(swiper) => {
               mobileSwiperRef.current = swiper;
             }}
@@ -144,26 +202,61 @@ export function SignatureTreatmentsSection() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {showMobileArrows && (
+            <div className="mt-6 flex justify-center gap-3">
+              <SwiperArrowButton
+                direction="prev"
+                refCallback={(el) => {
+                  mobilePrevRef.current = el;
+                }}
+                ariaLabel={prevLabel}
+              />
+              <SwiperArrowButton
+                direction="next"
+                refCallback={(el) => {
+                  mobileNextRef.current = el;
+                }}
+                ariaLabel={nextLabel}
+              />
+            </div>
+          )}
         </div>
 
-        {/* Tablet/desktop: page-at-a-time swiper with autoplay */}
-        <div className="mt-10 hidden sm:block">
+        {/* Tablet/desktop: page-at-a-time swiper with autoplay + overlaid arrows */}
+        <div className="relative mt-10 hidden sm:block">
           <Swiper
             key={`desktop-${activeCategory}`}
             dir={locale === "ar" ? "rtl" : "ltr"}
-            modules={[Autoplay]}
+            modules={[Autoplay, Navigation]}
             slidesPerGroup={4}
             spaceBetween={24}
             breakpoints={{
               640: { slidesPerView: 2 },
               1024: { slidesPerView: 4 },
             }}
-            loop={categoryTreatments.length > 4}
+            // loop={categoryTreatments.length > 4}
+            loop={false}
             autoplay={
               categoryTreatments.length > 4
                 ? { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }
                 : false
             }
+            navigation={
+              showDesktopArrows
+                ? { prevEl: desktopPrevRef.current, nextEl: desktopNextRef.current }
+                : false
+            }
+            onBeforeInit={(swiper) => {
+              if (
+                showDesktopArrows &&
+                typeof swiper.params.navigation !== "boolean" &&
+                swiper.params.navigation
+              ) {
+                swiper.params.navigation.prevEl = desktopPrevRef.current;
+                swiper.params.navigation.nextEl = desktopNextRef.current;
+              }
+            }}
             onSwiper={(swiper) => {
               desktopSwiperRef.current = swiper;
             }}
@@ -184,6 +277,27 @@ export function SignatureTreatmentsSection() {
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {showDesktopArrows && (
+            <>
+              <SwiperArrowButton
+                direction="prev"
+                refCallback={(el) => {
+                  desktopPrevRef.current = el;
+                }}
+                ariaLabel={prevLabel}
+                className="absolute top-1/2 -left-5 z-10 -translate-y-1/2 rtl:right-[-1.25rem] rtl:left-auto"
+              />
+              <SwiperArrowButton
+                direction="next"
+                refCallback={(el) => {
+                  desktopNextRef.current = el;
+                }}
+                ariaLabel={nextLabel}
+                className="absolute top-1/2 -right-5 z-10 -translate-y-1/2 rtl:left-[-1.25rem] rtl:right-auto"
+              />
+            </>
+          )}
         </div>
 
         {/* Pagination dots — desktop/tablet only, hidden on mobile */}

@@ -6,6 +6,7 @@ interface BaseProps {
   variant?: "primary" | "solid" | "secondary" | "outline";
   size?: "md" | "sm";
   icon?: ReactNode;
+  shine?: boolean;
   className?: string;
 }
 
@@ -39,31 +40,45 @@ export function Button({
   variant = "primary",
   size = "md",
   icon,
+  shine = true,
   className = "",
   href,
   ...props
 }: ButtonProps) {
-  const classes = `inline-flex w-fit max-w-full items-center whitespace-nowrap rounded-md font-body font-medium
+  const classes = `group relative inline-flex w-fit max-w-full items-center whitespace-nowrap rounded-md font-body font-medium
   shadow-soft uppercase
   transition-all duration-300 ease-out
   hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-hover
   active:translate-y-0 active:scale-[0.98]
   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
+  ${shine ? "overflow-hidden" : ""}
   ${sizes[size]} ${variants[variant]} ${className}`;
+
+  const content = (
+    <>
+      {children}
+      {icon && (
+        <span className="inline-flex transition-transform duration-300 group-hover:translate-x-1">
+          {icon}
+        </span>
+      )}
+      {shine && (
+        <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      )}
+    </>
+  );
 
   if (href) {
     return (
       <Link href={href} className={classes} {...(props as { onClick?: () => void })}>
-        {children}
-        {icon}
+        {content}
       </Link>
     );
   }
 
   return (
     <button className={classes} {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}>
-      {children}
-      {icon}
+      {content}
     </button>
   );
 }
