@@ -1,6 +1,6 @@
  "use client";
 
-import { motion, easeOut, type Variants } from "framer-motion";
+import { motion, easeOut, type Variants } from "motion/react";
 import { ArrowRight, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { DecorativeFlower } from "@/components/ui/DecorativeFlower";
