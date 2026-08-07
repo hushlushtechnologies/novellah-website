@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation"
+import { Link } from "@/i18n/navigation";
 import { Search, Menu, ArrowRight } from "lucide-react";
 import { navLinks } from "@/lib/navigation";
 import Image from "next/image";
@@ -12,7 +12,6 @@ import { MobileNav } from "./MobileNav";
 import { Button } from "@/components/ui/Button";
 import { usePathname } from "next/navigation";
 import { SearchTooltip } from "../SearchTooltip";
- 
 
 export function Navbar() {
   const t = useTranslations("nav");
@@ -22,7 +21,7 @@ export function Navbar() {
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
-const tSearch = useTranslations("search");
+  const tSearch = useTranslations("search");
 
   useEffect(() => {
     setMegaMenuOpen(false);
@@ -39,9 +38,9 @@ const tSearch = useTranslations("search");
   }
 
   return (
-    <header className="relative shadow-xl  bg-card">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center">
+    <header className="sticky top-0 z-50 shadow-xl bg-card">
+   <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8 xl:px-10 2xl:max-w-[1600px] 2xl:px-12">
+        <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/images/logo.svg"
             alt="Novellah"
@@ -51,7 +50,7 @@ const tSearch = useTranslations("search");
           />
         </Link>
 
-        <nav className="hidden items-center font-medium gap-8 lg:flex">
+        <nav className="hidden items-center font-medium gap-4 xl:gap-8 lg:flex">
           {navLinks.map((link) =>
             link.hasMegaMenu ? (
               <div
@@ -60,14 +59,13 @@ const tSearch = useTranslations("search");
                 onMouseLeave={scheduleClose}
               >
                 <button
-                  className="flex items-center font-medium gap-1 font-body  text-sm text-foreground"
+                  className="flex items-center font-medium gap-1 font-body text-sm text-foreground"
                   aria-expanded={megaMenuOpen}
                   aria-haspopup="true"
                 >
                   <Link
                     href={link.href}
-             
-                    className="flex items-center gap-1 font-body text-sm text-foreground"
+                    className="flex items-center gap-1 font-body text-sm text-foreground whitespace-nowrap"
                   >
                     {t(link.key)}
                     <svg
@@ -87,13 +85,13 @@ const tSearch = useTranslations("search");
                     </svg>
                   </Link>
                 </button>
-                {megaMenuOpen && <TreatmentsMegaMenu  />}
+                {megaMenuOpen && <TreatmentsMegaMenu />}
               </div>
             ) : (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-body text-sm text-foreground"
+                className="font-body text-sm text-foreground whitespace-nowrap"
               >
                 {t(link.key)}
               </Link>
@@ -101,37 +99,37 @@ const tSearch = useTranslations("search");
           )}
         </nav>
 
- <div className="hidden items-center gap-3 lg:flex">
-     <button
-  ref={searchButtonRef}
-  aria-label={tSearch("label")}
-  aria-expanded={searchOpen}
-  onClick={() => setSearchOpen((v) => !v)}
-  title={tSearch("label")}
-  className="flex cursor-pointer h-9 w-9 items-center justify-center rounded-full bg-background text-primary"
->
+        <div className="hidden items-center gap-2 xl:gap-3 lg:flex shrink-0">
+          <button
+            ref={searchButtonRef}
+            aria-label={tSearch("label")}
+            aria-expanded={searchOpen}
+            onClick={() => setSearchOpen((v) => !v)}
+            title={tSearch("label")}
+            className="flex cursor-pointer h-10 w-10 items-center justify-center rounded-full bg-background text-primary shrink-0"
+          >
             <Search size={16} />
           </button>
           <LocaleSwitcher />
           <Button href="/book-appointment">{t("bookAppointment")} </Button>
         </div>
 
-              <SearchTooltip
-        open={searchOpen}
-        onClose={() => setSearchOpen(false)}
-        anchorRef={searchButtonRef}
-      />
+        <SearchTooltip
+          open={searchOpen}
+          onClose={() => setSearchOpen(false)}
+          anchorRef={searchButtonRef}
+        />
 
         <button
           onClick={() => setMobileNavOpen(true)}
           aria-label="Open menu"
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-white lg:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white lg:hidden"
         >
           <Menu size={18} />
         </button>
       </div>
 
-        <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
+      <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
     </header>
   );
 }

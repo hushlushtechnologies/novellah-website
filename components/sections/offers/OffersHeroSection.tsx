@@ -9,7 +9,7 @@ export async function OffersHeroSection() {
   const t = await getTranslations("offersHero");
 
   return (
-    <section className="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-20">
+    <section className="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-20" dir="ltr">
        <DecorativeFlower position="top-right-half" size="lg" opacity={0.9} />
       <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
         {/* Left: text */}

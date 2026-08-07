@@ -41,7 +41,7 @@ export async function WelcomeSection() {
   return (
     <section id="welcome" className="relative overflow-hidden py-12 lg:py-20">
       {/* Grid row — NOT wrapped in max-w, so the image column can reach the true page edge on lg+ */}
-      <div className="lg:ms-auto lg:max-w-[95%] grid   items-center gap-8 lg:grid-cols-2 lg:gap-12">
+     <div className="grid items-center gap-8 lg:ms-auto lg:grid-cols-2 lg:gap-10 lg:max-w-[95%] 2xl:mx-auto 2xl:max-w-[1600px]">
         {/* Left: text — full symmetric padding until lg, then start-only inset (unchanged from lg up) */}
         <div className="px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-16 xl:pe-6">
           <div className="mb-4 flex items-center gap-2">

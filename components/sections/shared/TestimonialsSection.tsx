@@ -1,8 +1,8 @@
-"use client";
+ "use client";
 
 import { useState } from "react";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Star, StarHalf } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
@@ -29,6 +29,7 @@ function RatingStars({ rating }: { rating: number }) {
 
 export function TestimonialsSection() {
   const t = useTranslations("testimonials");
+  const locale = useLocale() as "en" | "ar";
   const [page, setPage] = useState(0);
 
   const pageCount = Math.max(1, Math.ceil(testimonials.length / CARDS_PER_PAGE));
@@ -51,18 +52,24 @@ export function TestimonialsSection() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {visibleTestimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className={`${cardBaseClasses}  p-6`}
-            >
+            <div key={testimonial.id} className={`${cardBaseClasses}  p-6`}>
               <div className="relative mb-4 h-12 w-12 overflow-hidden rounded-full">
-                <Image src={testimonial.avatar} alt={testimonial.name} fill className="object-cover" />
+                <Image
+                  src={testimonial.avatar}
+                  alt={testimonial.name[locale]}
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="font-heading text-lg text-foreground">{testimonial.name}</h3>
+              <h3 className="font-heading text-lg text-foreground">
+                {testimonial.name[locale]}
+              </h3>
               <div className="mt-1 mb-3">
                 <RatingStars rating={testimonial.rating} />
               </div>
-              <p className="font-body text-sm text-muted-foreground">{testimonial.quote}</p>
+              <p className="font-body text-sm text-muted-foreground">
+                {testimonial.quote[locale]}
+              </p>
             </div>
           ))}
         </div>

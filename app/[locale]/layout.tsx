@@ -55,6 +55,7 @@ export default async function LocaleLayout({
           id="hubspot-script"
           src={`https://js-na2.hs-scripts.com/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID}.js`}
           strategy="afterInteractive"
+          
         />
       </body>
     </html>

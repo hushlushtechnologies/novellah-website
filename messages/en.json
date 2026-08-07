@@ -1,6 +1,5 @@
  
-
-{
+ {
   "nav": {
     "aboutUs": "About Us",
     "treatments": "Treatments",
@@ -13,21 +12,21 @@
     "viewAll": "VIEW ALL",
     "viewLess": "VIEW LESS"
   },
-
   "notFound": {
-  "heading": "Page Not Found",
-  "description": "The page you're looking for doesn't exist or may have been moved. Let's get you back on track.",
-  "backHome": "Back to Home",
-  "browseTreatments": "Browse Treatments",
-  "contactPrompt": "Can't find what you need? Contact us"
-}
-,
+    "heading": "Page Not Found",
+    "description": "The page you're looking for doesn't exist or may have been moved. Let's get you back on track.",
+    "backHome": "Back to Home",
+    "browseTreatments": "Browse Treatments",
+    "contactPrompt": "Can't find what you need? Contact us"
+  },
   "search": {
     "label": "Search treatments",
     "placeholder": "Search treatments...",
-    "noResults": "No treatments found for \"{query}\"",
-    "clear": "Clear search"
+    "clear": "Clear search",
+    "noResults": "No results found for \"{query}\""
   },
+ 
+
   "home": {
     "eyebrow": "Advanced Aesthetics. Personalized Care.",
     "headingLine1": "Confidence Begins",
@@ -555,7 +554,10 @@
     "successLine2": "Our specialists will carefully review your enquiry and contact you shortly to help you begin your personalized beauty and skincare experience.",
     "successLine3": "Thank you for choosing Novellah Restyle.",
     "successBackHome": "Back to Home",
-    "successFooterNote": "Our team typically responds within one business day"
+    "successFooterNote": "Our team typically responds within one business day",
+     "phoneInvalid": "Please enter a valid phone number.",
+     "nameInvalid": "Please enter at least 3 characters.",
+     "emailInvalid": "Please enter a valid email address."
   },
  
   "bookingHero": {
@@ -565,8 +567,7 @@
     "subheading": "Book a personalized consultation with our experienced specialist. We understand your goals, assess your needs and recommend the treatment that's right for you",
     "ctaViewTreatment": "View Treatment",
     "ctaContact": "Contact Us"
-  }
- ,
+  },
 
  
   "bookingForm": {
@@ -599,7 +600,13 @@
 "successLine1": "Your appointment request has been successfully submitted.",
 "successLine2": "Our team will carefully review your request and contact you shortly to confirm your consultation. Every visit at Novellah Restyle is thoughtfully planned to provide a personalized experience tailored to your unique beauty and skincare goals.",
 "successBackHome": "Back to Home",
-"successFooterNote": "Our team typically responds within one business day"
+"successFooterNote": "Our team typically responds within one business day",
+"nameInvalid": "Please enter at least 3 characters.",
+    "phoneInvalid": "Please enter a valid 10-digit phone number.",
+    "emailInvalid": "Please enter a valid email address.",
+    "treatmentRequired": "Please select a treatment.",
+    "doctorRequired": "Please select a doctor.",
+    "dateRequired": "Please select a date."
   }
 ,
  

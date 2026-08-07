@@ -1,6 +1,6 @@
- import Image from "next/image";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { BrainCircuit, Eye, Quote, Sparkle } from "lucide-react";
+import { Quote, Sparkle } from "lucide-react";
 import { sectionEyebrowClasses, sectionHeadingClasses } from "@/lib/styles";
 
 export async function BrandStorySection() {
@@ -25,7 +25,13 @@ export async function BrandStorySection() {
           {/* Philosophy */}
           <div className="text-center">
             <span className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-drbg sm:h-12 sm:w-12">
-              <BrainCircuit size={18} className="text-secondary sm:size-5" />
+              <Image
+                src="/images/icons/philosophy.svg"
+                alt=""
+                width={18}
+                height={18}
+                className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
+              />
             </span>
             <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-secondary">
               {t("philosophyLabel")}
@@ -63,7 +69,13 @@ export async function BrandStorySection() {
           {/* Vision */}
           <div className="text-center">
             <span className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-full bg-drbg sm:h-12 sm:w-12">
-              <Eye size={18} className="text-secondary sm:size-5" />
+              <Image
+                src="/images/icons/vision.svg"
+                alt=""
+                width={18}
+                height={18}
+                className="h-[18px] w-[18px] object-contain sm:h-5 sm:w-5"
+              />
             </span>
             <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-secondary">
               {t("visionLabel")}

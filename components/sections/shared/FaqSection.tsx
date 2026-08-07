@@ -26,7 +26,7 @@ export function FaqSection({ items }: FaqSectionProps) {
   const [openId, setOpenId] = useState<string | null>(items[0]?.id ?? null);
 
   return (
-    <section className="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+    <section className="relative overflow-hidden px-4 py-10 sm:px-6 lg:px-8 lg:py-16" dir="ltr">
       <DecorativeFlower position="top-left" size="lg" opacity={0.5} />
       <DecorativeFlower position="top-right-half" size="lg" opacity={0.9} />
       <div className="mx-auto max-w-7xl">

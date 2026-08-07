@@ -1,4 +1,4 @@
-import Image from "next/image";
+ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, ChevronDown, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -8,7 +8,7 @@ export async function TreatmentsHeroSection() {
 
   return (
     <section>
-      <div className="relative mx-auto h-[520px] max-w-[1820px] overflow-hidden   sm:h-[590px]  ">
+      <div className="relative mx-auto h-[520px] max-w-[1800px] overflow-hidden sm:h-[590px]">
         <Image
           src="/images/treatments-hero-room.png"
           alt=""
@@ -19,7 +19,7 @@ export async function TreatmentsHeroSection() {
 
         <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/40 to-transparent" />
 
-        <div className="relative flex h-full max-w-2xl  flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-12 lg:px-20 ">
+        <div className="relative flex h-full max-w-2xl flex-col justify-center gap-4 px-5 sm:gap-6 sm:px-12 lg:px-20 xl:max-w-5xl">
           <p className="font-body text-xs font-semibold uppercase tracking-wider text-secondary sm:text-sm">
             {t("eyebrow")}
           </p>
@@ -35,7 +35,7 @@ export async function TreatmentsHeroSection() {
             <Sparkle size={14} className="text-secondary" fill="currentColor" />
           </div>
 
-          <p className="font-body text-sm text-white/90 sm:text-base">
+          <p className="font-body w-xl text-sm text-white/90 sm:text-base">
             {t("subheading")}
           </p>
 
@@ -60,8 +60,8 @@ export async function TreatmentsHeroSection() {
 
         {/* Scroll cue */}
 
-        <a
-          href="#next-section"
+        
+        <a  href="#next-section"
           className="absolute bottom-6 start-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white sm:bottom-10 md:flex"
         >
           <span className="font-body text-xs uppercase tracking-wide">

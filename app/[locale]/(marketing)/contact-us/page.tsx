@@ -23,7 +23,9 @@ export default function ContactUsPage() {
     <>
       <ContactHeroSection />
       <ContactFormSection/>
+      <section id="faq">
       <FaqSection items={generalFaqItems} />
+      </section>
     </>
   );
 }

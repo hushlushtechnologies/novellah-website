@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslations, useLocale } from "next-intl";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { beforeAfterResults } from "@/lib/content/beforeAfter";
 import { treatments } from "@/lib/content/treatments";
@@ -10,7 +13,7 @@ import { treatmentsMegaMenu } from "@/lib/navigation";
 import { DecorativeFlower } from "@/components/ui/DecorativeFlower";
 import { cardBaseClasses, CardDescriptionClasses, cardDividerClasses, cardHeadingClasses } from "@/lib/styles";
 
-const CARDS_PER_PAGE = 4;
+import "swiper/css";
 
 interface BeforeAfterSectionProps {
   treatmentSlug?: string;
@@ -19,9 +22,10 @@ interface BeforeAfterSectionProps {
 export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
   const t = useTranslations("beforeAfter");
   const locale = useLocale() as "en" | "ar";
-  const [page, setPage] = useState(0);
   const [mobileIndex, setMobileIndex] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [desktopIndex, setDesktopIndex] = useState(0);
+  const mobileSwiperRef = useRef<SwiperType | null>(null);
+  const desktopSwiperRef = useRef<SwiperType | null>(null);
 
   const exactResults = treatmentSlug
     ? beforeAfterResults.filter((r) => r.treatmentSlug === treatmentSlug)
@@ -50,36 +54,17 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
 
   if (results.length === 0) return null;
 
-  const pageCount = Math.max(1, Math.ceil(results.length / CARDS_PER_PAGE));
-  const visibleResults = results.slice(
-    page * CARDS_PER_PAGE,
-    page * CARDS_PER_PAGE + CARDS_PER_PAGE,
-  );
+  // Desktop dots represent "pages" of 4, matching slidesPerGroup below
+  const desktopDotCount = Math.max(1, Math.ceil(results.length / 4));
 
-  useEffect(() => {
-    const el = carouselRef.current;
-    if (!el) return;
+  function goToMobileSlide(index: number) {
+    mobileSwiperRef.current?.slideToLoop(index);
+    setMobileIndex(index);
+  }
 
-    function handleScroll() {
-      if (!el) return;
-      const cardWidth = el.firstElementChild
-        ? (el.firstElementChild as HTMLElement).offsetWidth + 16
-        : 1;
-      const index = Math.round(el.scrollLeft / cardWidth);
-      setMobileIndex(Math.min(index, results.length - 1));
-    }
-
-    el.addEventListener("scroll", handleScroll, { passive: true });
-    return () => el.removeEventListener("scroll", handleScroll);
-  }, [results.length]);
-
-  function scrollToCard(index: number) {
-    const el = carouselRef.current;
-    if (!el) return;
-    const card = el.children[index] as HTMLElement | undefined;
-    if (card) {
-      el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
-    }
+  function goToDesktopPage(pageIndex: number) {
+    desktopSwiperRef.current?.slideTo(pageIndex * 4);
+    setDesktopIndex(pageIndex);
   }
 
   function getCategoryLabel(resultTreatmentSlug: string): string | null {
@@ -95,7 +80,7 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
     const categoryLabel = getCategoryLabel(result.treatmentSlug);
 
     return (
-      <div key={result.id} className={`flex h-full flex-col overflow-hidden ${cardBaseClasses}`}>
+      <div className={`flex h-full flex-col overflow-hidden ${cardBaseClasses}`}>
         {/* Before / After image pair */}
         <div className="grid grid-cols-2 gap-0.5">
           <div className="relative h-48 w-full">
@@ -161,50 +146,95 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
           subheading={isFallback ? t("subheadingFallback") : t("subheading")}
         />
 
-        <div
-          ref={carouselRef}
-          className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 sm:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {results.map((result) => (
-            <div key={result.id} className="w-[85%] shrink-0 snap-center">
-              {renderCard(result)}
-            </div>
-          ))}
+        {/* Mobile: single-card swiper with autoplay */}
+        <div className="mt-12 sm:hidden">
+          <Swiper
+            key={`mobile-${results.length}`}
+            dir={locale === "ar" ? "rtl" : "ltr"}
+            modules={[Autoplay]}
+            slidesPerView={1.15}
+            spaceBetween={16}
+            loop={results.length > 1}
+            autoplay={
+              results.length > 1
+                ? { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true }
+                : false
+            }
+            onSwiper={(swiper) => {
+              mobileSwiperRef.current = swiper;
+            }}
+            onSlideChange={(swiper) => {
+              setMobileIndex(swiper.realIndex);
+            }}
+          >
+            {results.map((result) => (
+              <SwiperSlide key={result.id}>{renderCard(result)}</SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+{results.length > 1 && (
+  <div className="mt-6 hidden justify-center gap-2 sm:hidden">
+    {results.map((_, i) => (
+      <button
+        key={i}
+        onClick={() => goToMobileSlide(i)}
+        aria-label={`Go to slide ${i + 1}`}
+        className={`h-2 rounded-full cursor-pointer transition-all ${
+          mobileIndex === i ? "w-6 bg-primary" : "w-2 bg-border"
+        }`}
+      />
+    ))}
+  </div>
+)}
+
+        {/* Desktop/tablet: multi-card swiper with autoplay */}
+        <div className="mt-12 hidden sm:block">
+          <Swiper
+            key={`desktop-${results.length}`}
+            dir={locale === "ar" ? "rtl" : "ltr"}
+            modules={[Autoplay]}
+            slidesPerGroup={4}
+            spaceBetween={24}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 4 },
+            }}
+            loop={results.length > 4}
+            autoplay={
+              results.length > 4
+                ? { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }
+                : false
+            }
+            onSwiper={(swiper) => {
+              desktopSwiperRef.current = swiper;
+            }}
+            onSlideChange={(swiper) => {
+              setDesktopIndex(Math.floor(swiper.realIndex / 4));
+            }}
+            className="[&_.swiper-slide]:h-auto"
+          >
+            {results.map((result) => (
+              <SwiperSlide key={result.id} className="h-auto">
+                {renderCard(result)}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
-        {results.length > 1 && (
-          <div className="mt-6 flex justify-center gap-2 sm:hidden">
-            {results.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => scrollToCard(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={`h-2 rounded-full cursor-pointer transition-all ${
-                  mobileIndex === i ? "w-6 bg-primary" : "w-2 bg-border"
-                }`}
-              />
-            ))}
-          </div>
-        )}
-
-        <div className="mt-12 hidden gap-6 sm:grid sm:grid-cols-2 sm:items-stretch lg:grid-cols-4">
-          {visibleResults.map((result) => renderCard(result))}
-        </div>
-
-        {pageCount > 1 && (
-          <div className="mt-10 hidden justify-center gap-2 sm:flex">
-            {Array.from({ length: pageCount }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setPage(i)}
-                aria-label={`Page ${i + 1}`}
-                className={`h-2 rounded-full cursor-pointer transition-all ${
-                  page === i ? "w-6 bg-primary" : "w-2 bg-border"
-                }`}
-              />
-            ))}
-          </div>
-        )}
+{desktopDotCount > 1 && (
+  <div className="mt-6 hidden justify-center gap-2 lg:flex">
+    {Array.from({ length: desktopDotCount }).map((_, i) => (
+      <button
+        key={i}
+        onClick={() => goToDesktopPage(i)}
+        aria-label={`Page ${i + 1}`}
+        className={`h-2 rounded-full cursor-pointer transition-all ${
+          desktopIndex === i ? "w-6 bg-primary" : "w-2 bg-border"
+        }`}
+      />
+    ))}
+  </div>
+)}
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
- import Image from "next/image";
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
@@ -13,12 +13,13 @@ export async function BookingHeroSection() {
         alt=""
         fill
         priority
+        sizes="100vw"
         className="object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/70 to-white" />
 
-      <div className="relative mx-auto max-w-2xl px-4 text-center sm:px-6">
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.15em] text-primary sm:text-xs sm:tracking-[0.2em] lg:text-sm">
+      <div className="relative mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+        <p className="font-body text-[10px] font-extrabold uppercase tracking-[0.15em] text-primary sm:text-xs sm:tracking-[0.2em] lg:text-sm">
           {t("eyebrow")}
         </p>
 
@@ -28,9 +29,9 @@ export async function BookingHeroSection() {
           <span className="text-primary">{t("headingHighlight")}</span>
         </h1>
 
-        <div className="mx-auto mt-3 flex items-center justify-center gap-2 sm:mt-4 sm:gap-3 sm:mt-5">
+        <div className="mx-auto mt-3 flex items-center justify-center gap-2 sm:mt-4 sm:gap-3 lg:mt-5">
           <div className="h-1 w-10 rounded-full bg-secondary sm:w-16 lg:w-24" />
-          <Sparkle size={10} className="text-secondary sm:size-3" fill="currentColor" />
+          <Sparkle size={10} className="shrink-0 text-secondary sm:size-3" fill="currentColor" />
           <div className="h-1 w-10 rounded-full bg-secondary sm:w-16 lg:w-24" />
         </div>
 

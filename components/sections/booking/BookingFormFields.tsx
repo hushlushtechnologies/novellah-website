@@ -1,11 +1,17 @@
  "use client";
 
-import { useRef, useState, FormEvent } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  FormEvent,
+  ChangeEvent,
+} from "react";
 import emailjs from "@emailjs/browser";
 import { useLocale, useTranslations } from "next-intl";
 import {
   User, Phone, Mail, Grape, UserRound, CalendarDays, Send,
-  ArrowRight, ShieldCheck, Loader2, AlertCircle,
+  ArrowRight, ShieldCheck, Loader2, AlertCircle, ChevronDown, Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { FormSuccessState } from "@/components/ui/FormSuccessState";
@@ -35,6 +41,138 @@ interface BookingFormFieldsProps {
 
 type SubmitStatus = "idle" | "sending" | "success" | "error";
 
+// Strips spaces/dashes/parens for readability, then requires exactly 10 digits
+function isValidPhone(value: string): boolean {
+  const digitsOnly = value.replace(/[\s\-()]/g, "");
+  return /^[0-9]{10}$/.test(digitsOnly);
+}
+
+// Standard-shape email check
+function isValidEmail(value: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+}
+
+// At least 3 characters, not just whitespace
+function isValidName(value: string): boolean {
+  return value.trim().length >= 3;
+}
+
+interface CustomSelectOption {
+  value: string;
+  label: string;
+}
+
+interface CustomSelectProps {
+  name: string;
+  value: string;
+  onChange: (value: string) => void;
+  options: CustomSelectOption[];
+  placeholder: string;
+  icon?: React.ReactNode;
+  required?: boolean;
+  hasError?: boolean;
+}
+
+function CustomSelect({
+  name,
+  value,
+  onChange,
+  options,
+  placeholder,
+  icon,
+  required,
+  hasError,
+}: CustomSelectProps) {
+  const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
+  const selectedLabel = options.find((opt) => opt.value === value)?.label;
+
+  return (
+    <div ref={containerRef} className="relative">
+      {/* Hidden input keeps the value reachable by name for emailjs.sendForm */}
+      <input type="hidden" name={name} value={value} required={required} />
+
+      <button
+        type="button"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-haspopup="listbox"
+        aria-expanded={open}
+        className={`flex w-full items-center justify-between rounded-xl border bg-white py-3 ${
+          icon ? "ps-10" : "ps-4"
+        } pe-4 font-body text-sm outline-none transition-colors ${
+          hasError
+            ? "border-red-400"
+            : open
+              ? "border-primary"
+              : "border-border hover:border-secondary/60"
+        } ${selectedLabel ? "text-foreground" : "text-muted-foreground"}`}
+      >
+        <span className="truncate">{selectedLabel ?? placeholder}</span>
+        <ChevronDown
+          size={16}
+          className={`ms-2 shrink-0 text-secondary transition-transform duration-200 ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {icon && (
+        <span className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-secondary">
+          {icon}
+        </span>
+      )}
+
+      {open && (
+        <ul
+          role="listbox"
+          className="absolute start-0 end-0 top-[calc(100%+6px)] z-20 max-h-64 overflow-y-auto rounded-xl border border-border bg-white p-1.5 shadow-lg"
+        >
+          {options.map((opt) => {
+            const isSelected = opt.value === value;
+            return (
+              <li key={opt.value} role="option" aria-selected={isSelected}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onChange(opt.value);
+                    setOpen(false);
+                  }}
+                  className={`flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-start font-body text-sm transition-colors ${
+                    isSelected
+                      ? "bg-primary/10 text-primary font-semibold"
+                      : "text-foreground hover:bg-background-light"
+                  }`}
+                >
+                  <span className="truncate">{opt.label}</span>
+                  {isSelected && <Check size={14} className="ms-2 shrink-0 text-primary" />}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 export function BookingFormFields({
   personalInfoTitle,
   fullNameLabel,
@@ -60,9 +198,100 @@ export function BookingFormFields({
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<SubmitStatus>("idle");
 
+  const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
+
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const [treatment, setTreatment] = useState("");
+  const [treatmentError, setTreatmentError] = useState("");
+
+  const [doctor, setDoctor] = useState("");
+  const [doctorError, setDoctorError] = useState("");
+
+  const [date, setDate] = useState("");
+  const [dateError, setDateError] = useState("");
+
+  const treatmentOptions: CustomSelectOption[] = treatmentsMegaMenu.map((cat) => ({
+    value: cat.title[locale],
+    label: cat.title[locale],
+  }));
+  const doctorOptions: CustomSelectOption[] = doctors.map((doc) => ({
+    value: doc.name,
+    label: doc.name,
+  }));
+
+  function handleNameChange(e: ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setName(value);
+    if (nameError && (value === "" || isValidName(value))) setNameError("");
+  }
+  function handleNameBlur() {
+    setNameError(name !== "" && !isValidName(name) ? t("nameInvalid") : "");
+  }
+
+  function handlePhoneChange(e: ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setPhone(value);
+    if (phoneError && (value === "" || isValidPhone(value))) setPhoneError("");
+  }
+  function handlePhoneBlur() {
+    setPhoneError(phone !== "" && !isValidPhone(phone) ? t("phoneInvalid") : "");
+  }
+
+  function handleEmailChange(e: ChangeEvent<HTMLInputElement>) {
+    const value = e.target.value;
+    setEmail(value);
+    if (emailError && (value === "" || isValidEmail(value))) setEmailError("");
+  }
+  function handleEmailBlur() {
+    setEmailError(email !== "" && !isValidEmail(email) ? t("emailInvalid") : "");
+  }
+
+  function handleDateChange(e: ChangeEvent<HTMLInputElement>) {
+    setDate(e.target.value);
+    if (dateError && e.target.value !== "") setDateError("");
+  }
+  function handleDateBlur() {
+    setDateError(date === "" ? t("dateRequired") : "");
+  }
+
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!formRef.current) return;
+
+    let hasError = false;
+
+    if (!isValidName(name)) {
+      setNameError(t("nameInvalid"));
+      hasError = true;
+    }
+    if (!isValidPhone(phone)) {
+      setPhoneError(t("phoneInvalid"));
+      hasError = true;
+    }
+    if (!isValidEmail(email)) {
+      setEmailError(t("emailInvalid"));
+      hasError = true;
+    }
+    if (treatment === "") {
+      setTreatmentError(t("treatmentRequired"));
+      hasError = true;
+    }
+    if (doctor === "") {
+      setDoctorError(t("doctorRequired"));
+      hasError = true;
+    }
+    if (date === "") {
+      setDateError(t("dateRequired"));
+      hasError = true;
+    }
+
+    if (hasError) return;
 
     setStatus("sending");
 
@@ -75,6 +304,18 @@ export function BookingFormFields({
       );
       setStatus("success");
       formRef.current.reset();
+      setName("");
+      setNameError("");
+      setPhone("");
+      setPhoneError("");
+      setEmail("");
+      setEmailError("");
+      setTreatment("");
+      setTreatmentError("");
+      setDoctor("");
+      setDoctorError("");
+      setDate("");
+      setDateError("");
     } catch (err) {
       console.error("EmailJS send failed:", err);
       setStatus("error");
@@ -95,7 +336,7 @@ export function BookingFormFields({
   }
 
   const inputClasses =
-    "w-full rounded-xl border border-border bg-white py-3 ps-4 pe-10 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary";
+    "w-full rounded-xl border border-border bg-white py-3 ps-4 pe-10 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground transition-colors focus:border-primary";
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="rounded-2xl bg-background-light p-6 sm:p-10">
@@ -109,25 +350,82 @@ export function BookingFormFields({
 
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
-          <label className="font-body text-sm text-foreground">{fullNameLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {fullNameLabel} <span className="text-primary">*</span>
+          </label>
           <div className="relative mt-2">
-            <input name="user_name" required placeholder={fullNamePlaceholder} className={inputClasses} />
+            <input
+              name="user_name"
+              required
+              value={name}
+              onChange={handleNameChange}
+              onBlur={handleNameBlur}
+              placeholder={fullNamePlaceholder}
+              aria-invalid={nameError !== ""}
+              className={`${inputClasses} ${nameError ? "border-red-400 focus:border-red-500" : ""}`}
+            />
             <User size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
           </div>
+          {nameError && (
+            <p className="mt-1.5 flex items-center gap-1.5 font-body text-xs text-red-600">
+              <AlertCircle size={12} />
+              {nameError}
+            </p>
+          )}
         </div>
+
         <div>
-          <label className="font-body text-sm text-foreground">{phoneLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {phoneLabel} <span className="text-primary">*</span>
+          </label>
           <div className="relative mt-2">
-            <input name="user_phone" required type="tel" placeholder={phonePlaceholder} className={inputClasses} />
+            <input
+              name="user_phone"
+              required
+              type="tel"
+              inputMode="numeric"
+              maxLength={12}
+              value={phone}
+              onChange={handlePhoneChange}
+              onBlur={handlePhoneBlur}
+              placeholder={phonePlaceholder}
+              aria-invalid={phoneError !== ""}
+              className={`${inputClasses} ${phoneError ? "border-red-400 focus:border-red-500" : ""}`}
+            />
             <Phone size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
           </div>
+          {phoneError && (
+            <p className="mt-1.5 flex items-center gap-1.5 font-body text-xs text-red-600">
+              <AlertCircle size={12} />
+              {phoneError}
+            </p>
+          )}
         </div>
+
         <div>
-          <label className="font-body text-sm text-foreground">{emailLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {emailLabel} <span className="text-primary">*</span>
+          </label>
           <div className="relative mt-2">
-            <input name="user_email" required type="email" placeholder={emailPlaceholder} className={inputClasses} />
+            <input
+              name="user_email"
+              required
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              onBlur={handleEmailBlur}
+              placeholder={emailPlaceholder}
+              aria-invalid={emailError !== ""}
+              className={`${inputClasses} ${emailError ? "border-red-400 focus:border-red-500" : ""}`}
+            />
             <Mail size={16} className="absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
           </div>
+          {emailError && (
+            <p className="mt-1.5 flex items-center gap-1.5 font-body text-xs text-red-600">
+              <AlertCircle size={12} />
+              {emailError}
+            </p>
+          )}
         </div>
       </div>
 
@@ -141,43 +439,88 @@ export function BookingFormFields({
 
       <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
-          <label className="font-body text-sm text-foreground">{treatmentLabel}</label>
-          <div className="relative mt-2">
-            <select name="treatment" defaultValue="" className={`${inputClasses} appearance-none`}>
-              <option value="">{treatmentPlaceholder}</option>
-              {treatmentsMegaMenu.map((cat) => (
-                <option key={cat.categorySlug} value={cat.title[locale]}>
-                  {cat.title[locale]}
-                </option>
-              ))}
-            </select>
-            <Grape size={16} className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
+          <label className="font-body text-sm text-foreground">
+            {treatmentLabel} <span className="text-primary">*</span>
+          </label>
+          <div className="mt-2">
+            <CustomSelect
+              name="treatment"
+              value={treatment}
+              onChange={(v) => {
+                setTreatment(v);
+                if (treatmentError) setTreatmentError("");
+              }}
+              options={treatmentOptions}
+              placeholder={treatmentPlaceholder}
+              icon={<Grape size={16} />}
+              required
+              hasError={treatmentError !== ""}
+            />
           </div>
+          {treatmentError && (
+            <p className="mt-1.5 flex items-center gap-1.5 font-body text-xs text-red-600">
+              <AlertCircle size={12} />
+              {treatmentError}
+            </p>
+          )}
         </div>
+
         <div>
-          <label className="font-body text-sm text-foreground">{doctorLabel}</label>
-          <div className="relative mt-2">
-            <select name="doctor" defaultValue="" className={`${inputClasses} appearance-none`}>
-              <option value="">{doctorPlaceholder}</option>
-              {doctors.map((doc) => (
-                <option key={doc.slug} value={doc.name}>
-                  {doc.name}
-                </option>
-              ))}
-            </select>
-            <UserRound size={16} className="pointer-events-none absolute end-4 top-1/2 -translate-y-1/2 text-secondary" />
+          <label className="font-body text-sm text-foreground">
+            {doctorLabel} <span className="text-primary">*</span>
+          </label>
+          <div className="mt-2">
+            <CustomSelect
+              name="doctor"
+              value={doctor}
+              onChange={(v) => {
+                setDoctor(v);
+                if (doctorError) setDoctorError("");
+              }}
+              options={doctorOptions}
+              placeholder={doctorPlaceholder}
+              icon={<UserRound size={16} />}
+              required
+              hasError={doctorError !== ""}
+            />
           </div>
+          {doctorError && (
+            <p className="mt-1.5 flex items-center gap-1.5 font-body text-xs text-red-600">
+              <AlertCircle size={12} />
+              {doctorError}
+            </p>
+          )}
         </div>
+
         <div>
-          <label className="font-body text-sm text-foreground">{dateLabel}</label>
+          <label className="font-body text-sm text-foreground">
+            {dateLabel} <span className="text-primary">*</span>
+          </label>
           <div className="relative mt-2">
             <input
               name="appointment_date"
+              required
               type="date"
               min={new Date().toISOString().split("T")[0]}
-              className={inputClasses}
+              value={date}
+              onChange={handleDateChange}
+              onBlur={handleDateBlur}
+              aria-invalid={dateError !== ""}
+              className={`${inputClasses} ps-10 ${
+                date === "" ? "text-muted-foreground" : "text-foreground"
+              } ${dateError ? "border-red-400 focus:border-red-500" : ""}`}
+            />
+            <CalendarDays
+              size={16}
+              className="pointer-events-none absolute start-4 top-1/2 -translate-y-1/2 text-secondary"
             />
           </div>
+          {dateError && (
+            <p className="mt-1.5 flex items-center gap-1.5 font-body text-xs text-red-600">
+              <AlertCircle size={12} />
+              {dateError}
+            </p>
+          )}
         </div>
       </div>
 
@@ -192,7 +535,7 @@ export function BookingFormFields({
         name="message"
         rows={4}
         placeholder={messagePlaceholder}
-        className="mt-2 w-full rounded-xl border border-border bg-white p-4 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
+        className="mt-2 w-full rounded-xl border border-border bg-white p-4 font-body text-sm text-foreground outline-none placeholder:text-muted-foreground transition-colors focus:border-primary"
       />
 
       <Button

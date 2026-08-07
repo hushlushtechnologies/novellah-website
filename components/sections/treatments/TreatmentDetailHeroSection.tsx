@@ -49,12 +49,12 @@ export async function TreatmentDetailHeroSection({
   ];
 
   return (
-    <section className="relative flex min-h-screen flex-col justify-center overflow-hidden pb-28 pt-24 lg:pb-0 lg:pt-0">
-      <DecorativeFlower position="top-lefts" size="lg" opacity={0.8} />
+    <section className="relative overflow-hidden pb-16 pt-24 lg:pb-0 lg:pt-0" dir="ltr">
+      <DecorativeFlower position="top-left" size="lg" opacity={0.8} />
 
-      <div className="grid flex-1 items-center gap-10 lg:grid-cols-2">
+      <div className="relative grid w-full items-center gap-10 lg:grid-cols-2">
         {/* Left: text */}
-        <div className="relative mb-5 z-10 px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-44 xl:pe-6">
+        <div className="relative mb-5 z-10 px-4 sm:px-6 lg:ps-8 lg:pe-4 lg:pb-16 lg:pt-16 xl:ps-44 xl:pe-6 xl:pb-20 xl:pt-20">
           <p className={`${heroEyebrowClasses} text-secondary`}>
             {categoryTitle}
           </p>
@@ -79,7 +79,7 @@ export async function TreatmentDetailHeroSection({
 
           <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
             <Button
-              href="/book-appintment"
+              href="/book-appointment"
               variant="solid"
               icon={<ArrowRight size={16} />}
               className="w-full justify-center sm:w-fit"
@@ -96,22 +96,12 @@ export async function TreatmentDetailHeroSection({
           </div>
         </div>
 
-        {/* Right: large circular image, bleeding off the edge */}
-        {/* <div className="relative mx-auto aspect-square w-full max-w-[280px] overflow-hidden rounded-full border-2 border-secondary/50 sm:max-w-[380px] lg:absolute lg:inset-y-0 lg:end-0 lg:aspect-auto lg:h-full lg:w-[36vw] lg:max-w-none lg:rounded-none lg:rounded-s-full  ">
-          <Image
-            src={treatment.image}
-            alt={treatment.title[locale]}
-            fill
-            priority
-            className="object-cover"
-          />
-        </div> */}
-
-        <div className="relative z-0 mx-auto aspect-square w-full max-w-[280px] sm:max-w-[380px] lg:absolute lg:inset-y-0 lg:-end-[10%] lg:-top-20 lg:mx-0 lg:my-0 lg:h-[750px] lg:w-[750px] lg:max-w-none">
+        {/* Right: large circular image, bleeding off the true top and right edge */}
+        <div className="relative z-0 mx-auto aspect-square w-full max-w-[280px] sm:max-w-[380px] lg:absolute lg:inset-y-0 lg:end-0 lg:top-0 lg:mx-0 lg:my-0 lg:h-[680px] lg:w-[680px] lg:max-w-none xl:h-[780px] xl:w-[780px]">
           {/* Glow behind the circle */}
           <div className="absolute inset-0 -z-10 rounded-full bg-secondary/30 blur-2xl" />
 
-          <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-secondary/50 shadow-[0_0_60px_-10px] shadow-secondary/40">
+          <div className="relative h-full  xl:-top-16 xl:-end-36 w-full overflow-hidden rounded-full border-2 border-secondary/50 shadow-[0_0_60px_-10px] shadow-secondary/40">
             <Image
               src={treatment.image}
               alt={treatment.title[locale]}
@@ -123,9 +113,9 @@ export async function TreatmentDetailHeroSection({
         </div>
       </div>
 
-      {/* 4-point stat bar — overlapping the bottom */}
+      {/* 4-point stat bar — overlapping the circle's bottom edge */}
       <div className="relative z-20 order-3 mx-auto mt-8 w-full max-w-7xl px-4 sm:mt-10 sm:px-6 lg:mt-0 lg:px-8">
-        <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-card p-4 shadow-card sm:grid-cols-4 sm:gap-6 sm:p-6 lg:-mt-20 lg:p-8 xl:-mt-28 2xl:-mt-36">
+        <div className="grid grid-cols-2 gap-4 rounded-2xl border border-border bg-card p-4 shadow-card sm:grid-cols-4 sm:gap-6 sm:p-6 lg:-mt-16 lg:p-8 xl:-mt-20">
           {stats.map((stat) => (
             <div key={stat.sub} className="flex items-center gap-2 sm:gap-3">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full  bg-white">

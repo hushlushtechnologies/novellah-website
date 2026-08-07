@@ -43,7 +43,7 @@ export async function TechnologyMeetsBeautySection() {
         style={{ height: "100%" }}
       />
 
-      <div className="lg:ms-auto lg:max-w-[95%] grid   items-center gap-8 lg:grid-cols-2 lg:gap-12">
+      <div className="lg:ms-auto lg:max-w-[95%] grid   items-center gap-8 lg:grid-cols-2 lg:gap-12  2xl:mx-auto 2xl:max-w-[1600px]">
         {/* Left: text — full padding until lg, start-only inset from lg up */}
         <div className="px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-16 xl:pe-6">
           <div className="mb-4 flex items-center gap-2">

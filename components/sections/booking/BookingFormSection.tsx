@@ -8,7 +8,7 @@ export async function BookingFormSection() {
   const t = await getTranslations("bookingForm");
 
   return (
-    <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20" dir="ltr">
      
       <div className="mx-auto max-w-4xl">
         <SectionHeader

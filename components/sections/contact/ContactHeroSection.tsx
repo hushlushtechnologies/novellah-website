@@ -15,56 +15,58 @@ export async function ContactHeroSection() {
   const t = await getTranslations("contactHero");
 
   return (
-    <section className="relative overflow-hidden pb-16 sm:pb-24 lg:pb-32">
+    <section className="relative overflow-hidden pb-16 sm:pb-24 lg:pb-32" dir="ltr">
       <DecorativeFlower position="top-left" size="lg" opacity={0.5} />
 
-      <div className="grid items-center gap-8 pt-8 sm:pt-10 lg:grid-cols-2 lg:gap-12 lg:pt-0">
-        {/* Left: text */}
-        <div className="relative z-10 px-4 sm:px-6 lg:ps-8 lg:pe-4 xl:ps-16 xl:pe-6">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-secondary sm:text-sm">
-            {t("eyebrow")}
-          </p>
+      <div className="mx-auto max-w-[1800px]">
+        <div className="grid items-center gap-8 pt-8 sm:pt-10 lg:grid-cols-2 lg:items-start lg:gap-12 lg:pt-0">
+          {/* Left: text */}
+          <div className="relative z-10 px-4 pb-4 sm:px-6 sm:pb-6 lg:ps-8 lg:pe-4 lg:pb-20 lg:pt-12 xl:ps-16 xl:pe-6 xl:pb-24 xl:pt-16">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.3em] text-secondary sm:text-sm">
+              {t("eyebrow")}
+            </p>
 
-          <h1 className="mt-4 font-heading font-extrabold text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
-            {t("headingLine1")}
-            <br />
-            <span className="text-primary">{t("headingHighlight")}</span>
-          </h1>
+            <h1 className="mt-4 font-heading font-extrabold text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+              {t("headingLine1")}
+              <br />
+              <span className="text-primary">{t("headingHighlight")}</span>
+            </h1>
 
-          <div className="mt-5 flex items-center gap-2">
-            <div className="h-1 rounded-full w-16 bg-secondary sm:w-24" />
-            <Sparkle size={12} className="text-secondary" fill="currentColor" />
+            <div className="mt-5 flex items-center gap-2">
+              <div className="h-1 rounded-full w-16 bg-secondary sm:w-24" />
+              <Sparkle size={12} className="text-secondary" fill="currentColor" />
+            </div>
+
+            <p className="mt-5 font-body text-sm text-muted-foreground sm:text-base">
+              {t("subheading")}
+            </p>
+
+            <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
+              <Button
+                href="/book-appointment"
+                variant="solid"
+                icon={<ArrowRight size={16} />}
+                className="w-full justify-center sm:w-fit"
+              >
+                {t("ctaBook")}
+              </Button>
+              <Button href={siteConfig.whatsappHref} variant="outline" className="w-full justify-center sm:w-fit">
+                {t("ctaWhatsapp")}
+              </Button>
+            </div>
           </div>
 
-          <p className="mt-5 font-body text-sm text-muted-foreground sm:text-base">
-            {t("subheading")}
-          </p>
-
-          <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-4">
-            <Button
-              href="/book-appointment"
-              variant="solid"
-              icon={<ArrowRight size={16} />}
-              className="w-full justify-center sm:w-fit"
-            >
-              {t("ctaBook")}
-            </Button>
-            <Button href={siteConfig.whatsappHref} variant="outline" className="w-full justify-center sm:w-fit">
-              {t("ctaWhatsapp")}
-            </Button>
-          </div>
-        </div>
-
-        {/* Right: reception photo — full-bleed both edges below lg, right-edge bleed + top-left radius from lg up */}
-        <div className="relative h-[240px] sm:h-[320px] lg:h-[460px] xl:h-[500px] lg:rounded-tl-[100px]">
-          <div className="relative h-full w-full overflow-hidden lg:rounded-tl-[100px]">
-            <Image
-              src="/images/contact-hero-reception.png"
-              alt=""
-              fill
-              priority
-              className="object-cover"
-            />
+          {/* Right: reception photo — full-bleed both edges below lg, right-edge bleed + top-left radius from lg up */}
+          <div className="relative h-[240px] sm:h-[320px] lg:h-[460px] xl:h-[500px] lg:rounded-tl-[100px]">
+            <div className="relative h-full w-full overflow-hidden lg:rounded-tl-[100px]">
+              <Image
+                src="/images/contact-hero-reception.png"
+                alt=""
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>

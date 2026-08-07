@@ -69,7 +69,7 @@ export async function SpecialOffersSection() {
     key={offer.slug}
     className="relative h-[200px] overflow-hidden rounded-2xl sm:h-[237px]"
   >
-    <Image src={offer.image} alt="" fill className="object-cover" />
+    <Image src={offer.image} alt="" fill className="object-fill" />
 
     <Button
       href={`/special-offer/${offer.slug}`}

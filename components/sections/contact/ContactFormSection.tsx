@@ -31,7 +31,7 @@ export async function ContactFormSection() {
   const locale = (await getLocale()) as "en" | "ar";
 
   return (
-    <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <section className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8 lg:py-20" dir="ltr">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow={t("eyebrow")}

@@ -156,14 +156,14 @@ export async function Footer() {
                   {t("careBookAppointment")}
                 </a>
               </li>
-              <li>
-                <a
-                  href="/faqs"
-                  className="font-body text-sm text-white/80 hover:text-white"
-                >
-                  {t("careFaqs")}
-                </a>
-              </li>
+         <li>
+  <Link
+    href="/contact-us#faq"
+    className="font-body text-sm text-white/80 hover:text-white"
+  >
+    {t("careFaqs")}
+  </Link>
+</li>
               <li>
                 <a
                   href="/contact-us"
