@@ -97,7 +97,7 @@ export const doctors: Doctor[] = [
     ar: "الأمراض الجلدية",
   },
   image: "/images/doctors/fatima-al-hassan.png",
-  cutoutImage: "/images/doctors/fatima-al-hassa.png",
+  cutoutImage: "/images/doctors/ahamed-razeen-cutout.png",
   roomImage: "/images/doctors/ahamed-razeen-room.png",
 
   bio: {
@@ -155,7 +155,7 @@ export const doctors: Doctor[] = [
     ar: "الطب التجميلي",
   },
   image: "/images/doctors/omar-al-nuaimi.png",
-  cutoutImage: "/images/doctors/omar-al-nuaimi-cutout.png",
+  cutoutImage: "/images/doctors/ahamed-razeen-cutout.png",
   roomImage: "/images/doctors/ahamed-razeen-room.png",
   bio: {
     en: "Specializing in non-surgical facial rejuvenation, Dr. Omar is dedicated to achieving natural, youthful results using advanced aesthetic techniques tailored to each patient's unique features.",
@@ -212,7 +212,7 @@ export const doctors: Doctor[] = [
     ar: "الأمراض الجلدية",
   },
   image: "/images/doctors/layla-al-mansoori.png",
-  cutoutImage: "/images/doctors/layla-al-mansoori-cutout.png",
+  cutoutImage: "/images/doctors/ahamed-razeen-cutout.png",
   roomImage: "/images/doctors/ahamed-razeen-room.png",
   bio: {
     en: "Dr. Layla is committed to restoring healthy, radiant skin through advanced laser technology and personalized dermatological treatments. She focuses on delivering natural, long-lasting results while ensuring every patient receives exceptional care.",

@@ -49,7 +49,7 @@ export interface Offer {
     scheduleLabel: { en: "Appointments", ar: "المواعيد" },
     scheduleDays: { en: "Sundays & Mondays", ar: "الأحد والإثنين" },
     scheduleHours: "08h30 - 16h30",
-    image: "/images/offers/amanda-fontoura-featured.png",
+    image: "/images/offers/offer-4.png",
     featured: false,
   },
   {
@@ -59,7 +59,7 @@ export interface Offer {
     scheduleLabel: { en: "Appointments", ar: "المواعيد" },
     scheduleDays: { en: "Tuesdays & Fridays", ar: "الثلاثاء والجمعة" },
     scheduleHours: "09h30 - 18h30",
-    image: "/images/offers/amanda-fontoura-featured.png",
+    image: "/images/offers/offer-5.png",
     featured: false,
   },
 ];
