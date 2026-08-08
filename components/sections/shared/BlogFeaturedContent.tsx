@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
@@ -73,9 +73,13 @@ export function BlogFeaturedContent({
             }
             subheading={subheading}
             className="max-w-2xl"
-            ctaLabel={showViewAll ? ctaViewAll : undefined}
-            ctaHref={showViewAll ? "/blog" : undefined}
           />
+
+          {showViewAll && (
+            <Button href="/blog" variant="outline" className="w-full shrink-0 justify-center lg:w-fit">
+              {ctaViewAll}
+            </Button>
+          )}
         </div>
 
         <motion.div
