@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
@@ -29,15 +29,28 @@ export function CategoryTabs({
   // sure it's actually visible inside the horizontally-scrollable row on
   // small screens. Without this, the pill can be selected on a button
   // that's scrolled off-screen and the user has no idea it's active.
+  //
+  // IMPORTANT: this deliberately does NOT use el.scrollIntoView(). That API
+  // walks up every scrollable ancestor — including the page/document — so
+  // if this section is below the fold (e.g. on the homepage) it makes the
+  // whole page jump to the tabs on load. Instead we scroll only the tab
+  // row's own scrollLeft, which can never affect page/document scroll.
   useEffect(() => {
     const activeButton = buttonRefs.current.get(activeId);
     const container = containerRef.current;
     if (!activeButton || !container) return;
 
-    activeButton.scrollIntoView({
+    const containerWidth = container.clientWidth;
+    const buttonLeft = activeButton.offsetLeft;
+    const buttonWidth = activeButton.offsetWidth;
+
+    // Center the active button within the visible width of the row.
+    const targetScrollLeft =
+      buttonLeft - containerWidth / 2 + buttonWidth / 2;
+
+    container.scrollTo({
+      left: Math.max(0, targetScrollLeft),
       behavior: "smooth",
-      inline: "center",
-      block: "nearest",
     });
   }, [activeId]);
 
