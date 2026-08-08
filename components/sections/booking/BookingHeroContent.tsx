@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
@@ -33,22 +33,24 @@ export function BookingHeroContent({
   ctaContact,
 }: BookingHeroContentProps) {
   return (
-    <section className="relative flex min-h-[440px] items-end justify-center overflow-hidden pb-10 sm:min-h-[560px] sm:pb-20 lg:min-h-[720px] lg:pb-36">
-      <Image
-        src="/images/booking-hero-lounge.png"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/85 to-white" />
+    <section className="relative flex min-h-[440px] items-end justify-center overflow-hidden pb-6 sm:min-h-[560px] sm:pb-8 lg:min-h-[720px] lg:pb-12">
+      <div className="absolute inset-0 mx-auto max-w-[1800px]">
+        <Image
+          src="/images/booking-hero-lounge.png"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/85 to-white" />
+      </div>
 
       <motion.div
         variants={textContainer}
         initial="hidden"
         animate="visible"
-        className="relative mx-auto max-w-2xl px-4 pt-10 text-center sm:px-6 lg:px-8"
+        className="relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8"
       >
         <motion.p
           variants={revealUp}

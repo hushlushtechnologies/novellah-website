@@ -117,12 +117,12 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
     );
     return category?.title[locale] ?? null;
   }
-
-  function renderCard(result: (typeof results)[number]) {
+ 
+function renderCard(result: (typeof results)[number]) {
     const categoryLabel = getCategoryLabel(result.treatmentSlug);
 
     return (
-      <div className={`flex h-full flex-col overflow-hidden ${cardBaseClasses}`}>
+      <div className={`flex h-full min-h-[380px] flex-col overflow-hidden ${cardBaseClasses}`}>
         {/* Before / After image pair */}
         <div className="grid grid-cols-2 gap-0.5">
           <div className="relative h-48 w-full">
@@ -152,9 +152,11 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
         </div>
 
         <div className="flex flex-1 flex-col p-5">
-          <h3 className={cardHeadingClasses}>{result.title[locale]}</h3>
+          <h3 className={`${cardHeadingClasses} line-clamp-2 h-[2rem]`}>
+            {result.title[locale]}
+          </h3>
           <div className={cardDividerClasses} />
-          <p className={`${CardDescriptionClasses} pb-2 line-clamp-3`}>
+          <p className={`${CardDescriptionClasses} h-[4.5rem] pb-2 line-clamp-3`}>
             {result.description[locale]}
           </p>
 
@@ -266,51 +268,53 @@ export function BeforeAfterSection({ treatmentSlug }: BeforeAfterSectionProps) {
 
         {/* Desktop/tablet: multi-card swiper with autoplay + overlaid arrows */}
         <div className="relative mt-12 hidden sm:block">
-          <Swiper
-            key={`desktop-${results.length}`}
-            dir={locale === "ar" ? "rtl" : "ltr"}
-            modules={[Autoplay, Navigation]}
-            slidesPerGroup={4}
-            spaceBetween={24}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            loop={false}
-            autoplay={
-              results.length > 4
-                ? { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }
-                : false
-            }
-            navigation={
-              showDesktopArrows
-                ? { prevEl: desktopPrevRef.current, nextEl: desktopNextRef.current }
-                : false
-            }
-            onBeforeInit={(swiper) => {
-              if (
-                showDesktopArrows &&
-                typeof swiper.params.navigation !== "boolean" &&
-                swiper.params.navigation
-              ) {
-                swiper.params.navigation.prevEl = desktopPrevRef.current;
-                swiper.params.navigation.nextEl = desktopNextRef.current;
-              }
-            }}
-            onSwiper={(swiper) => {
-              desktopSwiperRef.current = swiper;
-            }}
-            onSlideChange={(swiper) => {
-              setDesktopIndex(Math.floor(swiper.realIndex / 4));
-            }}
-            className="[&_.swiper-slide]:h-auto"
-          >
-            {results.map((result) => (
-              <SwiperSlide key={result.id} className="h-auto">
-                {renderCard(result)}
-              </SwiperSlide>
-            ))}
-          </Swiper>
+       <Swiper
+  key={`desktop-${results.length}`}
+  dir={locale === "ar" ? "rtl" : "ltr"}
+  modules={[Autoplay, Navigation]}
+  slidesPerGroup={4}
+  spaceBetween={24}
+  breakpoints={{
+    640: { slidesPerView: 2 },
+    1024: { slidesPerView: 4 },
+  }}
+  loop={false}
+  autoplay={
+    results.length > 4
+      ? { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }
+      : false
+  }
+  navigation={
+    showDesktopArrows
+      ? { prevEl: desktopPrevRef.current, nextEl: desktopNextRef.current }
+      : false
+  }
+  onBeforeInit={(swiper) => {
+    if (
+      showDesktopArrows &&
+      typeof swiper.params.navigation !== "boolean" &&
+      swiper.params.navigation
+    ) {
+      swiper.params.navigation.prevEl = desktopPrevRef.current;
+      swiper.params.navigation.nextEl = desktopNextRef.current;
+    }
+  }}
+  onSwiper={(swiper) => {
+    desktopSwiperRef.current = swiper;
+  }}
+  onSlideChange={(swiper) => {
+    setDesktopIndex(
+      swiper.isEnd ? desktopDotCount - 1 : Math.floor(swiper.realIndex / 4),
+    );
+  }}
+  className="[&_.swiper-slide]:h-auto"
+>
+  {results.map((result) => (
+    <SwiperSlide key={result.id} className="h-auto">
+      {renderCard(result)}
+    </SwiperSlide>
+  ))}
+</Swiper>
 
           {showDesktopArrows && (
             <>

@@ -558,7 +558,7 @@ export function BookingFormFields({
         variant="solid"
         disabled={status === "sending"}
         icon={status === "sending" ? <Loader2 size={16} className="animate-spin" /> : <ArrowRight size={16} />}
-        className="mt-8 w-full justify-center"
+        className="mt-8 w-full justify-center cursor-pointer"
       >
         {ctaSubmit}
       </Button>

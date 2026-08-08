@@ -50,7 +50,7 @@ export function HeroContent({
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
   return (
-    <section className="px-4 pt-4 sm:px-6 lg:px-6">
+    <section className="px-4 pt-4 sm:px-6 lg:px-6" id="home">
       <div
         ref={sectionRef}
         className="relative mx-auto grayscale-25 h-[520px] max-w-[1820px] overflow-hidden rounded-2xl sm:h-[590px] sm:rounded-3xl"

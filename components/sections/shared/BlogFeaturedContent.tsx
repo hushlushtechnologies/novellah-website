@@ -73,17 +73,10 @@ export function BlogFeaturedContent({
             }
             subheading={subheading}
             className="max-w-2xl"
-             ctaLabel={ctaViewAll}
-                ctaHref="/treatments"
+            ctaLabel={showViewAll ? ctaViewAll : undefined}
+            ctaHref={showViewAll ? "/blog" : undefined}
           />
-       
         </div>
-
-           {/* {showViewAll && (
-            <Button href="/blog" variant="outline" className="w-full justify-center lg:w-fit">
-              {ctaViewAll}
-            </Button>
-          )} */}
 
         <motion.div
           variants={gridContainer}

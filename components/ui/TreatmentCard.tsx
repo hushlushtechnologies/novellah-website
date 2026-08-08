@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -29,7 +29,7 @@ export function TreatmentCard({
   return (
     <motion.a
       href={`/treatments/${treatment.categorySlug}/${treatment.slug}`}
-      className={`group flex h-full flex-col overflow-hidden ${cardBaseClasses} ${className}`}
+      className={`group flex h-full min-h-[420px] flex-col overflow-hidden ${cardBaseClasses} ${className}`}
       whileHover={{ y: -6 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
     >
@@ -42,7 +42,7 @@ export function TreatmentCard({
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className={cardHeadingClasses}>{treatment.title[locale]}</h3>
+        <h3 className={`${cardHeadingClasses} line-clamp-2`}>{treatment.title[locale]}</h3>
         <div className={cardDividerClasses} />
         <p className={`${CardDescriptionClasses} line-clamp-2 sm:line-clamp-3`}>
           {treatment.description[locale]}

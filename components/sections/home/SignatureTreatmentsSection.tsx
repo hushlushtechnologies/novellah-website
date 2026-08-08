@@ -225,58 +225,60 @@ export function SignatureTreatmentsSection() {
 
         {/* Tablet/desktop: page-at-a-time swiper with autoplay + overlaid arrows */}
         <div className="relative mt-10 hidden sm:block">
-          <Swiper
-            key={`desktop-${activeCategory}`}
-            dir={locale === "ar" ? "rtl" : "ltr"}
-            modules={[Autoplay, Navigation]}
-            slidesPerGroup={4}
-            spaceBetween={24}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            // loop={categoryTreatments.length > 4}
-            loop={false}
-            autoplay={
-              categoryTreatments.length > 4
-                ? { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }
-                : false
-            }
-            navigation={
-              showDesktopArrows
-                ? { prevEl: desktopPrevRef.current, nextEl: desktopNextRef.current }
-                : false
-            }
-            onBeforeInit={(swiper) => {
-              if (
-                showDesktopArrows &&
-                typeof swiper.params.navigation !== "boolean" &&
-                swiper.params.navigation
-              ) {
-                swiper.params.navigation.prevEl = desktopPrevRef.current;
-                swiper.params.navigation.nextEl = desktopNextRef.current;
-              }
-            }}
-            onSwiper={(swiper) => {
-              desktopSwiperRef.current = swiper;
-            }}
-            onSlideChange={(swiper) => {
-              setDesktopIndex(Math.floor(swiper.realIndex / 4));
-            }}
-            className="[&_.swiper-slide]:h-auto"
-          >
-            {categoryTreatments.map((treatment) => (
-              <SwiperSlide key={treatment.slug} className="h-auto">
-                <TreatmentCard
-                  treatment={treatment}
-                  locale={locale}
-                  durationUnit={t("durationUnit")}
-                  ctaLabel={t("ctaExplore")}
-                  className="h-full"
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+         <Swiper
+  key={`desktop-${activeCategory}`}
+  dir={locale === "ar" ? "rtl" : "ltr"}
+  modules={[Autoplay, Navigation]}
+  slidesPerGroup={4}
+  spaceBetween={24}
+  breakpoints={{
+    640: { slidesPerView: 2 },
+    1024: { slidesPerView: 4 },
+  }}
+  // loop={categoryTreatments.length > 4}
+  loop={false}
+  autoplay={
+    categoryTreatments.length > 4
+      ? { delay: 4500, disableOnInteraction: false, pauseOnMouseEnter: true }
+      : false
+  }
+  navigation={
+    showDesktopArrows
+      ? { prevEl: desktopPrevRef.current, nextEl: desktopNextRef.current }
+      : false
+  }
+  onBeforeInit={(swiper) => {
+    if (
+      showDesktopArrows &&
+      typeof swiper.params.navigation !== "boolean" &&
+      swiper.params.navigation
+    ) {
+      swiper.params.navigation.prevEl = desktopPrevRef.current;
+      swiper.params.navigation.nextEl = desktopNextRef.current;
+    }
+  }}
+  onSwiper={(swiper) => {
+    desktopSwiperRef.current = swiper;
+  }}
+  onSlideChange={(swiper) => {
+    setDesktopIndex(
+      swiper.isEnd ? desktopDotCount - 1 : Math.floor(swiper.realIndex / 4),
+    );
+  }}
+  className="[&_.swiper-slide]:h-auto"
+>
+  {categoryTreatments.map((treatment) => (
+    <SwiperSlide key={treatment.slug} className="h-auto">
+      <TreatmentCard
+        treatment={treatment}
+        locale={locale}
+        durationUnit={t("durationUnit")}
+        ctaLabel={t("ctaExplore")}
+        className="h-full"
+      />
+    </SwiperSlide>
+  ))}
+</Swiper>
 
           {showDesktopArrows && (
             <>

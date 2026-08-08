@@ -97,8 +97,8 @@ export const doctors: Doctor[] = [
     ar: "الأمراض الجلدية",
   },
   image: "/images/doctors/fatima-al-hassan.png",
-  cutoutImage: "/images/doctors/fatima-al-hassan-cutout.png",
-  roomImage: "/images/doctors/fatima-al-hassan-room.png",
+  cutoutImage: "/images/doctors/fatima-al-hassa.png",
+  roomImage: "/images/doctors/ahamed-razeen-room.png",
 
   bio: {
     en: "Passionate about helping patients achieve healthy, radiant skin through evidence-based treatments and advanced dermatological care. Dr. Fatima combines medical expertise with a personalized approach to deliver safe and natural-looking results.",
@@ -156,8 +156,7 @@ export const doctors: Doctor[] = [
   },
   image: "/images/doctors/omar-al-nuaimi.png",
   cutoutImage: "/images/doctors/omar-al-nuaimi-cutout.png",
-  roomImage: "/images/doctors/omar-al-nuaimi-room.png",
-
+  roomImage: "/images/doctors/ahamed-razeen-room.png",
   bio: {
     en: "Specializing in non-surgical facial rejuvenation, Dr. Omar is dedicated to achieving natural, youthful results using advanced aesthetic techniques tailored to each patient's unique features.",
     ar: "يتخصص الدكتور عمر في تجديد شباب الوجه دون جراحة، ويحرص على تحقيق نتائج طبيعية وشابة باستخدام أحدث التقنيات التجميلية المصممة بما يناسب ملامح كل مريض.",
@@ -214,8 +213,7 @@ export const doctors: Doctor[] = [
   },
   image: "/images/doctors/layla-al-mansoori.png",
   cutoutImage: "/images/doctors/layla-al-mansoori-cutout.png",
-  roomImage: "/images/doctors/layla-al-mansoori-room.png",
-
+  roomImage: "/images/doctors/ahamed-razeen-room.png",
   bio: {
     en: "Dr. Layla is committed to restoring healthy, radiant skin through advanced laser technology and personalized dermatological treatments. She focuses on delivering natural, long-lasting results while ensuring every patient receives exceptional care.",
     ar: "تلتزم الدكتورة ليلى باستعادة صحة البشرة وإشراقتها من خلال أحدث تقنيات الليزر والعلاجات الجلدية المخصصة، مع التركيز على تحقيق نتائج طبيعية وطويلة الأمد وتقديم رعاية استثنائية لكل مريض.",
