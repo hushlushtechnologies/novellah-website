@@ -236,7 +236,7 @@ export function BrandStoryContent({
             className="relative mx-auto h-[320px] w-full max-w-sm overflow-hidden rounded-3xl border-2 border-secondary/50 p-2 sm:h-[420px]"
           >
             <div className="relative h-full w-full overflow-hidden rounded-2xl">
-              <Image src="/images/dr frame.png" alt="" fill className="object-cover" />
+              <Image src="/images/manager.png" alt="" fill className="object-cover" />
               <div className="absolute inset-x-4 bottom-4 rounded-full bg-primary/90 px-4 py-2.5 text-center backdrop-blur-sm sm:px-6 sm:py-3">
                 <p className="font-heading text-lg font-extrabold text-secondary sm:text-xl">
                   {ceoName}
