@@ -50,7 +50,7 @@ export default function HomePage() {
       <LoyaltyPromoSection />
       <SpecialOffersSection />
       <BlogFeaturedSection />
-      <TestimonialsSection />
+      {/* <TestimonialsSection /> */}
       <FinalCtaSection />
     </>
   );

@@ -5,7 +5,7 @@ export const siteConfig = {
   phone: "+94 77 993 1646",
   phoneHref: "tel:+94779931646",
   whatsappHref: "https://wa.me/971501234567",
-  email: "info@novellah.ae",
+  email: "contact@novellah.lk",
   emailHref: "mailto:info@novellah.ae",
   address1: {
     en: "13th Floor BurJuman Business Center - Al Mankhool - Dubai",
