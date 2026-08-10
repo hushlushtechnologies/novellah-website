@@ -153,9 +153,9 @@ export const blogPosts: BlogPost[] = [
         type: "imageGrid",
         images: [
           "/images/blog/hydra-facial-guide.jpg",
-          "/images/blog/hydra-facial-guide.jpg",
-          "/images/blog/hydra-facial-guide.jpg",
-          "/images/blog/hydra-facial-guide.jpg",
+          "/images/blog/hydra-facial-guide-2.jpg",
+          "/images/blog/hydra-facial-guide-3.jpg",
+          "/images/blog/hydra-facial-guide-4.jpg",
         ],
       },
       {
