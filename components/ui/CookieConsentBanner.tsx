@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { getStoredConsent, setStoredConsent } from "@/lib/consent";
+import { getStoredConsent, setStoredConsent, type ConsentValue } from "@/lib/consent";
 
 export function CookieConsentBanner() {
   const locale = useLocale() as "en" | "ar";
