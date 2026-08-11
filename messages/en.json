@@ -136,7 +136,13 @@
     "point4Title": "Experts Hands",
     "point4Desc": "Technology is powerful, but our experts make the difference"
   },
- 
+ "cookieConsent": {
+  "label": "Cookie consent",
+  "message": "We use cookies to improve your experience and understand how our site is used.",
+  "learnMore": "Learn more",
+  "accept": "Accept",
+  "reject": "Reject"
+},
  
   "brandStory": {
     "eyebrow": "Our Philosophy & Vision",

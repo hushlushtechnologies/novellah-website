@@ -4,7 +4,9 @@ export const siteConfig = {
   name: "Novellah Restyle",
   phone: "+94 77 993 1646",
   phoneHref: "tel:+94779931646",
-  whatsappHref: "https://wa.me/971501234567",
+ whatsappHref: `https://wa.me/94779931646?text=${encodeURIComponent(
+  "Hello Novellah Restyle, I would like to know more about your treatments and book a consultation. Please assist me."
+)}`,
   email: "contact@novellah.lk",
   emailHref: "mailto:info@novellah.ae",
   address1: {

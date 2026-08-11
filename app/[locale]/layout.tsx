@@ -10,6 +10,8 @@ import { Footer } from "@/components/ui/Footer";
 import { FloatingContact } from "@/components/ui/FloatingContact";
 import { ChatbotButton } from "@/components/ui/ChatbotButton";
 import Script from "next/script";
+import { HubspotLoader } from "@/components/ui/HubspotLoader";
+import { CookieConsentBanner } from "@/components/ui/CookieConsentBanner";
  
 
 export const metadata: Metadata = {
@@ -46,7 +48,8 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <FloatingContact />
-         
+         <HubspotLoader />
+<CookieConsentBanner />
           <Navbar />
           {children}
           <Footer />
