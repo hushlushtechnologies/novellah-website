@@ -34,7 +34,7 @@ export default function AboutUsPage() {
       <TechnologyMeetsBeautySection/>
       <DoctorsSection/>
       <ClinicGallerySection/>
-      <TestimonialsSection/>
+      {/* <TestimonialsSection/> */}
       <FinalCtaSection/>
     
     </>
